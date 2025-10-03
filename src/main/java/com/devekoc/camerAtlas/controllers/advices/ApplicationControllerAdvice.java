@@ -1,0 +1,49 @@
+package com.devekoc.camerAtlas.controllers.advices;
+
+import com.devekoc.camerAtlas.dto.ErrorEntity;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ControllerAdvice
+public class ApplicationControllerAdvice {
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler({EntityNotFoundException.class})
+    public @ResponseBody ErrorEntity handleEntityNotFound (EntityNotFoundException ex) {
+        return new ErrorEntity("404", ex.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({IllegalArgumentException.class})
+    public @ResponseBody ErrorEntity handleIllegalArgumentException (IllegalArgumentException ex) {
+        return new ErrorEntity("400", ex.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public @ResponseBody ErrorEntity handleConflict(DataIntegrityViolationException ex) {
+        return new ErrorEntity("409", "Contrainte d’intégrité violée : " + ex.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public @ResponseBody ErrorEntity handleValidation(MethodArgumentNotValidException ex) {
+        String message = ex.getBindingResult().getFieldErrors().stream()
+                .map(err -> err.getField() + " : " + err.getDefaultMessage())
+                .findFirst()
+                .orElse("Requête invalide");
+        return new ErrorEntity("400", message);
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(Exception.class)
+    public @ResponseBody ErrorEntity handleGeneric(Exception ex) {
+        return new ErrorEntity("500", "Erreur interne : " + ex.getMessage());
+    }
+}

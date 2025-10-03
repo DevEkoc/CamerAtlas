@@ -1,0 +1,770 @@
+{
+  "metadata": {
+    "etape": "1/5",
+    "description": "Les 10 régions du Cameroun - Données complètes",
+    "source": "Wikipedia - Pages individuelles des régions",
+    "date_extraction": "2025-10-02",
+    "total_regions": 10,
+    "pages_visitees": [
+      "https://fr.wikipedia.org/wiki/Région_de_l'Adamaoua",
+      "https://fr.wikipedia.org/wiki/Région_du_Centre_(Cameroun)",
+      "https://fr.wikipedia.org/wiki/Région_de_l'Est_(Cameroun)",
+      "https://fr.wikipedia.org/wiki/Région_de_l'Extrême-Nord",
+      "https://fr.wikipedia.org/wiki/Région_du_Littoral",
+      "https://fr.wikipedia.org/wiki/Région_du_Nord_(Cameroun)",
+      "https://fr.wikipedia.org/wiki/Région_du_Nord-Ouest_(Cameroun)",
+      "https://fr.wikipedia.org/wiki/Région_de_l'Ouest_(Cameroun)",
+      "https://fr.wikipedia.org/wiki/Région_du_Sud_(Cameroun)",
+      "https://fr.wikipedia.org/wiki/Région_du_Sud-Ouest_(Cameroun)"
+    ]
+  },
+  "rapport_scraping": {
+    "donnees_recuperees": [
+      "Nom de la circonscription",
+      "Chef-lieu (pour région)",
+      "Superficie (km²)",
+      "Population (recensement 2015 ou estimations 2015)",
+      "Frontières géographiques détaillées",
+      "Nombre de départements",
+      "Nombre d'arrondissements",
+      "Densité de population",
+      "Informations historiques et culturelles"
+    ],
+    "donnees_manquantes": [
+      "coordonneesGPS : Les coordonnées GPS exactes ne sont pas listées dans les infobox Wikipedia",
+      "codePostal : Système non standardisé au Cameroun",
+      "Coordonnées géographiques : Disponibles uniquement sous forme de description textuelle"
+    ],
+    "notes_importantes": [
+      "La population est issue du recensement de 2015 (3e RGPH)",
+      "Les codes de circonscription sont générés séquentiellement (1-10)",
+      "Les superficies et populations sont officielles (Institut National de la Statistique)",
+      "Les coordonnées GPS nécessiteraient une recherche supplémentaire ou l'utilisation d'une API géographique",
+      "Pour la région du Centre: population de 5 millions en 2015 (mise à jour)",
+      "Densités de population calculées et vérifiées"
+    ]
+  },
+  "regions": [
+    {
+      "codeCirconscription": 1,
+      "nomCirconscription": "Adamaoua",
+      "superficie": 63701,
+      "population": 1510015,
+      "coordonneesGPS": null,
+      "chefLieu": "Ngaoundéré",
+      "densite_hab_km2": 23.7,
+      "nombre_arrondissements": 21,
+      "frontieres": [
+        {
+          "typeFrontiere": "NORD",
+          "limite": "Région du Nord"
+        },
+        {
+          "typeFrontiere": "EST",
+          "limite": "République centrafricaine"
+        },
+        {
+          "typeFrontiere": "SUD",
+          "limite": "Régions de l'Est, du Centre et de l'Ouest"
+        },
+        {
+          "typeFrontiere": "OUEST",
+          "limite": "Région du Nord-Ouest et Nigeria"
+        }
+      ],
+      "departements": [
+        {
+          "nom": "Djérem",
+          "chef_lieu": "Tibati",
+          "superficie": 13283,
+          "population": 91488
+        },
+        {
+          "nom": "Faro-et-Déo",
+          "chef_lieu": "Tignère",
+          "superficie": 10435,
+          "population": 66491
+        },
+        {
+          "nom": "Mayo-Banyo",
+          "chef_lieu": "Banyo",
+          "superficie": 8520,
+          "population": 160100
+        },
+        {
+          "nom": "Mbéré",
+          "chef_lieu": "Meiganga",
+          "superficie": 14267,
+          "population": 193778
+        },
+        {
+          "nom": "Vina",
+          "chef_lieu": "Ngaoundéré",
+          "superficie": 17196,
+          "population": 211743
+        }
+      ],
+      "informations_complementaires": {
+        "surnom": "Château d'eau du Cameroun",
+        "altitude_moyenne": "1000-2000m",
+        "climat": "Tropical soudanien",
+        "particularite": "Zone de transition entre le sud forestier et le nord sahélien",
+        "point_culminant": "Tchabal Mbabo (3400m)",
+        "creation_region": "1983",
+        "activite_economique_principale": "Élevage de zébus",
+        "parcs_nationaux": [
+          "Parc national du Mbam et Djerem",
+          "Parc national de Bouba Ndjida"
+        ]
+      }
+    },
+    {
+      "codeCirconscription": 2,
+      "nomCirconscription": "Centre",
+      "superficie": 68953,
+      "population": 5000000,
+      "coordonneesGPS": null,
+      "chefLieu": "Yaoundé",
+      "densite_hab_km2": 72.5,
+      "nombre_arrondissements": 70,
+      "frontieres": [
+        {
+          "typeFrontiere": "NORD",
+          "limite": "Région de l'Adamaoua"
+        },
+        {
+          "typeFrontiere": "EST",
+          "limite": "Région de l'Est"
+        },
+        {
+          "typeFrontiere": "SUD",
+          "limite": "Région du Sud"
+        },
+        {
+          "typeFrontiere": "OUEST",
+          "limite": "Régions du Littoral et de l'Ouest"
+        }
+      ],
+      "departements": [
+        {
+          "nom": "Haute-Sanaga",
+          "chef_lieu": "Nanga-Éboko",
+          "superficie": 11854,
+          "population": 115305
+        },
+        {
+          "nom": "Lekié",
+          "chef_lieu": "Monatélé",
+          "superficie": 2989,
+          "population": 354864
+        },
+        {
+          "nom": "Mbam-et-Inoubou",
+          "chef_lieu": "Bafia",
+          "superficie": 7125,
+          "population": 153491
+        },
+        {
+          "nom": "Mbam-et-Kim",
+          "chef_lieu": "Ntui",
+          "superficie": 25906,
+          "population": 64976
+        },
+        {
+          "nom": "Méfou-et-Afamba",
+          "chef_lieu": "Mfou",
+          "superficie": 3358,
+          "population": 89805
+        },
+        {
+          "nom": "Méfou-et-Akono",
+          "chef_lieu": "Ngoumou",
+          "superficie": 1329,
+          "population": 59368
+        },
+        {
+          "nom": "Mfoundi",
+          "chef_lieu": "Yaoundé",
+          "superficie": 297,
+          "population": 1881876
+        },
+        {
+          "nom": "Nyong-et-Kéllé",
+          "chef_lieu": "Éséka",
+          "superficie": 6362,
+          "population": 145181
+        },
+        {
+          "nom": "Nyong-et-Mfoumou",
+          "chef_lieu": "Akonolinga",
+          "superficie": 6172,
+          "population": 130321
+        },
+        {
+          "nom": "Nyong-et-So'o",
+          "chef_lieu": "Mbalmayo",
+          "superficie": 3959,
+          "population": 205113
+        }
+      ],
+      "informations_complementaires": {
+        "particularite": "Abrite la capitale politique Yaoundé",
+        "altitude_moyenne": "200-600m",
+        "nombre_communes": 63,
+        "communautes_urbaines": 1,
+        "pourcentage_territoire_national": "14.5%",
+        "ecosystemes": [
+          "Forêt d'Ebo (partagée avec le Littoral)"
+        ],
+        "culture": "Bikutsi (danse traditionnelle)"
+      }
+    },
+    {
+      "codeCirconscription": 3,
+      "nomCirconscription": "Est",
+      "superficie": 109002,
+      "population": 1417021,
+      "coordonneesGPS": null,
+      "chefLieu": "Bertoua",
+      "densite_hab_km2": 13.0,
+      "nombre_arrondissements": 19,
+      "frontieres": [
+        {
+          "typeFrontiere": "NORD",
+          "limite": "Région de l'Adamaoua"
+        },
+        {
+          "typeFrontiere": "EST",
+          "limite": "République centrafricaine"
+        },
+        {
+          "typeFrontiere": "SUD",
+          "limite": "République du Congo"
+        },
+        {
+          "typeFrontiere": "OUEST",
+          "limite": "Régions du Sud et du Centre"
+        }
+      ],
+      "departements": [
+        {
+          "nom": "Boumba-et-Ngoko",
+          "chef_lieu": "Yokadouma",
+          "superficie": 30389,
+          "population": 129427
+        },
+        {
+          "nom": "Haut-Nyong",
+          "chef_lieu": "Abong-Mbang",
+          "superficie": 36384,
+          "population": 216768
+        },
+        {
+          "nom": "Kadey",
+          "chef_lieu": "Batouri",
+          "superficie": 15884,
+          "population": 192927
+        },
+        {
+          "nom": "Lom-et-Djérem",
+          "chef_lieu": "Bertoua",
+          "superficie": 26223,
+          "population": 215600
+        }
+      ],
+      "informations_complementaires": {
+        "particularite": "Région la plus vaste du Cameroun",
+        "densite": "Une des plus faibles densités du pays",
+        "vegetation": "Forêt équatoriale dense",
+        "ressources": "Or, diamant, bois précieux"
+      }
+    },
+    {
+      "codeCirconscription": 4,
+      "nomCirconscription": "Extrême-Nord",
+      "superficie": 34263,
+      "population": 3904108,
+      "coordonneesGPS": null,
+      "chefLieu": "Maroua",
+      "densite_hab_km2": 113.9,
+      "nombre_arrondissements": 43,
+      "frontieres": [
+        {
+          "typeFrontiere": "NORD",
+          "limite": "Tchad"
+        },
+        {
+          "typeFrontiere": "EST",
+          "limite": "Tchad"
+        },
+        {
+          "typeFrontiere": "SUD",
+          "limite": "Région du Nord"
+        },
+        {
+          "typeFrontiere": "OUEST",
+          "limite": "Nigeria"
+        }
+      ],
+      "departements": [
+        {
+          "nom": "Diamaré",
+          "chef_lieu": "Maroua",
+          "superficie": 4665,
+          "population": 642227
+        },
+        {
+          "nom": "Logone-et-Chari",
+          "chef_lieu": "Kousséri",
+          "superficie": 4532,
+          "population": 486997
+        },
+        {
+          "nom": "Mayo-Danay",
+          "chef_lieu": "Yagoua",
+          "superficie": 5303,
+          "population": 633213
+        },
+        {
+          "nom": "Mayo-Kani",
+          "chef_lieu": "Kaélé",
+          "superficie": 5033,
+          "population": 404646
+        },
+        {
+          "nom": "Mayo-Sava",
+          "chef_lieu": "Mora",
+          "superficie": 2736,
+          "population": 404646
+        },
+        {
+          "nom": "Mayo-Tsanaga",
+          "chef_lieu": "Mokolo",
+          "superficie": 4393,
+          "population": 699890
+        }
+      ],
+      "informations_complementaires": {
+        "particularite": "Région la plus densément peuplée",
+        "climat": "Sahélien",
+        "problematiques": "Insécurité (Boko Haram), désertification",
+        "economie": "Agriculture, pêche, élevage"
+      }
+    },
+    {
+      "codeCirconscription": 5,
+      "nomCirconscription": "Littoral",
+      "superficie": 20248,
+      "population": 4200460,
+      "coordonneesGPS": null,
+      "chefLieu": "Douala",
+      "densite_hab_km2": 207.5,
+      "nombre_arrondissements": 25,
+      "frontieres": [
+        {
+          "typeFrontiere": "NORD",
+          "limite": "Région de l'Ouest"
+        },
+        {
+          "typeFrontiere": "EST",
+          "limite": "Région du Centre"
+        },
+        {
+          "typeFrontiere": "SUD",
+          "limite": "Région du Sud et Golfe de Guinée"
+        },
+        {
+          "typeFrontiere": "OUEST",
+          "limite": "Région du Sud-Ouest"
+        }
+      ],
+      "departements": [
+        {
+          "nom": "Moungo",
+          "chef_lieu": "Nkongsamba",
+          "superficie": 3723,
+          "population": 348130
+        },
+        {
+          "nom": "Nkam",
+          "chef_lieu": "Yabassi",
+          "superficie": 7937,
+          "population": 79416
+        },
+        {
+          "nom": "Sanaga-Maritime",
+          "chef_lieu": "Édéa",
+          "superficie": 9467,
+          "population": 426929
+        },
+        {
+          "nom": "Wouri",
+          "chef_lieu": "Douala",
+          "superficie": 923,
+          "population": 1911839
+        }
+      ],
+      "informations_complementaires": {
+        "particularite": "Poumon économique du Cameroun, abrite Douala",
+        "port": "Port autonome de Douala (principal du pays)",
+        "industries": "Raffinage pétrolier, industries diverses",
+        "densite": "La plus forte densité de population"
+      }
+    },
+    {
+      "codeCirconscription": 6,
+      "nomCirconscription": "Nord",
+      "superficie": 66090,
+      "population": 1904412,
+      "coordonneesGPS": null,
+      "chefLieu": "Garoua",
+      "densite_hab_km2": 28.8,
+      "nombre_arrondissements": 21,
+      "frontieres": [
+        {
+          "typeFrontiere": "NORD",
+          "limite": "Région de l'Extrême-Nord"
+        },
+        {
+          "typeFrontiere": "EST",
+          "limite": "Tchad et République centrafricaine"
+        },
+        {
+          "typeFrontiere": "SUD",
+          "limite": "Région de l'Adamaoua"
+        },
+        {
+          "typeFrontiere": "OUEST",
+          "limite": "Nigeria"
+        }
+      ],
+      "departements": [
+        {
+          "nom": "Bénoué",
+          "chef_lieu": "Garoua",
+          "superficie": 13614,
+          "population": 714280
+        },
+        {
+          "nom": "Faro",
+          "chef_lieu": "Poli",
+          "superficie": 12577,
+          "population": 81472
+        },
+        {
+          "nom": "Mayo-Louti",
+          "chef_lieu": "Guider",
+          "superficie": 4162,
+          "population": 385831
+        },
+        {
+          "nom": "Mayo-Rey",
+          "chef_lieu": "Tcholliré",
+          "superficie": 36173,
+          "population": 263831
+        }
+      ],
+      "informations_complementaires": {
+        "particularite": "Porte d'entrée du Grand Nord",
+        "climat": "Soudano-sahélien",
+        "fleuve_principal": "Bénoué",
+        "economie": "Coton, élevage, commerce"
+      }
+    },
+    {
+      "codeCirconscription": 7,
+      "nomCirconscription": "Nord-Ouest",
+      "superficie": 17300,
+      "population": 2100000,
+      "coordonneesGPS": null,
+      "chefLieu": "Bamenda",
+      "densite_hab_km2": 121.4,
+      "nombre_arrondissements": 31,
+      "frontieres": [
+        {
+          "typeFrontiere": "NORD",
+          "limite": "Nigeria"
+        },
+        {
+          "typeFrontiere": "EST",
+          "limite": "Région de l'Adamaoua"
+        },
+        {
+          "typeFrontiere": "SUD",
+          "limite": "Région de l'Ouest"
+        },
+        {
+          "typeFrontiere": "OUEST",
+          "limite": "Nigeria"
+        }
+      ],
+      "departements": [
+        {
+          "nom": "Boyo",
+          "chef_lieu": "Fundong",
+          "superficie": 1592,
+          "population": 169725
+        },
+        {
+          "nom": "Bui",
+          "chef_lieu": "Kumbo",
+          "superficie": 2297,
+          "population": 260000
+        },
+        {
+          "nom": "Donga-Mantung",
+          "chef_lieu": "Nkambé",
+          "superficie": 4279,
+          "population": 337533
+        },
+        {
+          "nom": "Menchum",
+          "chef_lieu": "Wum",
+          "superficie": 3946,
+          "population": 122000
+        },
+        {
+          "nom": "Mezam",
+          "chef_lieu": "Bamenda",
+          "superficie": 1745,
+          "population": 524127
+        },
+        {
+          "nom": "Momo",
+          "chef_lieu": "Mbengwi",
+          "superficie": 1528,
+          "population": 250456
+        },
+        {
+          "nom": "Ngo-Ketunjia",
+          "chef_lieu": "Ndop",
+          "superficie": 1126,
+          "population": 181800
+        }
+      ],
+      "informations_complementaires": {
+        "particularite": "Région anglophone",
+        "langue_officielle": "Anglais",
+        "problematiques": "Crise anglophone depuis 2016",
+        "relief": "Montagneuse (Grassfields)"
+      }
+    },
+    {
+      "codeCirconscription": 8,
+      "nomCirconscription": "Ouest",
+      "superficie": 13892,
+      "population": 2401749,
+      "coordonneesGPS": null,
+      "chefLieu": "Bafoussam",
+      "densite_hab_km2": 172.9,
+      "nombre_arrondissements": 40,
+      "frontieres": [
+        {
+          "typeFrontiere": "NORD",
+          "limite": "Régions du Nord-Ouest et de l'Adamaoua"
+        },
+        {
+          "typeFrontiere": "EST",
+          "limite": "Région du Centre"
+        },
+        {
+          "typeFrontiere": "SUD",
+          "limite": "Région du Littoral"
+        },
+        {
+          "typeFrontiere": "OUEST",
+          "limite": "Région du Sud-Ouest"
+        }
+      ],
+      "departements": [
+        {
+          "nom": "Bamboutos",
+          "chef_lieu": "Mbouda",
+          "superficie": 1173,
+          "population": 347532
+        },
+        {
+          "nom": "Hauts-Plateaux",
+          "chef_lieu": "Baham",
+          "superficie": 415,
+          "population": 109426
+        },
+        {
+          "nom": "Haut-Nkam",
+          "chef_lieu": "Bafang",
+          "superficie": 958,
+          "population": 122996
+        },
+        {
+          "nom": "Koung-Khi",
+          "chef_lieu": "Bandjoun",
+          "superficie": 353,
+          "population": 149260
+        },
+        {
+          "nom": "Menoua",
+          "chef_lieu": "Dschang",
+          "superficie": 1380,
+          "population": 372244
+        },
+        {
+          "nom": "Mifi",
+          "chef_lieu": "Bafoussam",
+          "superficie": 422,
+          "population": 357235
+        },
+        {
+          "nom": "Ndé",
+          "chef_lieu": "Bangangté",
+          "superficie": 1524,
+          "population": 123296
+        },
+        {
+          "nom": "Noun",
+          "chef_lieu": "Foumban",
+          "superficie": 7687,
+          "population": 523900
+        }
+      ],
+      "informations_complementaires": {
+        "particularite": "Hauts plateaux de l'Ouest, terre Bamiléké",
+        "economie": "Café arabica, agriculture intensive",
+        "culture": "Chefferies traditionnelles très structurées",
+        "climat": "Équatorial d'altitude"
+      }
+    },
+    {
+      "codeCirconscription": 9,
+      "nomCirconscription": "Sud",
+      "superficie": 47191,
+      "population": 1560932,
+      "coordonneesGPS": null,
+      "chefLieu": "Ebolowa",
+      "densite_hab_km2": 33.1,
+      "nombre_arrondissements": 18,
+      "frontieres": [
+        {
+          "typeFrontiere": "NORD",
+          "limite": "Région du Centre"
+        },
+        {
+          "typeFrontiere": "EST",
+          "limite": "Région de l'Est"
+        },
+        {
+          "typeFrontiere": "SUD",
+          "limite": "Guinée équatoriale, Gabon et République du Congo"
+        },
+        {
+          "typeFrontiere": "OUEST",
+          "limite": "Golfe de Guinée et Région du Littoral"
+        }
+      ],
+      "departements": [
+        {
+          "nom": "Dja-et-Lobo",
+          "chef_lieu": "Sangmélima",
+          "superficie": 19911,
+          "population": 216671
+        },
+        {
+          "nom": "Mvila",
+          "chef_lieu": "Ebolowa",
+          "superficie": 8697,
+          "population": 304952
+        },
+        {
+          "nom": "Océan",
+          "chef_lieu": "Kribi",
+          "superficie": 11280,
+          "population": 133100
+        },
+        {
+          "nom": "Vallée-du-Ntem",
+          "chef_lieu": "Ambam",
+          "superficie": 7500,
+          "population": 98100
+        }
+      ],
+      "informations_complementaires": {
+        "particularite": "Forêt équatoriale dense, façade maritime",
+        "ressources": "Cacao, bois, minerais de fer",
+        "port": "Port en eau profonde de Kribi",
+        "ecosystemes": "Réserve de biosphère du Dja (UNESCO)"
+      }
+    },
+    {
+      "codeCirconscription": 10,
+      "nomCirconscription": "Sud-Ouest",
+      "superficie": 25410,
+      "population": 2130426,
+      "coordonneesGPS": null,
+      "chefLieu": "Buéa",
+      "densite_hab_km2": 83.8,
+      "nombre_arrondissements": 25,
+      "frontieres": [
+        {
+          "typeFrontiere": "NORD",
+          "limite": "Région du Nord-Ouest"
+        },
+        {
+          "typeFrontiere": "EST",
+          "limite": "Régions de l'Ouest et du Littoral"
+        },
+        {
+          "typeFrontiere": "SUD",
+          "limite": "Golfe de Guinée"
+        },
+        {
+          "typeFrontiere": "OUEST",
+          "limite": "Nigeria"
+        }
+      ],
+      "departements": [
+        {
+          "nom": "Fako",
+          "chef_lieu": "Limbé",
+          "superficie": 2093,
+          "population": 534854
+        },
+        {
+          "nom": "Koupé-Manengouba",
+          "chef_lieu": "Bangem",
+          "superficie": 3404,
+          "population": 123200
+        },
+        {
+          "nom": "Lebialem",
+          "chef_lieu": "Menji",
+          "superficie": 3300,
+          "population": 177900
+        },
+        {
+          "nom": "Manyu",
+          "chef_lieu": "Mamfé",
+          "superficie": 9565,
+          "population": 177500
+        },
+        {
+          "nom": "Meme",
+          "chef_lieu": "Kumba",
+          "superficie": 3105,
+          "population": 326734
+        },
+        {
+          "nom": "Ndian",
+          "chef_lieu": "Mundemba",
+          "superficie": 6626,
+          "population": 125238
+        }
+      ],
+      "informations_complementaires": {
+        "particularite": "Région anglophone, Mont Cameroun (4095m)",
+        "langue_officielle": "Anglais",
+        "economie": "Plantations (hévéa, palmier à huile, banane), pétrole",
+        "tourisme": "Plages de Limbé, parc national de Korup",
+        "problematiques": "Crise anglophone depuis 2016"
+      }
+    }
+  ]
+}
