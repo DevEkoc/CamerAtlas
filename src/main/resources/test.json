@@ -1,0 +1,25 @@
+{
+  "id": 1,
+  "administrateur": {
+    "id": 1,
+    "nom": "Nasseri Béa",
+    "prenom": "Paul",
+    "dateNaissance": "30-11-1976"
+  },
+  "administrateur": {
+    "id": 2,
+    "nom": "Kontchou",
+    "prenom": "Steeve",
+    "dateNaissance": "30-11-1976"
+  },
+  "circonscription": {
+    "id": 2,
+    "nom": "Centre",
+    "superficie": 30459,
+    "population": 5000000,
+    "coordonnees": "Latitude Nord, Longitude Est"
+  },
+  "fonction": "GOUVERNEUR",
+  "dateDebut": "01-01-2017",
+  "dateFin": null
+}
