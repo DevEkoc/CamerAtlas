@@ -1,8 +1,6 @@
 package com.devekoc.camerAtlas.controllers;
 
-import com.devekoc.camerAtlas.entities.Administrateur;
 import com.devekoc.camerAtlas.entities.Circonscription;
-import com.devekoc.camerAtlas.services.AdministratorService;
 import com.devekoc.camerAtlas.services.CirconscriptionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +26,8 @@ public class CirconscriptionController {
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public List<Circonscription> listerCirconscriptions() {
-        return circonscriptionService.listerCirconscriptions();
+    public List<Circonscription> lister() {
+        return circonscriptionService.lister();
     }
 
     @GetMapping(path = "{id}", produces = APPLICATION_JSON_VALUE)

@@ -12,30 +12,33 @@ USE camerAtlas;
 -- ============================================================================
 -- CREATION DES TABLES
 -- ============================================================================
-CREATE TABLE administrateur (
-    idAdministrateur INT AUTO_INCREMENT PRIMARY KEY,
-    nomAdministrateur VARCHAR(50) NOT NULL,
-    prenomAdministrateur VARCHAR(50) DEFAULT NULL,
+CREATE TABLE autorite (
+    idAutorite INT AUTO_INCREMENT PRIMARY KEY,
+    nomAutorite VARCHAR(50) NOT NULL,
+    prenomAutorite VARCHAR(50) DEFAULT NULL,
     dateNaissance DATE DEFAULT NULL
 );
 
 CREATE TABLE circonscription (
     codeCirconscription INT AUTO_INCREMENT PRIMARY KEY,
-    nomCirconscription VARCHAR(50) NOT NULL,
+    nomCirconscription VARCHAR(50) UNIQUE NOT NULL,
+#     codePostal VARCHAR(10) UNIQUE DEFAULT NULL,
     superficie INT NOT NULL,
     population INT NOT NULL,
     coordonneesGPS VARCHAR(50) DEFAULT NULL
 );
 
-CREATE TABLE administration (
-    idAdministration INT AUTO_INCREMENT PRIMARY KEY,
-    idAdministrateur INT NOT NULL UNIQUE,
-    codeCirconscription INT NOT NULL UNIQUE,
+CREATE TABLE affectation (
+    idAffectation INT AUTO_INCREMENT PRIMARY KEY,
+    idAutorite INT NOT NULL,
+    codeCirconscription INT NOT NULL,
     fonction ENUM('GOUVERNEUR', 'PREFET', 'SOUS-PREFET') NOT NULL,
     dateDebut DATE NOT NULL,
     dateFin DATE DEFAULT NULL,
-    FOREIGN KEY (idAdministrateur) REFERENCES administrateur(idAdministrateur),
-    FOREIGN KEY (codeCirconscription) REFERENCES circonscription(codeCirconscription)
+    UNIQUE (idAutorite, codeCirconscription),
+    CHECK ( dateFin IS NULL OR dateFin > dateDebut ),
+    FOREIGN KEY (idAutorite) REFERENCES autorite(idAutorite) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (codeCirconscription) REFERENCES circonscription(codeCirconscription) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE frontiere (
@@ -44,10 +47,12 @@ CREATE TABLE frontiere (
     limite VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE possede (
+CREATE TABLE delimitation (
     codeCirconscription INT,
     idFrontiere INT,
-    PRIMARY KEY (codeCirconscription, idFrontiere)
+    PRIMARY KEY (codeCirconscription, idFrontiere),
+    FOREIGN KEY (codeCirconscription) REFERENCES circonscription(codeCirconscription),
+    FOREIGN KEY (idFrontiere) REFERENCES frontiere(idFrontiere)
 );
 
 CREATE TABLE region (
@@ -60,13 +65,17 @@ CREATE TABLE region (
 CREATE TABLE departement (
     codeCirconscription INT PRIMARY KEY,
     prefecture VARCHAR(50),
-    FOREIGN KEY (codeCirconscription) REFERENCES circonscription(codeCirconscription)
+    idRegion INT NOT NULL,
+    FOREIGN KEY (codeCirconscription) REFERENCES circonscription(codeCirconscription),
+    FOREIGN KEY (idRegion) REFERENCES region(codeCirconscription)
 );
 
 CREATE TABLE arrondissement (
     codeCirconscription INT PRIMARY KEY,
     sousPrefecture VARCHAR(50),
-    FOREIGN KEY (codeCirconscription) REFERENCES circonscription(codeCirconscription)
+    idDepartement INT NOT NULL,
+    FOREIGN KEY (codeCirconscription) REFERENCES circonscription(codeCirconscription),
+    FOREIGN KEY (idDepartement) REFERENCES departement(codeCirconscription)
 );
 
 CREATE TABLE quartier (
@@ -76,3 +85,28 @@ CREATE TABLE quartier (
     sousPrefecture INT NOT NULL,
     FOREIGN KEY (sousPrefecture) REFERENCES arrondissement(codeCirconscription)
 );
+
+# ALTER TABLE departement
+#     ADD COLUMN idRegion INT NOT NULL
+# ;
+#
+# ALTER TABLE arrondissement
+#     ADD COLUMN idDepartement INT NOT NULL
+# ;
+#
+# ALTER TABLE departement
+#     ADD CONSTRAINT FOREIGN KEY (idRegion) REFERENCES region(codeCirconscription)
+# ;
+#
+# ALTER TABLE arrondissement
+#     ADD CONSTRAINT FOREIGN KEY (idDepartement) REFERENCES departement(codeCirconscription)
+# ;
+
+# ALTER TABLE affectation
+#     ADD CONSTRAINT dateFin_supp_dateDebut
+#         CHECK (dateFin IS NULL OR dateFin > dateDebut)
+# ;
+
+# Autorite ==> Autorite
+# Affectation ==> Affectation
+# Possede ==> Delimitation

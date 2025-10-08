@@ -9,30 +9,31 @@ import jakarta.validation.constraints.Past;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "administrateur")
-public class Administrateur {
-    @Column(name = "idAdministrateur")
+@Table(name = "autorite")
+public class Autorite {
+    @Column(name = "idAutorite")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "nomAdministrateur", nullable = false, length = 50)
+    @Column(name = "nomAutorite", nullable = false, length = 50)
     @NotBlank(message = "Le nom ne peut pas être vide !")
     private String nom;
 
-    @Column(name = "prenomAdministrateur", length = 50)
+    @Column(name = "prenomAutorite", length = 50)
     private String prenom;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Column
+    //Pour les dates on utilise @NotNull(message = "")
     @NotNull(message = "La date de naissance est obligatoire")
     @Past(message = "La date de naissance doit être dans le passé")
     private LocalDate dateNaissance;
 
-    public Administrateur() {
+    public Autorite() {
     }
 
-    public Administrateur(int id, String nom, String prenom, LocalDate dateNaissance) {
+    public Autorite(int id, String nom, String prenom, LocalDate dateNaissance) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;

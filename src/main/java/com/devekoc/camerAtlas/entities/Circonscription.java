@@ -2,31 +2,39 @@ package com.devekoc.camerAtlas.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "circonscription")
-public class Circonscription {
+@Inheritance(strategy = InheritanceType.JOINED)
+@Getter @Setter
+@AllArgsConstructor
+public abstract class Circonscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codeCirconscription")
-    private int id;
+    protected int id;
 
-    @Column(name = "nomCirconscription")
+    @Column(name = "nomCirconscription", unique = true)
     @NotBlank(message = "Le nom ne doit pas être vide !")
     @Size(min = 1, max = 50)
-    private String nom;
+    protected String nom;
 
     @Column
-    @NotBlank(message = "La superficie ne doit pas être vide !")
-    private int superficie;
+    @NotNull(message = "La superficie ne doit pas être vide !")
+    protected Integer superficie;
 
     @Column
-    @NotBlank(message = "La population ne doit pas être vide !")
-    private int population;
+    @NotNull(message = "La population ne doit pas être vide !")
+    protected Integer population;
 
     @Column(name = "coordonneesGPS")
-    private String coordonnees;
+    protected String coordonnees;
 
     public Circonscription() {
     }

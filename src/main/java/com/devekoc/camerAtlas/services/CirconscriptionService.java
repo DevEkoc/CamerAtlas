@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class CirconscriptionService {
-    private CirconscriptionRepository circonscriptionRepository;
+    private final CirconscriptionRepository circonscriptionRepository;
 
     public CirconscriptionService(CirconscriptionRepository circonscriptionRepository) {
         this.circonscriptionRepository = circonscriptionRepository;
@@ -19,7 +19,7 @@ public class CirconscriptionService {
         circonscriptionRepository.save(circonscription);
     }
 
-    public List<Circonscription> listerCirconscriptions() {
+    public List<Circonscription> lister() {
         return circonscriptionRepository.findAll();
     }
 

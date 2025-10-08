@@ -1,7 +1,9 @@
 package com.devekoc.camerAtlas.controllers.advices;
 
 import com.devekoc.camerAtlas.dto.ErrorEntity;
+import com.devekoc.camerAtlas.exceptions.PositionAlreadyFilledException;
 import jakarta.persistence.EntityNotFoundException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -39,6 +41,12 @@ public class ApplicationControllerAdvice {
                 .findFirst()
                 .orElse("Requête invalide");
         return new ErrorEntity("400", message);
+    }
+
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(PositionAlreadyFilledException.class)
+    public @ResponseBody ErrorEntity handlePositionAlreadyFilledException(PositionAlreadyFilledException ex) {
+        return new ErrorEntity("409", "Contrainte d’intégrité violée : " + ex.getMessage());
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
