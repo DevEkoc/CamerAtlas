@@ -2,6 +2,7 @@ package com.devekoc.camerAtlas.controllers;
 
 import com.devekoc.camerAtlas.entities.Affectation;
 import com.devekoc.camerAtlas.services.AffectationService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class AffectationController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void creer (@RequestBody Affectation affectation){
+    public void creer (@RequestBody @Valid Affectation affectation){
         affectationService.creer(affectation);
     }
 
@@ -31,7 +32,7 @@ public class AffectationController {
 
     @PutMapping(path = "{id}", consumes =  APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void modifier (@PathVariable int id, @RequestBody Affectation affectation) {
+    public void modifier (@PathVariable int id, @RequestBody @Valid Affectation affectation) {
         affectationService.modifier(id, affectation);
     }
 

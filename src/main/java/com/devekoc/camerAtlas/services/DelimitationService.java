@@ -26,18 +26,18 @@ public class DelimitationService {
     }
 
     public void creer(DelimitationRequestDTO delimitationRequest) {
-        // Étape 1: Récupérer les entités managées à partir de la base de données.
+        // Étape 1 : Récupérer les entités managées à partir de la base de données.
         // orElseThrow() déballe l'Optional et lève une exception si l'entité n'est pas trouvée.
         Frontiere frontiere = frontiereRepository.findById(delimitationRequest.idFrontiere())
-                .orElseThrow(() -> new EntityNotFoundException("Frontière non trouvée avec l'ID : " + delimitationRequest.idFrontiere()));
+                .orElseThrow(() -> new EntityNotFoundException("Aucune Frontière trouvée avec l'ID : " + delimitationRequest.idFrontiere()));
 
         Circonscription circonscription = circonscriptionRepository.findById(delimitationRequest.codeCirconscription())
-                .orElseThrow(() -> new EntityNotFoundException("Circonscription non trouvée avec l'ID : " + delimitationRequest.codeCirconscription()));
+                .orElseThrow(() -> new EntityNotFoundException("Aucune Circonscription trouvée avec l'ID : " + delimitationRequest.codeCirconscription()));
 
-        // Étape 2: Utiliser le constructeur de convenance pour créer la nouvelle entité Delimitation.
+        // Étape 2 : Utiliser le constructeur de convenance pour créer la nouvelle entité Delimitation.
         // JPA sait que 'frontiere' et 'circonscription' sont des entités existantes et ne tentera pas de les recréer.
 
-        // Étape 3: Sauvegarder la nouvelle entité de relation.
+        // Étape 3 : Sauvegarder la nouvelle entité de relation.
         delimitationRepository.save(new Delimitation(frontiere, circonscription));
     }
 
@@ -47,7 +47,7 @@ public class DelimitationService {
 
     public void supprimer(DelimitationPK id) {
         if (!delimitationRepository.existsById(id)) {
-            throw new EntityNotFoundException("Délimitation introuvable !");
+            throw new EntityNotFoundException("Aucune Délimitation trouvée avec l'ID : " + id);
         }
         delimitationRepository.deleteById(id);
     }

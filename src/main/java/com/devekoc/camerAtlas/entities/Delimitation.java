@@ -2,9 +2,15 @@ package com.devekoc.camerAtlas.entities;
 
 import com.devekoc.camerAtlas.entities.primaryKeys.DelimitationPK;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "delimitation")
+@Getter @Setter
+@AllArgsConstructor @NoArgsConstructor
 public class Delimitation {
     @EmbeddedId
     private DelimitationPK id;
@@ -19,8 +25,6 @@ public class Delimitation {
     @JoinColumn(name = "idFrontiere")
     private Frontiere frontiere;
 
-    public Delimitation() {
-    }
 
     /**
      * Constructeur de convenance pour créer une délimitation à partir des entités associées.
@@ -34,27 +38,4 @@ public class Delimitation {
         this.id = new DelimitationPK(frontiere.getId(), circonscription.getId());
     }
 
-    public DelimitationPK getId() {
-        return id;
-    }
-
-    public void setId(DelimitationPK delimitationPK) {
-        this.id = delimitationPK;
-    }
-
-    public Frontiere getFrontiere() {
-        return frontiere;
-    }
-
-    public void setFrontiere(Frontiere frontiere) {
-        this.frontiere = frontiere;
-    }
-
-    public Circonscription getCirconscription() {
-        return circonscription;
-    }
-
-    public void setCirconscription(Circonscription circonscription) {
-        this.circonscription = circonscription;
-    }
 }

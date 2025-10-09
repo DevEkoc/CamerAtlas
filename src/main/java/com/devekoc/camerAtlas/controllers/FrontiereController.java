@@ -3,6 +3,7 @@ package com.devekoc.camerAtlas.controllers;
 import com.devekoc.camerAtlas.entities.Frontiere;
 import com.devekoc.camerAtlas.enumerations.TypeFrontiere;
 import com.devekoc.camerAtlas.services.FrontiereService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping(value = "frontiere")
 public class FrontiereController {
-    public final FrontiereService frontiereService;
+    private final FrontiereService frontiereService;
 
     public FrontiereController(FrontiereService frontiereService) {
         this.frontiereService = frontiereService;
@@ -21,7 +22,7 @@ public class FrontiereController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void creer (@RequestBody Frontiere frontiere) {
+    public void creer (@RequestBody @Valid Frontiere frontiere) {
         frontiereService.creer(frontiere);
     }
 

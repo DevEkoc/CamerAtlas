@@ -1,11 +1,18 @@
 package com.devekoc.camerAtlas.services;
 
+import com.devekoc.camerAtlas.dto.departement.DepartementListerDansRegionDTO;
+import com.devekoc.camerAtlas.dto.region.RegionCreateDTO;
+import com.devekoc.camerAtlas.dto.region.RegionListerDTO;
+import com.devekoc.camerAtlas.entities.Departement;
 import com.devekoc.camerAtlas.entities.Region;
 import com.devekoc.camerAtlas.repositories.RegionRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.BeanUtils;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,12 +24,47 @@ public class RegionService {
         this.regionRepository = regionRepository;
     }
 
-    public Region creer(Region region) {
+    public Region creer(RegionCreateDTO dto) {
+        if (regionRepository.existsByNom(dto.nom())) {
+            throw new DataIntegrityViolationException(
+                    "Une région avec le nom : " + dto.nom() + " existe déjà !"
+            );
+        }
+
+        Region region = new Region();
+        BeanUtils.copyProperties(dto, region);
         return regionRepository.save(region);
     }
 
-    public List<Region> lister() {
-        return regionRepository.findAll();
+    public List<RegionListerDTO> lister() {
+        List<Region> regions = regionRepository.findAll();
+        List<RegionListerDTO> dtos = new ArrayList<>();
+
+        for (Region region : regions) {
+            List<DepartementListerDansRegionDTO> dpt = new ArrayList<>();
+
+            for (Departement departement : region.getListeDepartements()) {
+                dpt.add(new DepartementListerDansRegionDTO(
+                        departement.getId(),
+                        departement.getNom(),
+                        departement.getSuperficie(),
+                        departement.getPopulation(),
+                        departement.getCoordonnees(),
+                        departement.getPrefecture()
+                ));
+            }
+            RegionListerDTO dto = new RegionListerDTO(
+                    region.getNom(),
+                    region.getSuperficie(),
+                    region.getPopulation(),
+                    region.getCoordonnees(),
+                    region.getChefLieu(),
+                    region.getCodeMineralogique(),
+                    dpt
+            );
+            dtos.add(dto);
+        }
+        return dtos;
     }
 
     public Region rechercher(int id) {

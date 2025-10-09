@@ -4,12 +4,14 @@ import com.devekoc.camerAtlas.entities.Frontiere;
 import com.devekoc.camerAtlas.enumerations.TypeFrontiere;
 import com.devekoc.camerAtlas.repositories.FrontiereRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class FrontiereService {
-    public final FrontiereRepository frontiereRepository;
+    private final FrontiereRepository frontiereRepository;
 
     public FrontiereService(FrontiereRepository frontiereRepository) {
         this.frontiereRepository = frontiereRepository;

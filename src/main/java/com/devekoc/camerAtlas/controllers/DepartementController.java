@@ -1,7 +1,10 @@
 package com.devekoc.camerAtlas.controllers;
 
+import com.devekoc.camerAtlas.dto.departement.DepartementCreateDTO;
+import com.devekoc.camerAtlas.dto.departement.DepartementListerDTO;
 import com.devekoc.camerAtlas.entities.Departement;
 import com.devekoc.camerAtlas.services.DepartementService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,22 +22,22 @@ public class DepartementController {
         this.departementService = departementService;
     }
 
-    @PostMapping(consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Departement> creer (@RequestBody Departement departement){
-        Departement departementCree = departementService.creer(departement);
+    public ResponseEntity<Departement> creer (@RequestBody @Valid DepartementCreateDTO dto){
+        Departement departementCree = departementService.creer(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(departementCree);
     }
 
     @GetMapping(produces =  APPLICATION_JSON_VALUE)
-    public ResponseEntity <List<Departement>> lister () {
-        List<Departement> departements = departementService.lister();
+    public ResponseEntity <List<DepartementListerDTO>> lister () {
+        List<DepartementListerDTO> departements = departementService.lister();
         return ResponseEntity.ok(departements);
     }
 
     @GetMapping(path = "id/{id}", produces =  APPLICATION_JSON_VALUE)
-    public ResponseEntity <Departement> rechercher (@PathVariable int id) {
-        Departement departement = departementService.rechercher(id);
+    public ResponseEntity <DepartementListerDTO> rechercher (@PathVariable int id) {
+        DepartementListerDTO departement = departementService.rechercher(id);
         // peut être remplacé par return departement.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build())
         // mais je préfère celle-ci
         return (departement != null)
@@ -44,8 +47,8 @@ public class DepartementController {
     }
 
     @GetMapping(path = "nom/{nom}", produces =  APPLICATION_JSON_VALUE)
-    public ResponseEntity <Departement> rechercher (@PathVariable String nom) {
-        Departement departement = departementService.rechercher(nom);
+    public ResponseEntity <DepartementListerDTO> rechercher (@PathVariable String nom) {
+        DepartementListerDTO departement = departementService.rechercher(nom);
         // peut-être remplacé par return departement.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build())
         // mais je préfère celle-ci
         return departement != null
@@ -56,8 +59,8 @@ public class DepartementController {
 
     @PutMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity <Departement> modifier (@PathVariable int id, @RequestBody Departement departement){
-        Departement departementModifie = departementService.modifier(id, departement);
+    public ResponseEntity <Departement> modifier (@PathVariable int id, @RequestBody DepartementListerDTO dto){
+        Departement departementModifie = departementService.modifier(id, dto);
         return ResponseEntity.ok(departementModifie);
     }
 

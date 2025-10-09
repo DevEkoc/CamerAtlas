@@ -3,35 +3,41 @@ package com.devekoc.camerAtlas.entities;
 import com.devekoc.camerAtlas.enumerations.Fonction;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Setter
-@Getter
 @Entity
 @Table(name = "affectation")
+@Setter @Getter
+@AllArgsConstructor @NoArgsConstructor
 public class Affectation {
     @Id
     @Column(name = "idAffectation")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @JoinColumn(name = "idAutorite")
     @ManyToOne
+    @JoinColumn(name = "idAutorite", nullable = false)
+    @NotNull(message = "L'autorité est obligatoire")
     private Autorite autorite;
 
-    @JoinColumn(name = "codeCirconscription")
     @ManyToOne
+    @JoinColumn(name = "codeCirconscription", nullable = false)
+    @NotNull(message = "La circonscription est obligatoire")
     private Circonscription circonscription;
 
-    @Column(name = "fonction")
+    @Column(name = "fonction", nullable = false)
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "La fonction est obligatoire")
     private Fonction fonction;
 
-    @Column(name = "dateDebut")
+    @Column(name = "dateDebut", nullable = false)
     @NotNull(message = "La date de début est obligatoire !")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate dateDebut;
@@ -40,16 +46,12 @@ public class Affectation {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate dateFin;
 
-    public Affectation() {
-    }
-
-    public Affectation(int id, Autorite autorite, Circonscription circonscription, Fonction fonction, LocalDate dateDebut, LocalDate dateFin) {
-        this.id = id;
-        this.autorite = autorite;
-        this.circonscription = circonscription;
-        this.fonction = fonction;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
+    /**
+     * Validation métier : la date de fin doit être après la date de début
+     */
+    @AssertTrue(message = "La date de fin doit être après la date de début")
+    public boolean isDateFinValid() {
+        return dateFin == null || dateDebut == null || dateFin.isAfter(dateDebut);
     }
 
 }

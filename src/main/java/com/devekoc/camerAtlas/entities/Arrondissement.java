@@ -21,8 +21,8 @@ public class Arrondissement extends Circonscription {
     @JoinColumn(name = "idDepartement")
     private Departement departement;
 
-    @OneToMany(mappedBy = "arrondissement")
-    @JsonIgnore
-    private List<Quartier> listeQuartiers;
+//    @OneToMany(mappedBy = "arrondissement")
+//    @JsonIgnore
+//    private List<Quartier> listeQuartiers;
 
 }

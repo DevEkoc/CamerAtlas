@@ -3,11 +3,14 @@ package com.devekoc.camerAtlas.services;
 import com.devekoc.camerAtlas.entities.Autorite;
 import com.devekoc.camerAtlas.repositories.AutoriteRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class AutoriteService {
     private final AutoriteRepository autoriteRepository;
 
@@ -25,19 +28,17 @@ public class AutoriteService {
 
     public Autorite rechercher(int id) {
         return autoriteRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("Autorité non trouvée !")
+                () -> new EntityNotFoundException("Aucune Autorité trouvée avec l'ID : " + id)
         );
     }
 
     public void modifier(int id, Autorite autorite) {
-        Autorite ancienAdmin = rechercher(id);
+        Autorite existante = rechercher(id);
         if (autorite.getId() != id) {
             throw new IllegalArgumentException("L'ID dans l'URL ne correspond pas à l'ID de l'objet !");
         }
-        ancienAdmin.setNom(autorite.getNom());
-        ancienAdmin.setPrenom(autorite.getPrenom());
-        ancienAdmin.setDateNaissance(autorite.getDateNaissance());
-        autoriteRepository.save(ancienAdmin);
+        BeanUtils.copyProperties(autorite, existante, "id");
+        autoriteRepository.save(existante);
     }
 
     public void supprimer(int id) {

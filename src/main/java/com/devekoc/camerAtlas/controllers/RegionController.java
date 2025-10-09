@@ -1,7 +1,10 @@
 package com.devekoc.camerAtlas.controllers;
 
+import com.devekoc.camerAtlas.dto.region.RegionCreateDTO;
+import com.devekoc.camerAtlas.dto.region.RegionListerDTO;
 import com.devekoc.camerAtlas.entities.Region;
 import com.devekoc.camerAtlas.services.RegionService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +24,14 @@ public class RegionController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Region> creer (@RequestBody Region region){
-        Region regionCree = regionService.creer(region);
+    public ResponseEntity<Region> creer (@RequestBody @Valid RegionCreateDTO dto){
+        Region regionCree = regionService.creer(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(regionCree);
     }
 
     @GetMapping(produces =  APPLICATION_JSON_VALUE)
-    public ResponseEntity <List<Region>> lister () {
-        List<Region> regions = regionService.lister();
+    public ResponseEntity <List<RegionListerDTO>> lister () {
+        List<RegionListerDTO> regions = regionService.lister();
         return ResponseEntity.ok(regions);
     }
 

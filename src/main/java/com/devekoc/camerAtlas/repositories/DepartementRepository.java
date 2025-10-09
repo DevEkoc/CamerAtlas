@@ -11,4 +11,8 @@ public interface DepartementRepository extends JpaRepository<Departement, Intege
     void deleteByNom(String nom);
 
     boolean existsByNom(String nom);
+
+    boolean existsByNomAndNomNot(String nom, String nomExclu);
+
+    boolean existsByNomAndIdNot(String nom,  Integer id);
 }

@@ -2,6 +2,7 @@ package com.devekoc.camerAtlas.controllers;
 
 import com.devekoc.camerAtlas.entities.Circonscription;
 import com.devekoc.camerAtlas.services.CirconscriptionService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping(value = "circonscription")
 public class CirconscriptionController {
-    public CirconscriptionService circonscriptionService;
+    private final CirconscriptionService circonscriptionService;
 
     public CirconscriptionController(CirconscriptionService circonscriptionService) {
         this.circonscriptionService = circonscriptionService;
@@ -21,7 +22,7 @@ public class CirconscriptionController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void creer(@RequestBody Circonscription circonscription) {
+    public void creer(@RequestBody @Valid Circonscription circonscription) {
         circonscriptionService.creer(circonscription);
     }
 
@@ -38,7 +39,7 @@ public class CirconscriptionController {
 
     @PutMapping(path = "{id}", consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void modifier (@PathVariable int id, @RequestBody Circonscription circonscription) {
+    public void modifier (@PathVariable int id, @RequestBody @Valid Circonscription circonscription) {
         circonscriptionService.modifier(id, circonscription);
     }
 

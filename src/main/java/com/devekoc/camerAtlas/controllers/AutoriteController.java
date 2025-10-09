@@ -2,6 +2,7 @@ package com.devekoc.camerAtlas.controllers;
 
 import com.devekoc.camerAtlas.entities.Autorite;
 import com.devekoc.camerAtlas.services.AutoriteService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping(value = "autorite")
 public class AutoriteController {
-    public AutoriteService autoriteService;
+    private final AutoriteService autoriteService;
 
     public AutoriteController(AutoriteService autoriteService) {
         this.autoriteService = autoriteService;
@@ -21,7 +22,7 @@ public class AutoriteController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void creer(@RequestBody Autorite autorite) {
+    public void creer(@RequestBody @Valid Autorite autorite) {
         autoriteService.creer(autorite);
     }
 
@@ -38,7 +39,7 @@ public class AutoriteController {
 
     @PutMapping(path = "{id}", consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void modifier (@PathVariable int id, @RequestBody Autorite autorite) {
+    public void modifier (@PathVariable int id, @RequestBody @Valid Autorite autorite) {
         autoriteService.modifier(id, autorite);
     }
 

@@ -5,16 +5,22 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "autorite")
+@Getter @Setter
+@AllArgsConstructor @NoArgsConstructor
 public class Autorite {
     @Column(name = "idAutorite")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "nomAutorite", nullable = false, length = 50)
     @NotBlank(message = "Le nom ne peut pas être vide !")
@@ -30,45 +36,4 @@ public class Autorite {
     @Past(message = "La date de naissance doit être dans le passé")
     private LocalDate dateNaissance;
 
-    public Autorite() {
-    }
-
-    public Autorite(int id, String nom, String prenom, LocalDate dateNaissance) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public LocalDate getDateNaissance() {
-        return dateNaissance;
-    }
-
-    public void setDateNaissance(LocalDate dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
 }
