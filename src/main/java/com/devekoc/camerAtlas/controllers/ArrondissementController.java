@@ -1,7 +1,9 @@
 package com.devekoc.camerAtlas.controllers;
 
-import com.devekoc.camerAtlas.entities.Arrondissement;
+import com.devekoc.camerAtlas.dto.arrondissement.ArrondissementCreateDTO;
+import com.devekoc.camerAtlas.dto.arrondissement.ArrondissementListerDTO;
 import com.devekoc.camerAtlas.services.ArrondissementService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,20 +23,20 @@ public class ArrondissementController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Arrondissement> creer (@RequestBody Arrondissement arrondissement){
-        Arrondissement arrondissementCree = arrondissementService.creer(arrondissement);
-        return ResponseEntity.status(HttpStatus.CREATED).body(arrondissementCree);
+    public ResponseEntity<ArrondissementListerDTO> creer (@RequestBody @Valid ArrondissementCreateDTO dto){
+        ArrondissementListerDTO created = arrondissementService.creer(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @GetMapping(produces =  APPLICATION_JSON_VALUE)
-    public ResponseEntity <List<Arrondissement>> lister () {
-        List<Arrondissement> arrondissements = arrondissementService.lister();
+    public ResponseEntity <List<ArrondissementListerDTO>> lister () {
+        List<ArrondissementListerDTO> arrondissements = arrondissementService.lister();
         return ResponseEntity.ok(arrondissements);
     }
 
     @GetMapping(path = "id/{id}", produces =  APPLICATION_JSON_VALUE)
-    public ResponseEntity <Arrondissement> rechercher (@PathVariable int id) {
-        Arrondissement arrondissement = arrondissementService.rechercher(id);
+    public ResponseEntity <ArrondissementListerDTO> rechercher (@PathVariable int id) {
+        ArrondissementListerDTO arrondissement = arrondissementService.rechercher(id);
         // peut être remplacé par return arrondissement.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build())
         // mais je préfère celle-ci
         return (arrondissement != null)
@@ -44,11 +46,11 @@ public class ArrondissementController {
     }
 
     @GetMapping(path = "nom/{nom}", produces =  APPLICATION_JSON_VALUE)
-    public ResponseEntity <Arrondissement> rechercher (@PathVariable String nom) {
-        Arrondissement arrondissement = arrondissementService.rechercher(nom);
+    public ResponseEntity <ArrondissementListerDTO> rechercher (@PathVariable String nom) {
+        ArrondissementListerDTO arrondissement = arrondissementService.rechercher(nom);
         // peut-être remplacé par return arrondissement.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build())
         // mais je préfère celle-ci
-        return arrondissement != null
+        return (arrondissement != null)
                 ? ResponseEntity.ok(arrondissement)
                 : ResponseEntity.notFound().build()
         ;
@@ -56,9 +58,12 @@ public class ArrondissementController {
 
     @PutMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity <Arrondissement> modifier (@PathVariable int id, @RequestBody Arrondissement arrondissement){
-        Arrondissement arrondissementModifie = arrondissementService.modifier(id, arrondissement);
-        return ResponseEntity.ok(arrondissementModifie);
+    public ResponseEntity <ArrondissementListerDTO> modifier (
+            @PathVariable int id,
+            @RequestBody @Valid ArrondissementCreateDTO dto)
+    {
+        ArrondissementListerDTO updated = arrondissementService.modifier(id, dto);
+        return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping(path = "id/{id}")

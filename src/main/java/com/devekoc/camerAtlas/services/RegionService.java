@@ -3,7 +3,6 @@ package com.devekoc.camerAtlas.services;
 import com.devekoc.camerAtlas.dto.departement.DepartementListerDansRegionDTO;
 import com.devekoc.camerAtlas.dto.region.RegionCreateDTO;
 import com.devekoc.camerAtlas.dto.region.RegionListerDTO;
-import com.devekoc.camerAtlas.entities.Departement;
 import com.devekoc.camerAtlas.entities.Region;
 import com.devekoc.camerAtlas.repositories.RegionRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -12,9 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RegionService {
@@ -24,93 +21,95 @@ public class RegionService {
         this.regionRepository = regionRepository;
     }
 
-    public Region creer(RegionCreateDTO dto) {
+    public RegionListerDTO creer(RegionCreateDTO dto) {
         if (regionRepository.existsByNom(dto.nom())) {
             throw new DataIntegrityViolationException(
                     "Une région avec le nom : " + dto.nom() + " existe déjà !"
             );
         }
-
-        Region region = new Region();
-        BeanUtils.copyProperties(dto, region);
-        return regionRepository.save(region);
+        // La copie à la main avec la méthode statique 'fromCreateDTO'
+        // est plus performante que 'BeanUtils.copyProperties'
+        Region saved = regionRepository.save(Region.fromCreateDTO(dto));
+        return toDTO(saved);
     }
 
     public List<RegionListerDTO> lister() {
-        List<Region> regions = regionRepository.findAll();
-        List<RegionListerDTO> dtos = new ArrayList<>();
-
-        for (Region region : regions) {
-            List<DepartementListerDansRegionDTO> dpt = new ArrayList<>();
-
-            for (Departement departement : region.getListeDepartements()) {
-                dpt.add(new DepartementListerDansRegionDTO(
-                        departement.getId(),
-                        departement.getNom(),
-                        departement.getSuperficie(),
-                        departement.getPopulation(),
-                        departement.getCoordonnees(),
-                        departement.getPrefecture()
-                ));
-            }
-            RegionListerDTO dto = new RegionListerDTO(
-                    region.getNom(),
-                    region.getSuperficie(),
-                    region.getPopulation(),
-                    region.getCoordonnees(),
-                    region.getChefLieu(),
-                    region.getCodeMineralogique(),
-                    dpt
-            );
-            dtos.add(dto);
-        }
-        return dtos;
+        return regionRepository.findAll().stream()
+                .map(this::toDTO)
+                .toList();
     }
 
-    public Region rechercher(int id) {
-        return regionRepository.findById(id).orElseThrow(
+    public RegionListerDTO rechercher(int id) {
+        Region region = regionRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("La région n'existe pas")
         );
+
+        return toDTO(region);
     }
 
-    public Region rechercher(String nom) {
-        return regionRepository.findByNom(nom).orElseThrow(
+    public RegionListerDTO rechercher(String nom) {
+        Region region = regionRepository.findByNom(nom).orElseThrow(
                 () -> new EntityNotFoundException("La région n'existe pas")
         );
+
+        return toDTO(region);
     }
 
-    public Region modifier(int id, Region region) {
-        Region ancienneRegion = regionRepository.findById(id).orElseThrow(
+    public RegionListerDTO modifier(int id, RegionCreateDTO dto) {
+        Region existante = regionRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("La région n'existe pas !")
         );
-        ancienneRegion.setNom(region.getNom());
-        ancienneRegion.setPopulation(region.getPopulation());
-        ancienneRegion.setCoordonnees(region.getCoordonnees());
-        ancienneRegion.setSuperficie(region.getSuperficie());
-        ancienneRegion.setChefLieu(region.getChefLieu());
-        ancienneRegion.setCodeMineralogique(region.getCodeMineralogique());
-        return regionRepository.save(ancienneRegion);
 
+        // Vérifier si le nouveau nom n'existe pas déjà
+        if (!existante.getNom().equals(dto.nom()) && regionRepository.existsByNom(dto.nom())) {
+            throw new DataIntegrityViolationException(
+                    "Une région avec le nom '" + dto.nom() + "' existe déjà"
+            );
+        }
+
+        // La copie à la main avec la méthode statique 'updateFromDTO'
+        // est plus performante que 'BeanUtils.copyProperties'
+        existante.updateFromDTO(dto);
+        return toDTO(regionRepository.save(existante));
     }
 
     public void supprimer(int id) {
-        System.out.println("Suppression par id");
-        if (regionRepository.existsById(id)) {
-            regionRepository.deleteById(id);
-        } else {
+        if (!regionRepository.existsById(id)) {
             throw new EntityNotFoundException("La région n'existe pas");
         }
-
+        regionRepository.deleteById(id);
     }
 
     @Transactional
-    // Transactional car deleteByNom n'est pas une méthode CRUD standart
+    // Transactional car deleteByNom n'est pas une méthode CRUD standard
     public void supprimer(String nom) {
-        System.out.println("Suppression par nom");
-        if (regionRepository.existsByNom(nom)) {
-            regionRepository.deleteByNom(nom);
-        } else {
+        if (!regionRepository.existsByNom(nom)) {
             throw new EntityNotFoundException("La région n'existe pas");
         }
+        regionRepository.deleteByNom(nom);
+    }
+
+    private RegionListerDTO toDTO (Region region) {
+        List<DepartementListerDansRegionDTO> departements = region.getListeDepartements()
+                .stream()
+                .map( dept -> new DepartementListerDansRegionDTO(
+                        dept.getId(),
+                        dept.getNom(),
+                        dept.getSuperficie(),
+                        dept.getPopulation(),
+                        dept.getCoordonnees(),
+                        dept.getPrefecture()
+                ))
+                .toList();
+        return new RegionListerDTO(
+                region.getId(),
+                region.getNom(),
+                region.getSuperficie(),
+                region.getPopulation(),
+                region.getCoordonnees(),
+                region.getChefLieu(),
+                region.getCodeMineralogique(),
+                departements
+        );
     }
 }

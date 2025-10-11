@@ -1,5 +1,7 @@
 package com.devekoc.camerAtlas.entities;
 
+import com.devekoc.camerAtlas.dto.affectation.AffectationCreateDTO;
+import com.devekoc.camerAtlas.dto.quartier.QuartierCreateDTO;
 import com.devekoc.camerAtlas.enumerations.Fonction;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -46,6 +48,17 @@ public class Affectation {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate dateFin;
 
+    public static Affectation fromCreateDTO (AffectationCreateDTO dto, Autorite autorite, Circonscription circonscription) {
+        Affectation affectation = new Affectation();
+        affectation.setAutorite(autorite);
+        affectation.setCirconscription(circonscription);
+        affectation.setFonction(dto.fonction());
+        affectation.setDateDebut(dto.dateDebut());
+        affectation.setDateFin(dto.dateFin());
+
+        return affectation;
+    }
+
     /**
      * Validation métier : la date de fin doit être après la date de début
      */
@@ -54,4 +67,11 @@ public class Affectation {
         return dateFin == null || dateDebut == null || dateFin.isAfter(dateDebut);
     }
 
+    public void updateFromDTO(AffectationCreateDTO dto, Autorite autorite, Circonscription circonscription) {
+        this.autorite = autorite;
+        this.circonscription = circonscription;
+        this.fonction = dto.fonction();
+        this.dateDebut = dto.dateDebut();
+        this.dateFin = dto.dateFin();
+    }
 }

@@ -1,5 +1,7 @@
 package com.devekoc.camerAtlas.entities;
 
+import com.devekoc.camerAtlas.dto.arrondissement.ArrondissementCreateDTO;
+import com.devekoc.camerAtlas.dto.quartier.QuartierCreateDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,4 +29,18 @@ public class Quartier {
     @JoinColumn(name = "sousPrefecture")
     private Arrondissement sousPrefecture;
 
+    public static Quartier fromCreateDTO(QuartierCreateDTO dto, Arrondissement arrondissement) {
+        Quartier quartier = new Quartier();
+        quartier.setNom(dto.nom());
+        quartier.setNomPopulaire(dto.nomPopulaire());
+        quartier.setSousPrefecture(arrondissement);
+
+        return quartier;
+    }
+
+    public void updateFromDTO(QuartierCreateDTO dto, Arrondissement arrondissement) {
+        this.setNom(dto.nom());
+        this.setNomPopulaire(dto.nomPopulaire());
+        this.setSousPrefecture(arrondissement);
+    }
 }

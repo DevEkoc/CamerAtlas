@@ -1,5 +1,6 @@
 package com.devekoc.camerAtlas.entities;
 
+import com.devekoc.camerAtlas.dto.region.RegionCreateDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
@@ -26,4 +27,23 @@ public class Region extends Circonscription {
     @JsonIgnore
     private List<Departement> listeDepartements;
 
+    public static Region fromCreateDTO (RegionCreateDTO dto) {
+        Region region = new Region();
+        region.setNom(dto.nom());
+        region.setPopulation(dto.population());
+        region.setSuperficie(dto.superficie());
+        region.setCoordonnees(dto.coordonnees());
+        region.setChefLieu(dto.chefLieu());
+        region.setCodeMineralogique(dto.codeMineralogique());
+        return region;
+    }
+
+    public void updateFromDTO(RegionCreateDTO dto) {
+        this.nom = dto.nom();
+        this.population = dto.population();
+        this.superficie = dto.superficie();
+        this.coordonnees = dto.coordonnees();
+        this.setCodeMineralogique(dto.codeMineralogique());
+        this.chefLieu = dto.chefLieu();
+    }
 }

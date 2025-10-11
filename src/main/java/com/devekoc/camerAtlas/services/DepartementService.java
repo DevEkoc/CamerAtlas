@@ -25,7 +25,7 @@ public class DepartementService {
         this.regionRepository = regionRepository;
     }
 
-    public Departement creer(DepartementCreateDTO dto) {
+    public DepartementListerDTO creer(DepartementCreateDTO dto) {
         if (departementRepository.existsByNom(dto.nom())) {
             throw new DataIntegrityViolationException(
                     "Un département avec le nom '" + dto.nom() + "' existe déjà"
@@ -36,31 +36,16 @@ public class DepartementService {
                 ()-> new EntityNotFoundException("Aucune région trouvée avec l'ID : " + dto.idRegion())
         );
 
-        Departement departement = new Departement();
-        BeanUtils.copyProperties(dto, departement);
-        departement.setRegion(region);
-        return departementRepository.save(departement);
+        // La copie à la main avec la méthode statique 'fromCreateDTO'
+        // est plus performante que 'BeanUtils.copyProperties'
+        Departement saved = departementRepository.save(Departement.fromCreateDTO(dto, region));
+        return toDTO(saved);
     }
 
     public List<DepartementListerDTO> lister() {
-        List<Departement> departements = departementRepository.findAll();
-        List<DepartementListerDTO> dtos = new ArrayList<>();
-
-        for (Departement departement : departements) {
-            DepartementListerDTO dto = new DepartementListerDTO(
-                    departement.getId(),
-                    departement.getNom(),
-                    departement.getSuperficie(),
-                    departement.getPopulation(),
-                    departement.getCoordonnees(),
-                    departement.getPrefecture(),
-                    departement.getRegion().getId(),
-                    departement.getRegion().getNom()
-            );
-            dtos.add(dto);
-        }
-
-        return dtos;
+        return departementRepository.findAll().stream()
+                .map(this::toDTO)
+                .toList();
     }
 
     public DepartementListerDTO rechercher(int id) {
@@ -68,16 +53,7 @@ public class DepartementService {
                 () -> new EntityNotFoundException("Le département n'existe pas")
         );
 
-        return new DepartementListerDTO(
-                departement.getId(),
-                departement.getNom(),
-                departement.getSuperficie(),
-                departement.getPopulation(),
-                departement.getCoordonnees(),
-                departement.getPrefecture(),
-                departement.getRegion().getId(),
-                departement.getRegion().getNom()
-        );
+        return toDTO(departement);
     }
 
     public DepartementListerDTO rechercher(String nom) {
@@ -85,20 +61,11 @@ public class DepartementService {
                 () -> new EntityNotFoundException("Le département n'existe pas")
         );
 
-        return new DepartementListerDTO(
-                departement.getId(),
-                departement.getNom(),
-                departement.getSuperficie(),
-                departement.getPopulation(),
-                departement.getCoordonnees(),
-                departement.getPrefecture(),
-                departement.getRegion().getId(),
-                departement.getRegion().getNom()
-        );
+        return toDTO(departement);
     }
 
-    public Departement modifier(int id, DepartementListerDTO dto) {
-        Departement existant =  departementRepository.findById(id).orElseThrow(
+    public DepartementListerDTO modifier(int id, DepartementCreateDTO dto) {
+        Departement existant = departementRepository.findById(id).orElseThrow(
                 ()-> new EntityNotFoundException("Aucun Département trouvé avec l'ID : " + id)
         );
 
@@ -112,31 +79,39 @@ public class DepartementService {
                 ()-> new EntityNotFoundException("Aucune région trouvée avec l'ID : " + dto.idRegion())
         );
 
-        BeanUtils.copyProperties(dto, existant, "id");
-        existant.setRegion(region);
-
-        return departementRepository.save(existant);
+        // La copie à la main avec la méthode statique 'updateFromDTO'
+        // est plus performante que 'BeanUtils.copyProperties'
+        existant.updateFromDTO(dto, region);
+        return toDTO(departementRepository.save(existant));
 
     }
 
     public void supprimer(int id) {
-        System.out.println("Suppression par id");
-        if (departementRepository.existsById(id)) {
-            departementRepository.deleteById(id);
-        } else {
+        if (!departementRepository.existsById(id)) {
             throw new EntityNotFoundException("Le département n'existe pas");
         }
-
+        departementRepository.deleteById(id);
     }
 
     @Transactional
     // Transactional car deleteByNom n'est pas une méthode CRUD standart
     public void supprimer(String nom) {
-        System.out.println("Suppression par nom");
-        if (departementRepository.existsByNom(nom)) {
-            departementRepository.deleteByNom(nom);
-        } else {
+        if (!departementRepository.existsByNom(nom)) {
             throw new EntityNotFoundException("Le département n'existe pas");
         }
+        departementRepository.deleteByNom(nom);
+    }
+
+    public DepartementListerDTO toDTO (Departement departement) {
+        return new DepartementListerDTO(
+                departement.getId(),
+                departement.getNom(),
+                departement.getSuperficie(),
+                departement.getPopulation(),
+                departement.getCoordonnees(),
+                departement.getPrefecture(),
+                departement.getRegion().getId(),
+                departement.getRegion().getNom()
+        );
     }
 }

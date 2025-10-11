@@ -24,9 +24,9 @@ public class DepartementController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Departement> creer (@RequestBody @Valid DepartementCreateDTO dto){
-        Departement departementCree = departementService.creer(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(departementCree);
+    public ResponseEntity<DepartementListerDTO> creer (@RequestBody @Valid DepartementCreateDTO dto){
+        DepartementListerDTO created = departementService.creer(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @GetMapping(produces =  APPLICATION_JSON_VALUE)
@@ -59,8 +59,8 @@ public class DepartementController {
 
     @PutMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity <Departement> modifier (@PathVariable int id, @RequestBody DepartementListerDTO dto){
-        Departement departementModifie = departementService.modifier(id, dto);
+    public ResponseEntity <DepartementListerDTO> modifier (@PathVariable int id, @RequestBody @Valid DepartementCreateDTO dto){
+        DepartementListerDTO departementModifie = departementService.modifier(id, dto);
         return ResponseEntity.ok(departementModifie);
     }
 

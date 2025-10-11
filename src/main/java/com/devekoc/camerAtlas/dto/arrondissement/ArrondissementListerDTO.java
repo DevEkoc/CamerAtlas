@@ -1,17 +1,17 @@
-package com.devekoc.camerAtlas.dto.region;
+package com.devekoc.camerAtlas.dto.arrondissement;
 
 import com.devekoc.camerAtlas.dto.departement.DepartementListerDansRegionDTO;
 
 import java.util.List;
 
-public record RegionListerDTO(
+public record ArrondissementListerDTO(
         Integer id,
         String nom,
         Integer superficie,
         Integer population,
         String coordonnees,
-        String chefLieu,
-        String codeMineralogique,
-        List<DepartementListerDansRegionDTO> departements
+        String sousPrefecture,
+        Integer idDepartement,
+        String nomDepartement
 ) {
 }

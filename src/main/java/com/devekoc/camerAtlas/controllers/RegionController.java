@@ -24,9 +24,9 @@ public class RegionController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Region> creer (@RequestBody @Valid RegionCreateDTO dto){
-        Region regionCree = regionService.creer(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(regionCree);
+    public ResponseEntity<RegionListerDTO> creer (@RequestBody @Valid RegionCreateDTO dto){
+        RegionListerDTO created = regionService.creer(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @GetMapping(produces =  APPLICATION_JSON_VALUE)
@@ -36,8 +36,8 @@ public class RegionController {
     }
 
     @GetMapping(path = "id/{id}", produces =  APPLICATION_JSON_VALUE)
-    public ResponseEntity <Region> rechercher (@PathVariable int id) {
-        Region region = regionService.rechercher(id);
+    public ResponseEntity <RegionListerDTO> rechercher (@PathVariable int id) {
+        RegionListerDTO region = regionService.rechercher(id);
         // peut être remplacé par return region.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build())
         // mais je préfère celle-ci
         return (region != null)
@@ -47,8 +47,8 @@ public class RegionController {
     }
 
     @GetMapping(path = "nom/{nom}", produces =  APPLICATION_JSON_VALUE)
-    public ResponseEntity <Region> rechercher (@PathVariable String nom) {
-        Region region = regionService.rechercher(nom);
+    public ResponseEntity <RegionListerDTO> rechercher (@PathVariable String nom) {
+        RegionListerDTO region = regionService.rechercher(nom);
         // peut-être remplacé par return region.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build())
         // mais je préfère celle-ci
         return region != null
@@ -59,9 +59,9 @@ public class RegionController {
 
     @PutMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity <Region> modifier (@PathVariable int id, @RequestBody Region region){
-        Region regionModifiee = regionService.modifier(id, region);
-        return ResponseEntity.ok(regionModifiee);
+    public ResponseEntity <RegionListerDTO> modifier (@PathVariable int id, @RequestBody @Valid RegionCreateDTO dto){
+        RegionListerDTO updated = regionService.modifier(id, dto);
+        return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping(path = "id/{id}")

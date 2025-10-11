@@ -31,7 +31,7 @@ public class Autorite {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Column
-    //Pour les dates on utilise @NotNull(message = "")
+    //Pour les dates, on utilise @NotNull(message = "")
     @NotNull(message = "La date de naissance est obligatoire")
     @Past(message = "La date de naissance doit être dans le passé")
     private LocalDate dateNaissance;

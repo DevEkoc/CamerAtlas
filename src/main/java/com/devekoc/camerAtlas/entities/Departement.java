@@ -1,5 +1,6 @@
 package com.devekoc.camerAtlas.entities;
 
+import com.devekoc.camerAtlas.dto.departement.DepartementCreateDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,4 +26,24 @@ public class Departement extends Circonscription {
     @JsonIgnore
     private List<Arrondissement> listeArrondissements;
 
+    public static Departement fromCreateDTO(DepartementCreateDTO dto, Region region) {
+        Departement departement = new Departement();
+        departement.setNom(dto.nom());
+        departement.setSuperficie(dto.superficie());
+        departement.setPopulation(dto.population());
+        departement.setCoordonnees(dto.coordonnees());
+        departement.setPrefecture(dto.prefecture());
+        departement.setRegion(region);
+
+        return departement;
+    }
+
+    public void updateFromDTO(DepartementCreateDTO dto, Region region) {
+        this.nom = dto.nom();
+        this.superficie = dto.superficie();
+        this.population = dto.population();
+        this.coordonnees = dto.coordonnees();
+        this.prefecture = dto.prefecture();
+        this.region = region;
+    }
 }

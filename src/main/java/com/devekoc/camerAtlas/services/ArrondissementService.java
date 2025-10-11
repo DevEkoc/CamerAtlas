@@ -1,9 +1,14 @@
 package com.devekoc.camerAtlas.services;
 
+import com.devekoc.camerAtlas.dto.arrondissement.ArrondissementCreateDTO;
+import com.devekoc.camerAtlas.dto.arrondissement.ArrondissementListerDTO;
 import com.devekoc.camerAtlas.entities.Arrondissement;
+import com.devekoc.camerAtlas.entities.Departement;
 import com.devekoc.camerAtlas.repositories.ArrondissementRepository;
+import com.devekoc.camerAtlas.repositories.DepartementRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,63 +16,96 @@ import java.util.List;
 @Service
 public class ArrondissementService {
     private final ArrondissementRepository arrondissementRepository;
+    private final DepartementRepository departementRepository;
 
-    public ArrondissementService(ArrondissementRepository arrondissementRepository) {
+    public ArrondissementService(ArrondissementRepository arrondissementRepository, DepartementRepository departementRepository) {
         this.arrondissementRepository = arrondissementRepository;
+        this.departementRepository = departementRepository;
     }
 
-    public Arrondissement creer(Arrondissement arrondissement) {
-        return arrondissementRepository.save(arrondissement);
+    public ArrondissementListerDTO creer(ArrondissementCreateDTO dto) {
+        if (arrondissementRepository.existsByNom(dto.nom())) {
+            throw new DataIntegrityViolationException(
+                    "Un arrondissement avec le nom '" + dto.nom() + "' existe déjà"
+            );
+        }
+
+        Departement departement = departementRepository.findById(dto.idDepartement()).orElseThrow(
+                ()-> new EntityNotFoundException("Aucun département trouvé avec l'ID : " + dto.idDepartement())
+        );
+
+        // La copie à la main avec la méthode statique 'fromCreateDTO'
+        // est plus performante que 'BeanUtils.copyProperties'
+        Arrondissement saved = arrondissementRepository.save(Arrondissement.fromCreateDTO(dto, departement));
+        return toDTO(saved);
     }
 
-    public List<Arrondissement> lister() {
-        return arrondissementRepository.findAll();
+    public List<ArrondissementListerDTO> lister() {
+        return arrondissementRepository.findAll().stream()
+                .map(this::toDTO)
+                .toList();
     }
 
-    public Arrondissement rechercher(int id) {
-        return arrondissementRepository.findById(id).orElseThrow(
+    public ArrondissementListerDTO rechercher(int id) {
+        Arrondissement arrondissement = arrondissementRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("L'arrondissement n'existe pas")
         );
+        return toDTO(arrondissement);
     }
 
-    public Arrondissement rechercher(String nom) {
-        return arrondissementRepository.findByNom(nom).orElseThrow(
+    public ArrondissementListerDTO rechercher(String nom) {
+        Arrondissement arrondissement = arrondissementRepository.findByNom(nom).orElseThrow(
                 () -> new EntityNotFoundException("L'arrondissement n'existe pas")
         );
+        return toDTO(arrondissement);
     }
 
-    public Arrondissement modifier(int id, Arrondissement arrondissement) {
-        Arrondissement ancienArrondissement = arrondissementRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("L'arrondissement n'existe pas")
+    public ArrondissementListerDTO modifier(int id, ArrondissementCreateDTO dto) {
+        Arrondissement existant = arrondissementRepository.findById(id).orElseThrow(
+                ()-> new EntityNotFoundException("Aucun Arrondissement trouvé avec l'ID : " + id)
         );
-        ancienArrondissement.setNom(arrondissement.getNom());
-        ancienArrondissement.setPopulation(arrondissement.getPopulation());
-        ancienArrondissement.setCoordonnees(arrondissement.getCoordonnees());
-        ancienArrondissement.setSuperficie(arrondissement.getSuperficie());
-        ancienArrondissement.setSousPrefecture(arrondissement.getSousPrefecture());
-        ancienArrondissement.setDepartement(ancienArrondissement.getDepartement());
-        return arrondissementRepository.save(ancienArrondissement);
 
+        if (arrondissementRepository.existsByNomAndIdNot(dto.nom(), id)) {
+            throw new DataIntegrityViolationException(
+                    "Un département avec le nom '" + dto.nom() + "' existe déjà"
+            );
+        }
+
+        Departement departement = departementRepository.findById(dto.idDepartement()).orElseThrow(
+                ()-> new EntityNotFoundException("Aucun Département trouvé avec l'ID : " + id)
+        );
+
+        // La copie à la main avec la méthode 'updateFromDTO'
+        // est plus performante que 'BeanUtils.copyProperties'
+        existant.updateFromDTO(dto, departement);
+        return toDTO(arrondissementRepository.save(existant));
     }
 
     public void supprimer(int id) {
-        System.out.println("Suppression par id");
-        if (arrondissementRepository.existsById(id)) {
-            arrondissementRepository.deleteById(id);
-        } else {
-            throw new EntityNotFoundException("L'arrondissement n'existe pas");
-        }
-
+        if (!arrondissementRepository.existsById(id)) {
+            throw new EntityNotFoundException("L'arrondissement n'existe pas");        }
+        arrondissementRepository.deleteById(id);
     }
 
     @Transactional
     // Transactional car deleteByNom n'est pas une méthode CRUD standart
     public void supprimer(String nom) {
-        System.out.println("Suppression par nom");
-        if (arrondissementRepository.existsByNom(nom)) {
-            arrondissementRepository.deleteByNom(nom);
-        } else {
+        if (!arrondissementRepository.existsByNom(nom)) {
             throw new EntityNotFoundException("L'arrondissement n'existe pas");
         }
+        arrondissementRepository.deleteByNom(nom);
+    }
+
+    public ArrondissementListerDTO toDTO (Arrondissement arrondissement) {
+        return new ArrondissementListerDTO(
+                arrondissement.getId(),
+                arrondissement.getNom(),
+                arrondissement.getSuperficie(),
+                arrondissement.getPopulation(),
+                arrondissement.getCoordonnees(),
+                arrondissement.getSousPrefecture(),
+                arrondissement.getDepartement().getId(),
+                arrondissement.getDepartement().getNom()
+        );
     }
 }

@@ -1,9 +1,11 @@
 package com.devekoc.camerAtlas.controllers;
 
-import com.devekoc.camerAtlas.entities.Affectation;
+import com.devekoc.camerAtlas.dto.affectation.AffectationCreateDTO;
+import com.devekoc.camerAtlas.dto.affectation.AffectationListerDTO;
 import com.devekoc.camerAtlas.services.AffectationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,24 +23,28 @@ public class AffectationController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void creer (@RequestBody @Valid Affectation affectation){
-        affectationService.creer(affectation);
+    public ResponseEntity<AffectationListerDTO> creer (@RequestBody @Valid AffectationCreateDTO dto){
+        AffectationListerDTO created = affectationService.creer(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public List<Affectation> lister () {
-        return affectationService.lister();
+    public ResponseEntity <List<AffectationListerDTO>> lister () {
+        List<AffectationListerDTO> affectations = affectationService.lister();
+        return ResponseEntity.ok(affectations);
     }
 
     @PutMapping(path = "{id}", consumes =  APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void modifier (@PathVariable int id, @RequestBody @Valid Affectation affectation) {
-        affectationService.modifier(id, affectation);
+    public ResponseEntity <AffectationListerDTO> modifier (@PathVariable int id, @RequestBody @Valid AffectationCreateDTO dto) {
+        AffectationListerDTO updated = affectationService.modifier(id, dto);
+        return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void supprimer (@PathVariable int id) {
+    public ResponseEntity <Void> supprimer (@PathVariable int id) {
         affectationService.supprimer(id);
+        return ResponseEntity.noContent().build();
     }
 }
