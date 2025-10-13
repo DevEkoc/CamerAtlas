@@ -1,6 +1,5 @@
 package com.devekoc.camerAtlas.entities;
 
-import com.devekoc.camerAtlas.entities.primaryKeys.DelimitationPK;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,16 +11,16 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
 public class Delimitation {
-    @EmbeddedId
-    private DelimitationPK id;
+    @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @Column(name = "idDelimitation")
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @MapsId("codeCirconscription")
     @JoinColumn(name = "codeCirconscription")
     private Circonscription circonscription;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @MapsId("idFrontiere")
     @JoinColumn(name = "idFrontiere")
     private Frontiere frontiere;
 
@@ -35,7 +34,6 @@ public class Delimitation {
     public Delimitation(Frontiere frontiere, Circonscription circonscription) {
         this.frontiere = frontiere;
         this.circonscription = circonscription;
-        this.id = new DelimitationPK(frontiere.getId(), circonscription.getId());
     }
 
 }

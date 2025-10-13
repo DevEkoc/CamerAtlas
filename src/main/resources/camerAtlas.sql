@@ -48,9 +48,11 @@ CREATE TABLE frontiere (
 );
 
 CREATE TABLE delimitation (
+    idDelimitation INT NOT NULL PRIMARY KEY,
     codeCirconscription INT,
     idFrontiere INT,
-    PRIMARY KEY (codeCirconscription, idFrontiere),
+#     PRIMARY KEY (codeCirconscription, idFrontiere),
+    UNIQUE (codeCirconscription, idFrontiere),
     FOREIGN KEY (codeCirconscription) REFERENCES circonscription(codeCirconscription),
     FOREIGN KEY (idFrontiere) REFERENCES frontiere(idFrontiere)
 );

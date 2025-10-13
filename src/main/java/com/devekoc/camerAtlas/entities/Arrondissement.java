@@ -23,7 +23,7 @@ public class Arrondissement extends Circonscription {
     @JoinColumn(name = "idDepartement")
     private Departement departement;
 
-    @OneToMany(mappedBy = "arrondissement")
+    @OneToMany(mappedBy = "sousPrefecture")
     @JsonIgnore
     private List<Quartier> listeQuartiers;
 

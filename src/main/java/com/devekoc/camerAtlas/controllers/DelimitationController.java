@@ -1,9 +1,7 @@
 package com.devekoc.camerAtlas.controllers;
 
-import com.devekoc.camerAtlas.dto.DelimitationRequestDTO;
-import com.devekoc.camerAtlas.entities.Circonscription;
-import com.devekoc.camerAtlas.entities.Delimitation;
-import com.devekoc.camerAtlas.entities.primaryKeys.DelimitationPK;
+import com.devekoc.camerAtlas.dto.delimitation.DelimitationCreateDTO;
+import com.devekoc.camerAtlas.dto.delimitation.DelimitationListerDTO;
 import com.devekoc.camerAtlas.services.DelimitationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +14,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping(value = "delimitation")
 public class DelimitationController {
-    private DelimitationService delimitationService;
+    private final DelimitationService delimitationService;
 
     public DelimitationController(DelimitationService delimitationService) {
         this.delimitationService = delimitationService;
@@ -24,21 +22,19 @@ public class DelimitationController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void creer (@RequestBody DelimitationRequestDTO delimitation) {
-        delimitationService.creer(delimitation);
+    public DelimitationListerDTO creer (@RequestBody DelimitationCreateDTO delimitation) {
+        return delimitationService.creer(delimitation);
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public List<Delimitation> lister () {
+    public List<DelimitationListerDTO> lister () {
         return delimitationService.lister();
     }
 
-    @DeleteMapping(path = "{codeCirconscription}/{idFrontiere}")
+    @DeleteMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> supprimer(
-            @PathVariable int codeCirconscription,
-            @PathVariable int idFrontiere) {
-        DelimitationPK id = new DelimitationPK(codeCirconscription, idFrontiere);
+            @PathVariable int id) {
         delimitationService.supprimer(id);
         return ResponseEntity.noContent().build();
     }

@@ -10,10 +10,10 @@ public record DelimitationCreateDTO(
         @NotNull(message = "L'ID de la frontière ne doit pas vide")
         Integer idFrontiere,
 
-        @NotBlank(message = "Le nom de la circonscription ne doit pas être null")
+        @NotBlank(message = "Le nom de la circonscription ne doit pas être vide")
         String nomCirconscription,
 
-        @NotBlank(message = "Le type de la frontière ne doit pas être")
+        @NotBlank(message = "Le type de la frontière ne doit pas être vide")
         String typeFrontiere
 ) {
 }
