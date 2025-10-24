@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 public record ArrondissementCreateDTO(
         @NotBlank(message = "Le nom ne doit pas être vide !")
-        @Size(min = 1, max = 50, message = "Le nom doit contenir entre 1 et 50 caractères")
+        @Size(max = 50, message = "Le nom doit contenir au maximum 50 caractères")
         String nom,
 
         @NotNull(message = "La superficie ne doit pas être vide !")
@@ -23,7 +23,7 @@ public record ArrondissementCreateDTO(
         @NotBlank(message = "La Sous-préfecture ne doit pas être vide !")
         String sousPrefecture,
 
-        @NotBlank(message = "L'ID de la région ne doit pas être vide !")
+        @NotNull(message = "L'ID du département ne doit pas être vide !")
         Integer idDepartement
 ) {
 }

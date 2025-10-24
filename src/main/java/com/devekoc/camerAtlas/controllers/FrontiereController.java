@@ -31,7 +31,7 @@ public class FrontiereController {
         return frontiereService.lister();
     }
 
-    @GetMapping(value = "{type}", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(params = "type", produces = APPLICATION_JSON_VALUE)
     public @ResponseBody List<Frontiere> rechercherParType (@RequestParam TypeFrontiere type) {
         return frontiereService.rechercherParType(type);
     }

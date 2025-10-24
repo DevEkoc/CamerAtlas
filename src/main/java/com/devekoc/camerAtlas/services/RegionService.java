@@ -7,11 +7,12 @@ import com.devekoc.camerAtlas.entities.Region;
 import com.devekoc.camerAtlas.repositories.RegionRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.BeanUtils;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RegionService {
@@ -74,8 +75,11 @@ public class RegionService {
     }
 
     public void supprimer(int id) {
-        if (!regionRepository.existsById(id)) {
-            throw new EntityNotFoundException("La région n'existe pas");
+        Region existante = regionRepository.findById(id).orElseThrow(
+                ()-> new EntityNotFoundException("La région n'existe pas")
+        );
+        if (!existante.getListeDepartements().isEmpty()) {
+            throw new DataIntegrityViolationException("Impossible de supprimer une région contenant des départements");
         }
         regionRepository.deleteById(id);
     }
@@ -83,14 +87,18 @@ public class RegionService {
     @Transactional
     // Transactional car deleteByNom n'est pas une méthode CRUD standard
     public void supprimer(String nom) {
-        if (!regionRepository.existsByNom(nom)) {
-            throw new EntityNotFoundException("La région n'existe pas");
+        Region existante = regionRepository.findByNom(nom).orElseThrow(
+                ()-> new EntityNotFoundException("La région n'existe pas")
+        );
+        if (!existante.getListeDepartements().isEmpty()) {
+            throw new DataIntegrityViolationException("Impossible de supprimer une région contenant des départements");
         }
         regionRepository.deleteByNom(nom);
     }
 
     private RegionListerDTO toDTO (Region region) {
-        List<DepartementListerDansRegionDTO> departements = region.getListeDepartements()
+        List<DepartementListerDansRegionDTO> departements = Optional.ofNullable(region.getListeDepartements())
+                .orElse(Collections.emptyList())
                 .stream()
                 .map( dept -> new DepartementListerDansRegionDTO(
                         dept.getId(),

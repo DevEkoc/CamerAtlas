@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class Departement extends Circonscription {
 
     @OneToMany(mappedBy = "departement")
     @JsonIgnore
-    private List<Arrondissement> listeArrondissements;
+    private List<Arrondissement> listeArrondissements = new ArrayList<>();
 
     public static Departement fromCreateDTO(DepartementCreateDTO dto, Region region) {
         Departement departement = new Departement();

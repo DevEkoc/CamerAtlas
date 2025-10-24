@@ -3,6 +3,7 @@ package com.devekoc.camerAtlas.controllers;
 import com.devekoc.camerAtlas.dto.delimitation.DelimitationCreateDTO;
 import com.devekoc.camerAtlas.dto.delimitation.DelimitationListerDTO;
 import com.devekoc.camerAtlas.services.DelimitationService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class DelimitationController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public DelimitationListerDTO creer (@RequestBody DelimitationCreateDTO delimitation) {
+    public DelimitationListerDTO creer (@RequestBody @Valid DelimitationCreateDTO delimitation) {
         return delimitationService.creer(delimitation);
     }
 

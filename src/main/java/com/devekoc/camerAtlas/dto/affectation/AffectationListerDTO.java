@@ -10,10 +10,14 @@ import java.time.LocalDate;
 
 public record AffectationListerDTO(
         Integer idAffectation,
-        Integer IdAutorite,
+        Integer idAutorite,
         Integer idCirconscription,
         Fonction fonction,
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
         LocalDate dateDebut,
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
         LocalDate dateFin
 ) {
 }

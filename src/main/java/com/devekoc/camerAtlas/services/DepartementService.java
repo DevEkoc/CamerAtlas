@@ -86,20 +86,27 @@ public class DepartementService {
 
     }
 
+    @Transactional
     public void supprimer(int id) {
-        if (!departementRepository.existsById(id)) {
-            throw new EntityNotFoundException("Le département n'existe pas");
+        Departement existant = departementRepository.findById(id).orElseThrow(
+                ()-> new EntityNotFoundException("Le département n'existe pas")
+        );
+        if (!existant.getListeArrondissements().isEmpty()) {
+            throw new DataIntegrityViolationException("Impossible de supprimer un département contenant des arrondissements");
         }
-        departementRepository.deleteById(id);
+        departementRepository.delete(existant);
     }
 
     @Transactional
     // Transactional car deleteByNom n'est pas une méthode CRUD standart
     public void supprimer(String nom) {
-        if (!departementRepository.existsByNom(nom)) {
-            throw new EntityNotFoundException("Le département n'existe pas");
+        Departement existant = departementRepository.findByNom(nom).orElseThrow(
+                ()-> new EntityNotFoundException("Le département n'existe pas")
+        );
+        if (!existant.getListeArrondissements().isEmpty()) {
+            throw new DataIntegrityViolationException("Impossible de supprimer un département contenant des arrondissements");
         }
-        departementRepository.deleteByNom(nom);
+        departementRepository.delete(existant);
     }
 
     public DepartementListerDTO toDTO (Departement departement) {

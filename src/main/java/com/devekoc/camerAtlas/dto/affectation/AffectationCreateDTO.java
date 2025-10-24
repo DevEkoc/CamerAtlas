@@ -1,12 +1,15 @@
 package com.devekoc.camerAtlas.dto.affectation;
 
 import com.devekoc.camerAtlas.enumerations.Fonction;
+import com.devekoc.camerAtlas.validation.ValidDateRange;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
+@ValidDateRange(message = "La date de fin doit être après la date de début")
 public record AffectationCreateDTO(
         @NotNull(message = "L'ID de l'autorité est obligatoire")
         Integer idAutorite,

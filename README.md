@@ -18,7 +18,7 @@ Le modèle de données s'articule autour de plusieurs entités principales :
 - **Circonscription** : Représente une unité administrative générique (Région, Département, Arrondissement). C'est une classe mère dont héritent les autres types de circonscriptions.
 - **Autorite** : Désigne un fonctionnaire de l'administration (par exemple, un Gouverneur, un Préfet).
 - **Affectation** : Matérialise l'assignation d'une `Autorite` à une `Circonscription` pour une période donnée, avec une fonction spécifique (`GOUVERNEUR`, `PREFET`, `SOUS-PREFET`).
-- **Frontiere** : Définit une limite géographique (Nord, Sud, Est, Ouest).
+- **Frontiere** : Définit une limite géographique (pays, région, etc.).
 - **Delimitation** : Table de jointure qui associe une `Circonscription` à ses `Frontiere`.
 
 ## Technologies Utilisées
@@ -80,37 +80,88 @@ Le code source est organisé dans les packages suivants :
 
 ## Endpoints de l'API
 
-Le contexte de l'application est `/api`.
+Le préfixe de base pour tous les endpoints est `/api`.
 
-### Autorités
-- `GET /api/autorite` : Liste toutes les autorités.
-- `GET /api/autorite/{id}` : Récupère une autorité par son ID.
-- `POST /api/autorite` : Crée une nouvelle autorité.
-- `PUT /api/autorite/{id}` : Met à jour une autorité existante.
-- `DELETE /api/autorite/{id}` : Supprime une autorité.
+### Affectation (`/api/affectation`)
+| Méthode | Endpoint | Description |
+|---|---|---|
+| `POST` | `/` | Crée une nouvelle affectation. |
+| `GET` | `/` | Liste toutes les affectations. |
+| `PUT` | `/{id}` | Met à jour une affectation existante. |
+| `DELETE` | `/{id}` | Supprime une affectation par son ID. |
 
-### Circonscriptions
-- `GET /api/circonscription` : Liste toutes les circonscriptions.
-- `GET /api/circonscription/{id}` : Récupère une circonscription par son ID.
-- `POST /api/circonscription` : Crée une nouvelle circonscription.
-- `PUT /api/circonscription/{id}` : Met à jour une circonscription.
-- `DELETE /api/circonscription/{id}` : Supprime une circonscription.
+### Arrondissement (`/api/arrondissement`)
+| Méthode | Endpoint | Description |
+|---|---|---|
+| `POST` | `/` | Crée un nouvel arrondissement. |
+| `GET` | `/` | Liste tous les arrondissements. |
+| `GET` | `/id/{id}` | Recherche un arrondissement par son ID. |
+| `GET` | `/nom/{nom}` | Recherche un arrondissement par son nom. |
+| `PUT` | `/{id}` | Met à jour un arrondissement existant. |
+| `DELETE` | `/id/{id}` | Supprime un arrondissement par son ID. |
+| `DELETE` | `/nom/{nom}` | Supprime un arrondissement par son nom. |
 
-### Affectations
-- `GET /api/affectation` : Liste toutes les affectations.
-- `POST /api/affectation` : Crée une nouvelle affectation.
-- `PUT /api/affectation/{id}` : Met à jour une affectation.
-- `DELETE /api/affectation/{id}` : Supprime une affectation.
+### Autorité (`/api/autorite`)
+| Méthode | Endpoint | Description |
+|---|---|---|
+| `POST` | `/` | Crée une nouvelle autorité. |
+| `GET` | `/` | Liste toutes les autorités. |
+| `GET` | `/{id}` | Recherche une autorité par son ID. |
+| `PUT` | `/{id}` | Met à jour une autorité existante. |
+| `DELETE` | `/{id}` | Supprime une autorité par son ID. |
 
-### Frontières
-- `GET /api/frontiere` : Liste toutes les frontières.
-- `GET /api/frontiere?type={type}` : Recherche les frontières par type (`NORD`, `SUD`, `EST`, `OUEST`).
-- `POST /api/frontiere` : Crée une nouvelle frontière.
+### Circonscription (`/api/circonscription`)
+| Méthode | Endpoint | Description |
+|---|---|---|
+| `POST` | `/` | Crée une nouvelle circonscription (non utilisable directement car la classe est abstraite). |
+| `GET` | `/` | Liste toutes les circonscriptions (Régions, Départements, Arrondissements). |
+| `GET` | `/{id}` | Recherche une circonscription par son ID. |
+| `PUT` | `/{id}` | Met à jour une circonscription (non utilisable directement). |
+| `DELETE` | `/{id}` | Supprime une circonscription par son ID. |
 
-### Délimitations
-- `GET /api/delimitation` : Liste toutes les délimitations.
-- `POST /api/delimitation` : Crée une nouvelle délimitation.
-- `DELETE /api/delimitation/{codeCirconscription}/{idFrontiere}` : Supprime une délimitation.
+### Délimitation (`/api/delimitation`)
+| Méthode | Endpoint | Description |
+|---|---|---|
+| `POST` | `/` | Crée une nouvelle délimitation entre une circonscription et une frontière. |
+| `GET` | `/` | Liste toutes les délimitations. |
+| `DELETE` | `/{id}` | Supprime une délimitation par son ID. |
 
-### Régions
-- `POST /api/region` : Crée une nouvelle région.
+### Département (`/api/departement`)
+| Méthode | Endpoint | Description |
+|---|---|---|
+| `POST` | `/` | Crée un nouveau département. |
+| `GET` | `/` | Liste tous les départements. |
+| `GET` | `/id/{id}` | Recherche un département par son ID. |
+| `GET` | `/nom/{nom}` | Recherche un département par son nom. |
+| `PUT` | `/{id}` | Met à jour un département existant. |
+| `DELETE` | `/id/{id}` | Supprime un département par son ID. |
+| `DELETE` | `/nom/{nom}` | Supprime un département par son nom. |
+
+### Frontière (`/api/frontiere`)
+| Méthode | Endpoint | Description |
+|---|---|---|
+| `POST` | `/` | Crée une nouvelle frontière. |
+| `GET` | `/` | Liste toutes les frontières. |
+| `GET` | `?type={type}` | Recherche les frontières par type (ex: `PAYS`, `REGION`). |
+
+### Quartier (`/api/quartier`)
+| Méthode | Endpoint | Description |
+|---|---|---|
+| `POST` | `/` | Crée un nouveau quartier. |
+| `GET` | `/` | Liste tous les quartiers. |
+| `GET` | `/id/{id}` | Recherche un quartier par son ID. |
+| `GET` | `/nom/{nom}` | Recherche un quartier par son nom. |
+| `PUT` | `/{id}` | Met à jour un quartier existant. |
+| `DELETE` | `/id/{id}` | Supprime un quartier par son ID. |
+| `DELETE` | `/nom/{nom}` | Supprime un quartier par son nom. |
+
+### Région (`/api/region`)
+| Méthode | Endpoint | Description |
+|---|---|---|
+| `POST` | `/` | Crée une nouvelle région. |
+| `GET` | `/` | Liste toutes les régions. |
+| `GET` | `/id/{id}` | Recherche une région par son ID. |
+| `GET` | `/nom/{nom}` | Recherche une région par son nom. |
+| `PUT` | `/{id}` | Met à jour une région existante. |
+| `DELETE` | `/id/{id}` | Supprime une région par son ID. |
+| `DELETE` | `/nom/{nom}` | Supprime une région par son nom. |

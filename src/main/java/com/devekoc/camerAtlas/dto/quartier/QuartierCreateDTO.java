@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 
 public record QuartierCreateDTO(
         @NotBlank(message = "Le nom ne doit pas être vide !")
-        @Size(min = 1, max = 50, message = "Le nom doit contenir entre 1 et 50 caractères")
+        @Size(max = 50, message = "Le nom doit contenir entre 1 et 50 caractères")
         String nom,
 
         @NotBlank(message = "Le nom populaire ne doit pas être vide !")

@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,7 +26,7 @@ public class Arrondissement extends Circonscription {
 
     @OneToMany(mappedBy = "sousPrefecture")
     @JsonIgnore
-    private List<Quartier> listeQuartiers;
+    private List<Quartier> listeQuartiers = new ArrayList<>();
 
     public static Arrondissement fromCreateDTO(ArrondissementCreateDTO dto, Departement departement) {
         Arrondissement arrondissement = new Arrondissement();

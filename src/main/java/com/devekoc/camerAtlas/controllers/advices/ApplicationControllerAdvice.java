@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @ControllerAdvice
 public class ApplicationControllerAdvice {
 
@@ -36,10 +39,22 @@ public class ApplicationControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public @ResponseBody ErrorEntity handleValidation(MethodArgumentNotValidException ex) {
-        String message = ex.getBindingResult().getFieldErrors().stream()
-                .map(err -> err.getField() + " : " + err.getDefaultMessage())
-                .findFirst()
-                .orElse("Requête invalide");
+
+        // Collecter toutes les erreurs (champs + globales)
+        List<String> errors = new ArrayList<>();
+
+        // Erreurs de champs
+        ex.getBindingResult().getFieldErrors().forEach(err ->
+                errors.add(err.getField() + " : " + err.getDefaultMessage())
+        );
+
+        // Erreurs globales (comme @ValidDateRange)
+        ex.getBindingResult().getGlobalErrors().forEach(err ->
+                errors.add(err.getDefaultMessage())
+        );
+
+        String message = errors.isEmpty() ? "Requête invalide" : String.join(", ", errors);
+
         return new ErrorEntity("400", message);
     }
 

@@ -12,6 +12,7 @@ import com.devekoc.camerAtlas.repositories.AffectationRepository;
 import com.devekoc.camerAtlas.repositories.AutoriteRepository;
 import com.devekoc.camerAtlas.repositories.CirconscriptionRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.ValidationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -97,7 +98,7 @@ public class AffectationService {
 
         if (occupe) {
             throw new PositionAlreadyFilledException(
-                    "Validation échouée : La circonscription '" + circonscription.getNom()
+                    "La circonscription '" + circonscription.getNom()
                             + "' est déjà occupée par une autorité active."
             );
         }
@@ -117,7 +118,7 @@ public class AffectationService {
         // Règle métier 2 : Vérifier si l'autorité est déjà en poste ailleurs.
         if (occupe) {
             throw new PositionAlreadyFilledException(
-                    "Validation échouée : L'autorité '" + autorite.getNom() + " " + autorite.getPrenom() + "' est déjà en poste actif ailleurs."
+                    "L'autorité '" + autorite.getNom() + " " + autorite.getPrenom() + "' est déjà en poste actif ailleurs."
             );
         }
     }

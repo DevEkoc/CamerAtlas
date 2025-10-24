@@ -82,16 +82,25 @@ public class ArrondissementService {
     }
 
     public void supprimer(int id) {
-        if (!arrondissementRepository.existsById(id)) {
-            throw new EntityNotFoundException("L'arrondissement n'existe pas");        }
+        Arrondissement existant = arrondissementRepository.findById(id).orElseThrow(
+                ()-> new EntityNotFoundException("L'arrondissement n'existe pas")
+        );
+
+        if (!existant.getListeQuartiers().isEmpty()) {
+            throw new DataIntegrityViolationException("Impossible de supprimer un arrondissement contenant des quartiers");
+        }
         arrondissementRepository.deleteById(id);
     }
 
     @Transactional
     // Transactional car deleteByNom n'est pas une méthode CRUD standart
     public void supprimer(String nom) {
-        if (!arrondissementRepository.existsByNom(nom)) {
-            throw new EntityNotFoundException("L'arrondissement n'existe pas");
+        Arrondissement existant = arrondissementRepository.findByNom(nom).orElseThrow(
+                ()-> new EntityNotFoundException("L'arrondissement n'existe pas")
+        );
+
+        if (!existant.getListeQuartiers().isEmpty()) {
+            throw new DataIntegrityViolationException("Impossible de supprimer un arrondissement contenant des quartiers");
         }
         arrondissementRepository.deleteByNom(nom);
     }

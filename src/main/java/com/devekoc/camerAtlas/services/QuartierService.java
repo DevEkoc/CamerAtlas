@@ -100,6 +100,7 @@ public class QuartierService {
 
     public QuartierListerDTO toDTO (Quartier quartier) {
         return new QuartierListerDTO(
+                quartier.getId(),
                 quartier.getNom(),
                 quartier.getNomPopulaire(),
                 quartier.getSousPrefecture().getId(),
