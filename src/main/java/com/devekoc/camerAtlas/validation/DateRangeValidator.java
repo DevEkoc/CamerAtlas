@@ -1,16 +1,16 @@
 package com.devekoc.camerAtlas.validation;
 
-import com.devekoc.camerAtlas.dto.affectation.AffectationCreateDTO;
+import com.devekoc.camerAtlas.dto.appointment.AppointmentCreateDTO;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class DateRangeValidator implements ConstraintValidator<ValidDateRange, AffectationCreateDTO> {
+public class DateRangeValidator implements ConstraintValidator<ValidDateRange, AppointmentCreateDTO> {
 
     @Override
-    public boolean isValid(AffectationCreateDTO dto, ConstraintValidatorContext context) {
-        if (dto == null || dto.dateFin() == null || dto.dateDebut() == null) {
+    public boolean isValid(AppointmentCreateDTO dto, ConstraintValidatorContext context) {
+        if (dto == null || dto.endDate() == null || dto.startDate() == null) {
             return true; // null values are handled by @NotNull
         }
-        return dto.dateFin().isAfter(dto.dateDebut());
+        return dto.endDate().isAfter(dto.startDate());
     }
 }

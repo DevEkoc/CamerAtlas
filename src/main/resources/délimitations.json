@@ -1,0 +1,332 @@
+[
+  {
+    "codeCirconscription": 1,
+    "typeFrontiere": "NORD_OUEST",
+    "nomFrontiere": "État Nigérian de l'Adamawa"
+  },
+  {
+    "codeCirconscription": 1,
+    "typeFrontiere": "NORD_EST",
+    "nomFrontiere": "Préfecture Centrafricaine de la Ouham-Pendé"
+  },
+  {
+    "codeCirconscription": 1,
+    "typeFrontiere": "NORD",
+    "nomFrontiere": "Région du Nord Cameroun"
+  },
+  {
+    "codeCirconscription": 1,
+    "typeFrontiere": "OUEST",
+    "nomFrontiere": "État Nigérian de Taraba"
+  },
+  {
+    "codeCirconscription": 1,
+    "typeFrontiere": "EST",
+    "nomFrontiere": "Préfecture Centrafricaine de Nana-Mambéré"
+  },
+  {
+    "codeCirconscription": 1,
+    "typeFrontiere": "SUD_OUEST",
+    "nomFrontiere": "Régions de l'Ouest et du Sud-Ouest Cameroun"
+  },
+  {
+    "codeCirconscription": 1,
+    "typeFrontiere": "SUD_EST",
+    "nomFrontiere": "Région de l'Est Cameroun"
+  },
+  {
+    "codeCirconscription": 1,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Région du Centre Cameroun"
+  },
+  {
+    "codeCirconscription": 2,
+    "typeFrontiere": "NORD",
+    "nomFrontiere": "Région de l'Adamaoua Cameroun"
+  },
+  {
+    "codeCirconscription": 2,
+    "typeFrontiere": "NORD_OUEST",
+    "nomFrontiere": "Région de l'Ouest Cameroun"
+  },
+  {
+    "codeCirconscription": 2,
+    "typeFrontiere": "OUEST",
+    "nomFrontiere": "Région du Littoral Cameroun"
+  },
+  {
+    "codeCirconscription": 2,
+    "typeFrontiere": "EST",
+    "nomFrontiere": "Région de l'Est Cameroun"
+  },
+  {
+    "codeCirconscription": 2,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Région du Sud Cameroun"
+  },
+  {
+    "codeCirconscription": 3,
+    "typeFrontiere": "NORD",
+    "nomFrontiere": "Région de l'Adamaoua Cameroun"
+  },
+  {
+    "codeCirconscription": 3,
+    "typeFrontiere": "NORD_EST",
+    "nomFrontiere": "Préfecture Centrafricaine de Nana-Mambéré"
+  },
+  {
+    "codeCirconscription": 3,
+    "typeFrontiere": "EST",
+    "nomFrontiere": "Préfecture Centrafricaine de Mambéré-Kadéï"
+  },
+  {
+    "codeCirconscription": 3,
+    "typeFrontiere": "OUEST",
+    "nomFrontiere": "Région du Centre Cameroun"
+  },
+  {
+    "codeCirconscription": 3,
+    "typeFrontiere": "SUD_OUEST",
+    "nomFrontiere": "Région du Sud Cameroun"
+  },
+  {
+    "codeCirconscription": 3,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Département Congolais de la Sangha"
+  },
+  {
+    "codeCirconscription": 3,
+    "typeFrontiere": "SUD_EST",
+    "nomFrontiere": "Préfecture Centrafricaine de Sangha-Mbaéré"
+  },
+  {
+    "codeCirconscription": 4,
+    "typeFrontiere": "NORD",
+    "nomFrontiere": "Province Tchadienne du Lac"
+  },
+  {
+    "codeCirconscription": 4,
+    "typeFrontiere": "NORD_OUEST",
+    "nomFrontiere": "Royaume Nigérian du Borno"
+  },
+  {
+    "codeCirconscription": 4,
+    "typeFrontiere": "NORD_EST",
+    "nomFrontiere": "Province Tchadienne de la Hadjer-Lamis et ville Tchadienne de N'Djaména"
+  },
+  {
+    "codeCirconscription": 4,
+    "typeFrontiere": "EST",
+    "nomFrontiere": "Province Tchadienne du Chari-Baguirmi"
+  },
+  {
+    "codeCirconscription": 4,
+    "typeFrontiere": "OUEST",
+    "nomFrontiere": "État Nigérian de l'Adamawa"
+  },
+  {
+    "codeCirconscription": 4,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Province Tchadienne du Mayo-Kebbi Ouest"
+  },
+  {
+    "codeCirconscription": 4,
+    "typeFrontiere": "SUD_EST",
+    "nomFrontiere": "Province Tchadienne du Mayo-Kebbi Est"
+  },
+  {
+    "codeCirconscription": 4,
+    "typeFrontiere": "SUD_OUEST",
+    "nomFrontiere": "Région du Nord Cameroun"
+  },
+  {
+    "codeCirconscription": 5,
+    "typeFrontiere": "NORD",
+    "nomFrontiere": "Région de l'Ouest Cameroun"
+  },
+  {
+    "codeCirconscription": 5,
+    "typeFrontiere": "NORD_OUEST",
+    "nomFrontiere": "Région du Sud-Ouest Cameroun"
+  },
+  {
+    "codeCirconscription": 5,
+    "typeFrontiere": "EST",
+    "nomFrontiere": "Région du Centre Cameroun"
+  },
+  {
+    "codeCirconscription": 5,
+    "typeFrontiere": "OUEST",
+    "nomFrontiere": "Golfe de Guinée"
+  },
+  {
+    "codeCirconscription": 5,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Région du Sud Cameroun"
+  },
+  {
+    "codeCirconscription": 6,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Région du Sud Cameroun"
+  },
+  {
+    "codeCirconscription": 6,
+    "typeFrontiere": "NORD",
+    "nomFrontiere": "Province Tchadienne du Mayo-Kebbi Ouest"
+  },
+  {
+    "codeCirconscription": 6,
+    "typeFrontiere": "NORD_EST",
+    "nomFrontiere": "Province Tchadienne du Logone-Occidental"
+  },
+  {
+    "codeCirconscription": 6,
+    "typeFrontiere": "NORD_OUEST",
+    "nomFrontiere": "Région de l'Extrême-Nord Cameroun"
+  },
+  {
+    "codeCirconscription": 6,
+    "typeFrontiere": "EST",
+    "nomFrontiere": "Province Tchadienne du Logone-Oriental"
+  },
+  {
+    "codeCirconscription": 6,
+    "typeFrontiere": "OUEST",
+    "nomFrontiere": "État Nigérian de l'Adamawa"
+  },
+  {
+    "codeCirconscription": 6,
+    "typeFrontiere": "SUD_EST",
+    "nomFrontiere": "Province Tchadienne du Mayo-Kebbi Est et Préfecture Centrafricaine de la Ouham-Pendé"
+  },
+  {
+    "codeCirconscription": 6,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Région de l'Adamaoua Cameroun"
+  },
+  {
+    "codeCirconscription": 7,
+    "typeFrontiere": "NORD",
+    "nomFrontiere": "État Nigérian de Taraba"
+  },
+  {
+    "codeCirconscription": 7,
+    "typeFrontiere": "NORD_OUEST",
+    "nomFrontiere": "État Nigérian de Benue"
+  },
+  {
+    "codeCirconscription": 7,
+    "typeFrontiere": "OUEST",
+    "nomFrontiere": "Région du Sud-Ouest Cameroun"
+  },
+  {
+    "codeCirconscription": 7,
+    "typeFrontiere": "EST",
+    "nomFrontiere": "Région de l'Adamaoua Cameroun"
+  },
+  {
+    "codeCirconscription": 7,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Région de l'Ouest Cameroun"
+  },
+  {
+    "codeCirconscription": 8,
+    "typeFrontiere": "NORD",
+    "nomFrontiere": "Région du Nord-Ouest Cameroun"
+  },
+  {
+    "codeCirconscription": 8,
+    "typeFrontiere": "NORD_EST",
+    "nomFrontiere": "Région de l'Adamaoua Cameroun"
+  },
+  {
+    "codeCirconscription": 8,
+    "typeFrontiere": "OUEST",
+    "nomFrontiere": "Région du Sud-Ouest Cameroun"
+  },
+  {
+    "codeCirconscription": 8,
+    "typeFrontiere": "EST",
+    "nomFrontiere": "Région du Centre Cameroun"
+  },
+  {
+    "codeCirconscription": 8,
+    "typeFrontiere": "SUD_EST",
+    "nomFrontiere": "Région du Centre Cameroun"
+  },
+  {
+    "codeCirconscription": 8,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Région du Littoral Cameroun"
+  },
+  {
+    "codeCirconscription": 9,
+    "typeFrontiere": "NORD",
+    "nomFrontiere": "Région du Centre Cameroun"
+  },
+  {
+    "codeCirconscription": 9,
+    "typeFrontiere": "NORD_OUEST",
+    "nomFrontiere": "Région du Littoral Cameroun"
+  },
+  {
+    "codeCirconscription": 9,
+    "typeFrontiere": "OUEST",
+    "nomFrontiere": "Golfe de Guinée"
+  },
+  {
+    "codeCirconscription": 9,
+    "typeFrontiere": "EST",
+    "nomFrontiere": "Région de l'Est Cameroun"
+  },
+  {
+    "codeCirconscription": 9,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Province Gabonaise du Woleu-Ntem"
+  },
+  {
+    "codeCirconscription": 9,
+    "typeFrontiere": "SUD_OUEST",
+    "nomFrontiere": "Région Continentale Équato-Guinéenne"
+  },
+  {
+    "codeCirconscription": 9,
+    "typeFrontiere": "SUD_EST",
+    "nomFrontiere": "Département Congolais de la Sangha"
+  },
+  {
+    "codeCirconscription": 10,
+    "typeFrontiere": "NORD",
+    "nomFrontiere": "État Nigérian de Taraba"
+  },
+  {
+    "codeCirconscription": 10,
+    "typeFrontiere": "NORD_OUEST",
+    "nomFrontiere": "État Nigérian de la Bénoué"
+  },
+  {
+    "codeCirconscription": 10,
+    "typeFrontiere": "OUEST",
+    "nomFrontiere": "État Nigérian de Cross River"
+  },
+  {
+    "codeCirconscription": 10,
+    "typeFrontiere": "NORD_EST",
+    "nomFrontiere": "Région du Nord-Ouest Cameroun"
+  },
+  {
+    "codeCirconscription": 10,
+    "typeFrontiere": "EST",
+    "nomFrontiere": "Région de l'Ouest Cameroun"
+  },
+  {
+    "codeCirconscription": 10,
+    "typeFrontiere": "SUD_EST",
+    "nomFrontiere": "Région du Littoral Cameroun"
+  },
+  {
+    "codeCirconscription": 10,
+    "typeFrontiere": "SUD",
+    "nomFrontiere": "Golfe de Guinée"
+  }
+]

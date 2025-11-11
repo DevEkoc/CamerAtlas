@@ -6,9 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface RegionRepository extends JpaRepository<Region, Integer> {
-    Optional<Region> findByNom(String nom);
+    Optional<Region> findByName(String name);
 
-    void deleteByNom(String nom);
-
-    boolean existsByNom(String nom);
+    boolean existsByName(String nom);
 }

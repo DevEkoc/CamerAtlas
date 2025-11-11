@@ -1,0 +1,2270 @@
+[
+  {
+    "nom": "Ngaoundal",
+    "sousPrefecture": "Ngaoundal",
+    "superficie": null,
+    "population": 52867,
+    "nomDepartement": "Djérem"
+  },
+  {
+    "nom": "Tibati",
+    "sousPrefecture": "Tibati",
+    "superficie": null,
+    "population": 72081,
+    "nomDepartement": "Djérem"
+  },
+  {
+    "nom": "Galim-Tignère",
+    "sousPrefecture": "Galim",
+    "superficie": null,
+    "population": 25739,
+    "nomDepartement": "Faro-et-Déo"
+  },
+  {
+    "nom": "Mayo-Baléo",
+    "sousPrefecture": "Mayo-Baléo",
+    "superficie": null,
+    "population": 15873,
+    "nomDepartement": "Faro-et-Déo"
+  },
+  {
+    "nom": "Kontcha",
+    "sousPrefecture": "Kontcha",
+    "superficie": null,
+    "population": 6938,
+    "nomDepartement": "Faro-et-Déo"
+  },
+  {
+    "nom": "Tignère",
+    "sousPrefecture": "Tignère",
+    "superficie": null,
+    "population": 34167,
+    "nomDepartement": "Faro-et-Déo"
+  },
+  {
+    "nom": "Bankim",
+    "sousPrefecture": "Bankim",
+    "superficie": null,
+    "population": 70132,
+    "nomDepartement": "Mayo-Banyo"
+  },
+  {
+    "nom": "Banyo",
+    "sousPrefecture": "Banyo",
+    "superficie": null,
+    "population": 93880,
+    "nomDepartement": "Mayo-Banyo"
+  },
+  {
+    "nom": "Mayo-Darlé",
+    "sousPrefecture": "Mayo-Darlé",
+    "superficie": null,
+    "population": 23054,
+    "nomDepartement": "Mayo-Banyo"
+  },
+  {
+    "nom": "Dir",
+    "sousPrefecture": "Dir",
+    "superficie": null,
+    "population": 34284,
+    "nomDepartement": "Mbéré"
+  },
+  {
+    "nom": "Djohong",
+    "sousPrefecture": "Djohong",
+    "superficie": null,
+    "population": 24445,
+    "nomDepartement": "Mbéré"
+  },
+  {
+    "nom": "Ngaoui",
+    "sousPrefecture": "Ngaoui",
+    "superficie": null,
+    "population": 24196,
+    "nomDepartement": "Mbéré"
+  },
+  {
+    "nom": "Meiganga",
+    "sousPrefecture": "Meiganga",
+    "superficie": null,
+    "population": 88745,
+    "nomDepartement": "Mbéré"
+  },
+  {
+    "nom": "Belel",
+    "sousPrefecture": "Belel",
+    "superficie": null,
+    "population": 37663,
+    "nomDepartement": "Vina"
+  },
+  {
+    "nom": "Mbé",
+    "sousPrefecture": "Mbé",
+    "superficie": null,
+    "population": 17478,
+    "nomDepartement": "Vina"
+  },
+  {
+    "nom": "Ngaoundéré",
+    "sousPrefecture": "Ngaoundéré",
+    "superficie": null,
+    "population": 262747,
+    "nomDepartement": "Vina"
+  },
+  {
+    "nom": "Mbandjock",
+    "sousPrefecture": "Mbandjock",
+    "superficie": null,
+    "population": 21076,
+    "nomDepartement": "Haute-Sanaga"
+  },
+  {
+    "nom": "Minta",
+    "sousPrefecture": "Minta",
+    "superficie": null,
+    "population": 11406,
+    "nomDepartement": "Haute-Sanaga"
+  },
+  {
+    "nom": "Nanga-Eboko",
+    "sousPrefecture": "Nanga-Eboko",
+    "superficie": null,
+    "population": 29814,
+    "nomDepartement": "Haute-Sanaga"
+  },
+  {
+    "nom": "Bibey",
+    "sousPrefecture": "Bibey",
+    "superficie": null,
+    "population": 4875,
+    "nomDepartement": "Haute-Sanaga"
+  },
+  {
+    "nom": "Lembé-Yezoum",
+    "sousPrefecture": "Lembé-Yezoum",
+    "superficie": null,
+    "population": 7207,
+    "nomDepartement": "Haute-Sanaga"
+  },
+  {
+    "nom": "Nsem",
+    "sousPrefecture": "Nsem",
+    "superficie": null,
+    "population": 6177,
+    "nomDepartement": "Haute-Sanaga"
+  },
+  {
+    "nom": "Nkoteng",
+    "sousPrefecture": "Nkoteng",
+    "superficie": null,
+    "population": 19797,
+    "nomDepartement": "Haute-Sanaga"
+  },
+  {
+    "nom": "Ebebda",
+    "sousPrefecture": "Ebebda",
+    "superficie": null,
+    "population": 21368,
+    "nomDepartement": "Lekié"
+  },
+  {
+    "nom": "Elig-Mfomo",
+    "sousPrefecture": "Elig-Mfomo",
+    "superficie": null,
+    "population": 16161,
+    "nomDepartement": "Lekié"
+  },
+  {
+    "nom": "Evodoula",
+    "sousPrefecture": "Evodoula",
+    "superficie": null,
+    "population": 18899,
+    "nomDepartement": "Lekié"
+  },
+  {
+    "nom": "Monatélé",
+    "sousPrefecture": "Monatélé",
+    "superficie": null,
+    "population": 36933,
+    "nomDepartement": "Lekié"
+  },
+  {
+    "nom": "Obala",
+    "sousPrefecture": "Obala",
+    "superficie": null,
+    "population": 78929,
+    "nomDepartement": "Lekié"
+  },
+  {
+    "nom": "Batschenga",
+    "sousPrefecture": "Batschenga",
+    "superficie": null,
+    "population": 9303,
+    "nomDepartement": "Lekié"
+  },
+  {
+    "nom": "Okola",
+    "sousPrefecture": "Okola",
+    "superficie": null,
+    "population": 41081,
+    "nomDepartement": "Lekié"
+  },
+  {
+    "nom": "Lobo",
+    "sousPrefecture": "Lobo",
+    "superficie": null,
+    "population": 10157,
+    "nomDepartement": "Lekié"
+  },
+  {
+    "nom": "Sa'a",
+    "sousPrefecture": "Sa'a",
+    "superficie": null,
+    "population": 53219,
+    "nomDepartement": "Lekié"
+  },
+  {
+    "nom": "Bafia",
+    "sousPrefecture": "Bafia",
+    "superficie": null,
+    "population": 72717,
+    "nomDepartement": "Mbam-et-Inoubou"
+  },
+  {
+    "nom": "Bokito",
+    "sousPrefecture": "Bokito",
+    "superficie": null,
+    "population": 40228,
+    "nomDepartement": "Mbam-et-Inoubou"
+  },
+  {
+    "nom": "Deuk",
+    "sousPrefecture": "Deuk",
+    "superficie": null,
+    "population": 11485,
+    "nomDepartement": "Mbam-et-Inoubou"
+  },
+  {
+    "nom": "Makenene",
+    "sousPrefecture": "Makenene",
+    "superficie": null,
+    "population": 16564,
+    "nomDepartement": "Mbam-et-Inoubou"
+  },
+  {
+    "nom": "Ndikinimeki",
+    "sousPrefecture": "Ndikinimeki",
+    "superficie": null,
+    "population": 17462,
+    "nomDepartement": "Mbam-et-Inoubou"
+  },
+  {
+    "nom": "Nitoukou",
+    "sousPrefecture": "Nitoukou",
+    "superficie": null,
+    "population": 4831,
+    "nomDepartement": "Mbam-et-Inoubou"
+  },
+  {
+    "nom": "Ombessa",
+    "sousPrefecture": "Ombessa",
+    "superficie": null,
+    "population": 25640,
+    "nomDepartement": "Mbam-et-Inoubou"
+  },
+  {
+    "nom": "Mbangassina",
+    "sousPrefecture": "Mbangassina",
+    "superficie": null,
+    "population": 41180,
+    "nomDepartement": "Mbam-et-Kim"
+  },
+  {
+    "nom": "Ngambé-Tikar",
+    "sousPrefecture": "Ngambé-Tikar",
+    "superficie": null,
+    "population": 12489,
+    "nomDepartement": "Mbam-et-Kim"
+  },
+  {
+    "nom": "Ngoro",
+    "sousPrefecture": "Ngoro",
+    "superficie": null,
+    "population": 13892,
+    "nomDepartement": "Mbam-et-Kim"
+  },
+  {
+    "nom": "Ntui",
+    "sousPrefecture": "Ntui",
+    "superficie": null,
+    "population": 25618,
+    "nomDepartement": "Mbam-et-Kim"
+  },
+  {
+    "nom": "Yoko",
+    "sousPrefecture": "Yoko",
+    "superficie": null,
+    "population": 12332,
+    "nomDepartement": "Mbam-et-Kim"
+  },
+  {
+    "nom": "Awae",
+    "sousPrefecture": "Awae",
+    "superficie": null,
+    "population": 15888,
+    "nomDepartement": "Méfou-et-Afamba"
+  },
+  {
+    "nom": "Assamba",
+    "sousPrefecture": "Assamba",
+    "superficie": null,
+    "population": 4801,
+    "nomDepartement": "Méfou-et-Afamba"
+  },
+  {
+    "nom": "Esse",
+    "sousPrefecture": "Esse",
+    "superficie": null,
+    "population": 16822,
+    "nomDepartement": "Méfou-et-Afamba"
+  },
+  {
+    "nom": "Afanloum",
+    "sousPrefecture": "Afanloum",
+    "superficie": null,
+    "population": 1787,
+    "nomDepartement": "Méfou-et-Afamba"
+  },
+  {
+    "nom": "Edzendouan",
+    "sousPrefecture": "Edzendouan",
+    "superficie": null,
+    "population": 4436,
+    "nomDepartement": "Méfou-et-Afamba"
+  },
+  {
+    "nom": "Mfou",
+    "sousPrefecture": "Mfou",
+    "superficie": null,
+    "population": 37209,
+    "nomDepartement": "Méfou-et-Afamba"
+  },
+  {
+    "nom": "Nkolafamba",
+    "sousPrefecture": "Nkolafamba",
+    "superficie": null,
+    "population": 14494,
+    "nomDepartement": "Méfou-et-Afamba"
+  },
+  {
+    "nom": "Soa",
+    "sousPrefecture": "Soa",
+    "superficie": null,
+    "population": 30588,
+    "nomDepartement": "Méfou-et-Afamba"
+  },
+  {
+    "nom": "Akono",
+    "sousPrefecture": "Akono",
+    "superficie": null,
+    "population": 8511,
+    "nomDepartement": "Méfou-et-Akono"
+  },
+  {
+    "nom": "Bikok",
+    "sousPrefecture": "Bikok",
+    "superficie": null,
+    "population": 16278,
+    "nomDepartement": "Méfou-et-Akono"
+  },
+  {
+    "nom": "Mbankomo",
+    "sousPrefecture": "Mbankomo",
+    "superficie": null,
+    "population": 20305,
+    "nomDepartement": "Méfou-et-Akono"
+  },
+  {
+    "nom": "Ngoumou",
+    "sousPrefecture": "Ngoumou",
+    "superficie": null,
+    "population": 13923,
+    "nomDepartement": "Méfou-et-Akono"
+  },
+  {
+    "nom": "Yaoundé I",
+    "sousPrefecture": "Nlongkak",
+    "superficie": null,
+    "population": 281586,
+    "nomDepartement": "Mfoundi"
+  },
+  {
+    "nom": "Yaoundé II",
+    "sousPrefecture": "Tsinga",
+    "superficie": null,
+    "population": 336381,
+    "nomDepartement": "Mfoundi"
+  },
+  {
+    "nom": "Yaoundé III",
+    "sousPrefecture": "Efoulan",
+    "superficie": null,
+    "population": 252501,
+    "nomDepartement": "Mfoundi"
+  },
+  {
+    "nom": "Kondengui",
+    "sousPrefecture": "Yaoundé IV",
+    "superficie": null,
+    "population": 477350,
+    "nomDepartement": "Mfoundi"
+  },
+  {
+    "nom": "Yaoundé V",
+    "sousPrefecture": "Nkolmesseng",
+    "superficie": null,
+    "population": 265087,
+    "nomDepartement": "Mfoundi"
+  },
+  {
+    "nom": "Yaoundé VI",
+    "sousPrefecture": "Biyem-Assi",
+    "superficie": null,
+    "population": 268971,
+    "nomDepartement": "Mfoundi"
+  },
+  {
+    "nom": "Yaoundé VII",
+    "sousPrefecture": "Nkolbisson",
+    "superficie": null,
+    "population": 268971,
+    "nomDepartement": "Mfoundi"
+  },
+  {
+    "nom": "Bot-Makak",
+    "sousPrefecture": "Bot-Makak",
+    "superficie": null,
+    "population": 17089,
+    "nomDepartement": "Nyong-et-Kellé"
+  },
+  {
+    "nom": "Nguibassal",
+    "sousPrefecture": "Nguibassal",
+    "superficie": null,
+    "population": 4685,
+    "nomDepartement": "Nyong-et-Kellé"
+  },
+  {
+    "nom": "Dibang",
+    "sousPrefecture": "Dibang",
+    "superficie": null,
+    "population": 9063,
+    "nomDepartement": "Nyong-et-Kellé"
+  },
+  {
+    "nom": "Eséka",
+    "sousPrefecture": "Eséka",
+    "superficie": null,
+    "population": 23242,
+    "nomDepartement": "Nyong-et-Kellé"
+  },
+  {
+    "nom": "Makak",
+    "sousPrefecture": "Makak",
+    "superficie": null,
+    "population": 29135,
+    "nomDepartement": "Nyong-et-Kellé"
+  },
+  {
+    "nom": "Bondjock",
+    "sousPrefecture": "Bondjock",
+    "superficie": null,
+    "population": 8431,
+    "nomDepartement": "Nyong-et-Kellé"
+  },
+  {
+    "nom": "Matomb",
+    "sousPrefecture": "Matomb",
+    "superficie": null,
+    "population": 11512,
+    "nomDepartement": "Nyong-et-Kellé"
+  },
+  {
+    "nom": "Messondo",
+    "sousPrefecture": "Messondo",
+    "superficie": null,
+    "population": 14139,
+    "nomDepartement": "Nyong-et-Kellé"
+  },
+  {
+    "nom": "Biyouha",
+    "sousPrefecture": "Biyouha",
+    "superficie": null,
+    "population": 3386,
+    "nomDepartement": "Nyong-et-Kellé"
+  },
+  {
+    "nom": "Ngog-Mapubi",
+    "sousPrefecture": "Ngog-Mapubi",
+    "superficie": null,
+    "population": 9137,
+    "nomDepartement": "Nyong-et-Kellé"
+  },
+  {
+    "nom": "Akonolinga",
+    "sousPrefecture": "Akonolinga",
+    "superficie": null,
+    "population": 47561,
+    "nomDepartement": "Nyong-et-Mfoumou"
+  },
+  {
+    "nom": "Mengang",
+    "sousPrefecture": "Mengang",
+    "superficie": null,
+    "population": 8031,
+    "nomDepartement": "Nyong-et-Mfoumou"
+  },
+  {
+    "nom": "Ayos",
+    "sousPrefecture": "Ayos",
+    "superficie": null,
+    "population": 22899,
+    "nomDepartement": "Nyong-et-Mfoumou"
+  },
+  {
+    "nom": "Nyakokombo",
+    "sousPrefecture": "Nyakokombo",
+    "superficie": null,
+    "population": 11227,
+    "nomDepartement": "Nyong-et-Mfoumou"
+  },
+  {
+    "nom": "Endom",
+    "sousPrefecture": "Endom",
+    "superficie": null,
+    "population": 14789,
+    "nomDepartement": "Nyong-et-Mfoumou"
+  },
+  {
+    "nom": "Dzeng",
+    "sousPrefecture": "Dzeng",
+    "superficie": null,
+    "population": 9412,
+    "nomDepartement": "Nyong-et-So'o"
+  },
+  {
+    "nom": "Mbalmayo",
+    "sousPrefecture": "Mbalmayo",
+    "superficie": null,
+    "population": 62808,
+    "nomDepartement": "Nyong-et-So'o"
+  },
+  {
+    "nom": "Akoeman",
+    "sousPrefecture": "Akoeman",
+    "superficie": null,
+    "population": 5397,
+    "nomDepartement": "Nyong-et-So'o"
+  },
+  {
+    "nom": "Mengueme",
+    "sousPrefecture": "Mengueme",
+    "superficie": null,
+    "population": 7527,
+    "nomDepartement": "Nyong-et-So'o"
+  },
+  {
+    "nom": "Nkolmetet",
+    "sousPrefecture": "Nkolmetet",
+    "superficie": null,
+    "population": 13647,
+    "nomDepartement": "Nyong-et-So'o"
+  },
+  {
+    "nom": "Ngomedzap",
+    "sousPrefecture": "Ngomedzap",
+    "superficie": null,
+    "population": 17169,
+    "nomDepartement": "Nyong-et-So'o"
+  },
+  {
+    "nom": "Gari-Gombo",
+    "sousPrefecture": "Gari-Gombo",
+    "superficie": null,
+    "population": 15978,
+    "nomDepartement": "Boumba-et-Ngoko"
+  },
+  {
+    "nom": "Moloundou",
+    "sousPrefecture": "Moloundou",
+    "superficie": null,
+    "population": 18174,
+    "nomDepartement": "Boumba-et-Ngoko"
+  },
+  {
+    "nom": "Salapoumbé",
+    "sousPrefecture": "Salapoumbé",
+    "superficie": null,
+    "population": 17240,
+    "nomDepartement": "Boumba-et-Ngoko"
+  },
+  {
+    "nom": "Yokadouma",
+    "sousPrefecture": "Yokadouma",
+    "superficie": null,
+    "population": 63962,
+    "nomDepartement": "Boumba-et-Ngoko"
+  },
+  {
+    "nom": "Abong-Mbang",
+    "sousPrefecture": "Abong-Mbang",
+    "superficie": null,
+    "population": 29005,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Bébend",
+    "sousPrefecture": "Bébend",
+    "superficie": null,
+    "population": 9335,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Dja",
+    "sousPrefecture": "Dja",
+    "superficie": null,
+    "population": 10431,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Mboanz",
+    "sousPrefecture": "Mboanz",
+    "superficie": null,
+    "population": 13608,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Dimako",
+    "sousPrefecture": "Dimako",
+    "superficie": null,
+    "population": 12894,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Doumé",
+    "sousPrefecture": "Doumé",
+    "superficie": null,
+    "population": 18429,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Doumaintang",
+    "sousPrefecture": "Doumaintang",
+    "superficie": null,
+    "population": 7956,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Lomié",
+    "sousPrefecture": "Lomié",
+    "superficie": null,
+    "population": 18952,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Messok",
+    "sousPrefecture": "Messok",
+    "superficie": null,
+    "population": 11213,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Messamena",
+    "sousPrefecture": "Messamena",
+    "superficie": null,
+    "population": 26153,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Somalomo",
+    "sousPrefecture": "Somalomo",
+    "superficie": null,
+    "population": 4902,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Ngoyla",
+    "sousPrefecture": "Ngoyla",
+    "superficie": null,
+    "population": 4424,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Nguelemendouka",
+    "sousPrefecture": "Nguelemendouka",
+    "superficie": null,
+    "population": 21097,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Mboma",
+    "sousPrefecture": "Mboma",
+    "superficie": null,
+    "population": 8120,
+    "nomDepartement": "Haut-Nyong"
+  },
+  {
+    "nom": "Batouri",
+    "sousPrefecture": "Batouri",
+    "superficie": null,
+    "population": 67007,
+    "nomDepartement": "Kadey"
+  },
+  {
+    "nom": "Ndem",
+    "sousPrefecture": "Ndem",
+    "superficie": null,
+    "population": 10411,
+    "nomDepartement": "Kadey"
+  },
+  {
+    "nom": "Kette",
+    "sousPrefecture": "Kette",
+    "superficie": null,
+    "population": 31129,
+    "nomDepartement": "Kadey"
+  },
+  {
+    "nom": "Mbotoro",
+    "sousPrefecture": "Mbotoro",
+    "superficie": null,
+    "population": 7674,
+    "nomDepartement": "Kadey"
+  },
+  {
+    "nom": "Mbang",
+    "sousPrefecture": "Mbang",
+    "superficie": null,
+    "population": 25603,
+    "nomDepartement": "Kadey"
+  },
+  {
+    "nom": "Ndelele",
+    "sousPrefecture": "Ndelele",
+    "superficie": null,
+    "population": 26127,
+    "nomDepartement": "Kadey"
+  },
+  {
+    "nom": "Bombe",
+    "sousPrefecture": "Bombe",
+    "superficie": null,
+    "population": 16147,
+    "nomDepartement": "Kadey"
+  },
+  {
+    "nom": "Bélabo",
+    "sousPrefecture": "Bélabo",
+    "superficie": null,
+    "population": 30953,
+    "nomDepartement": "Lom-et-Djérem"
+  },
+  {
+    "nom": "Bétaré-Oya",
+    "sousPrefecture": "Bétaré-Oya",
+    "superficie": null,
+    "population": 41173,
+    "nomDepartement": "Lom-et-Djérem"
+  },
+  {
+    "nom": "Ngoura",
+    "sousPrefecture": "Ngoura",
+    "superficie": null,
+    "population": 34489,
+    "nomDepartement": "Lom-et-Djérem"
+  },
+  {
+    "nom": "Bertoua",
+    "sousPrefecture": "Bertoua",
+    "superficie": null,
+    "population": 111986,
+    "nomDepartement": "Lom-et-Djérem"
+  },
+  {
+    "nom": "Diang",
+    "sousPrefecture": "Diang",
+    "superficie": null,
+    "population": 15795,
+    "nomDepartement": "Lom-et-Djérem"
+  },
+  {
+    "nom": "Garoua-Boulaï",
+    "sousPrefecture": "Garoua-Boulaï",
+    "superficie": null,
+    "population": 41388,
+    "nomDepartement": "Lom-et-Djérem"
+  },
+  {
+    "nom": "Bogo",
+    "sousPrefecture": "Bogo",
+    "superficie": null,
+    "population": 95230,
+    "nomDepartement": "Diamaré"
+  },
+  {
+    "nom": "Gazawa",
+    "sousPrefecture": "Gazawa",
+    "superficie": null,
+    "population": 27395,
+    "nomDepartement": "Diamaré"
+  },
+  {
+    "nom": "Maroua",
+    "sousPrefecture": "Maroua",
+    "superficie": null,
+    "population": 330410,
+    "nomDepartement": "Diamaré"
+  },
+  {
+    "nom": "Dargala",
+    "sousPrefecture": "Dargala",
+    "superficie": null,
+    "population": 33142,
+    "nomDepartement": "Diamaré"
+  },
+  {
+    "nom": "Ndoukoula",
+    "sousPrefecture": "Ndoukoula",
+    "superficie": null,
+    "population": 32091,
+    "nomDepartement": "Diamaré"
+  },
+  {
+    "nom": "Méri",
+    "sousPrefecture": "Méri",
+    "superficie": null,
+    "population": 86834,
+    "nomDepartement": "Diamaré"
+  },
+  {
+    "nom": "Petté",
+    "sousPrefecture": "Petté",
+    "superficie": null,
+    "population": 37125,
+    "nomDepartement": "Diamaré"
+  },
+  {
+    "nom": "Blangoua",
+    "sousPrefecture": "Blangoua",
+    "superficie": null,
+    "population": 50398,
+    "nomDepartement": "Logone-et-Chari"
+  },
+  {
+    "nom": "Darak",
+    "sousPrefecture": "Darak",
+    "superficie": null,
+    "population": 23901,
+    "nomDepartement": "Logone-et-Chari"
+  },
+  {
+    "nom": "Fotokol",
+    "sousPrefecture": "Fotokol",
+    "superficie": null,
+    "population": 36893,
+    "nomDepartement": "Logone-et-Chari"
+  },
+  {
+    "nom": "Goulfey",
+    "sousPrefecture": "Goulfey",
+    "superficie": null,
+    "population": 58117,
+    "nomDepartement": "Logone-et-Chari"
+  },
+  {
+    "nom": "Hilé-Alifa",
+    "sousPrefecture": "Hilé-Alifa",
+    "superficie": null,
+    "population": 18425,
+    "nomDepartement": "Logone-et-Chari"
+  },
+  {
+    "nom": "Kousseri",
+    "sousPrefecture": "Kousseri",
+    "superficie": null,
+    "population": 101246,
+    "nomDepartement": "Logone-et-Chari"
+  },
+  {
+    "nom": "Logone-Birni",
+    "sousPrefecture": "Logone-Birni",
+    "superficie": null,
+    "population": 52589,
+    "nomDepartement": "Logone-et-Chari"
+  },
+  {
+    "nom": "Zina",
+    "sousPrefecture": "Zina",
+    "superficie": null,
+    "population": 25572,
+    "nomDepartement": "Logone-et-Chari"
+  },
+  {
+    "nom": "Makary",
+    "sousPrefecture": "Makary",
+    "superficie": null,
+    "population": 104843,
+    "nomDepartement": "Logone-et-Chari"
+  },
+  {
+    "nom": "Waza",
+    "sousPrefecture": "Waza",
+    "superficie": null,
+    "population": 15013,
+    "nomDepartement": "Logone-et-Chari"
+  },
+  {
+    "nom": "Datcheka",
+    "sousPrefecture": "Datcheka",
+    "superficie": null,
+    "population": 31545,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Gobo",
+    "sousPrefecture": "Gobo",
+    "superficie": null,
+    "population": 53119,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Guéré",
+    "sousPrefecture": "Guéré",
+    "superficie": null,
+    "population": 38328,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Kaï-Kaï",
+    "sousPrefecture": "Kaï-Kaï",
+    "superficie": null,
+    "population": 55366,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Kalfou",
+    "sousPrefecture": "Kalfou",
+    "superficie": null,
+    "population": 26203,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Karhay",
+    "sousPrefecture": "Karhay",
+    "superficie": null,
+    "population": 42963,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Maga",
+    "sousPrefecture": "Maga",
+    "superficie": null,
+    "population": 85100,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Tchatibali",
+    "sousPrefecture": "Tchatibali",
+    "superficie": null,
+    "population": 32063,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Vélé",
+    "sousPrefecture": "Vélé",
+    "superficie": null,
+    "population": 41693,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Wina",
+    "sousPrefecture": "Wina",
+    "superficie": null,
+    "population": 30702,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Yagoua",
+    "sousPrefecture": "Yagoua",
+    "superficie": null,
+    "population": 91979,
+    "nomDepartement": "Mayo-Danay"
+  },
+  {
+    "nom": "Guidiguis",
+    "sousPrefecture": "Guidiguis",
+    "superficie": null,
+    "population": 43632,
+    "nomDepartement": "Mayo-Kani"
+  },
+  {
+    "nom": "Kaélé",
+    "sousPrefecture": "Kaélé",
+    "superficie": null,
+    "population": 105504,
+    "nomDepartement": "Mayo-Kani"
+  },
+  {
+    "nom": "Mindif",
+    "sousPrefecture": "Mindif",
+    "superficie": null,
+    "population": 50530,
+    "nomDepartement": "Mayo-Kani"
+  },
+  {
+    "nom": "Moulvoudaye",
+    "sousPrefecture": "Moulvoudaye",
+    "superficie": null,
+    "population": 82368,
+    "nomDepartement": "Mayo-Kani"
+  },
+  {
+    "nom": "Moutourwa",
+    "sousPrefecture": "Moutourwa",
+    "superficie": null,
+    "population": 40197,
+    "nomDepartement": "Mayo-Kani"
+  },
+  {
+    "nom": "Porhi",
+    "sousPrefecture": "Porhi",
+    "superficie": null,
+    "population": 38809,
+    "nomDepartement": "Mayo-Kani"
+  },
+  {
+    "nom": "Taibong",
+    "sousPrefecture": "Taibong",
+    "superficie": null,
+    "population": 43606,
+    "nomDepartement": "Mayo-Kani"
+  },
+  {
+    "nom": "Kolofata",
+    "sousPrefecture": "Kolofata",
+    "superficie": null,
+    "population": 77857,
+    "nomDepartement": "Mayo-Sava"
+  },
+  {
+    "nom": "Mora",
+    "sousPrefecture": "Mora",
+    "superficie": null,
+    "population": 179777,
+    "nomDepartement": "Mayo-Sava"
+  },
+  {
+    "nom": "Tokombéré",
+    "sousPrefecture": "Tokombéré",
+    "superficie": null,
+    "population": 91256,
+    "nomDepartement": "Mayo-Sava"
+  },
+  {
+    "nom": "Bourha",
+    "sousPrefecture": "Bourha",
+    "superficie": null,
+    "population": 88585,
+    "nomDepartement": "Mayo-Tsanaga"
+  },
+  {
+    "nom": "Hina",
+    "sousPrefecture": "Hina",
+    "superficie": null,
+    "population": 43755,
+    "nomDepartement": "Mayo-Tsanaga"
+  },
+  {
+    "nom": "Koza",
+    "sousPrefecture": "Koza",
+    "superficie": null,
+    "population": 81076,
+    "nomDepartement": "Mayo-Tsanaga"
+  },
+  {
+    "nom": "Mayo-Moskota",
+    "sousPrefecture": "Mayo-Moskota",
+    "superficie": null,
+    "population": 73716,
+    "nomDepartement": "Mayo-Tsanaga"
+  },
+  {
+    "nom": "Mogodé",
+    "sousPrefecture": "Mogodé",
+    "superficie": null,
+    "population": 112905,
+    "nomDepartement": "Mayo-Tsanaga"
+  },
+  {
+    "nom": "Mokolo",
+    "sousPrefecture": "Mokolo",
+    "superficie": null,
+    "population": 242274,
+    "nomDepartement": "Mayo-Tsanaga"
+  },
+  {
+    "nom": "Soulédé-Roua",
+    "sousPrefecture": "Soulédé-Roua",
+    "superficie": null,
+    "population": 57660,
+    "nomDepartement": "Mayo-Tsanaga"
+  },
+  {
+    "nom": "Baré-Bakem",
+    "sousPrefecture": "Baré-Bakem",
+    "superficie": null,
+    "population": 16485,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Dibombari",
+    "sousPrefecture": "Dibombari",
+    "superficie": null,
+    "population": 17141,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Abo",
+    "sousPrefecture": "Abo",
+    "superficie": null,
+    "population": 25018,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Loum",
+    "sousPrefecture": "Loum",
+    "superficie": null,
+    "population": 39707,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Manjo",
+    "sousPrefecture": "Manjo",
+    "superficie": null,
+    "population": 34230,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Mbanga",
+    "sousPrefecture": "Mbanga",
+    "superficie": null,
+    "population": 35415,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Mombo",
+    "sousPrefecture": "Mombo",
+    "superficie": null,
+    "population": 5530,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Melong",
+    "sousPrefecture": "Melong",
+    "superficie": null,
+    "population": 54279,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Njombé-Penja",
+    "sousPrefecture": "Njombé-Penja",
+    "superficie": null,
+    "population": 31792,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Nkongsamba",
+    "sousPrefecture": "Nkongsamba",
+    "superficie": null,
+    "population": 105383,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Nlonako",
+    "sousPrefecture": "Nlonako",
+    "superficie": null,
+    "population": 14261,
+    "nomDepartement": "Moungo"
+  },
+  {
+    "nom": "Nkondjock",
+    "sousPrefecture": "Nkondjock",
+    "superficie": null,
+    "population": 17428,
+    "nomDepartement": "Nkam"
+  },
+  {
+    "nom": "Nord-Makombé",
+    "sousPrefecture": "Nord-Makombé",
+    "superficie": null,
+    "population": 3999,
+    "nomDepartement": "Nkam"
+  },
+  {
+    "nom": "Yabassi",
+    "sousPrefecture": "Yabassi",
+    "superficie": null,
+    "population": 12999,
+    "nomDepartement": "Nkam"
+  },
+  {
+    "nom": "Yingui",
+    "sousPrefecture": "Yingui",
+    "superficie": null,
+    "population": 2304,
+    "nomDepartement": "Nkam"
+  },
+  {
+    "nom": "Dizangué",
+    "sousPrefecture": "Dizangué",
+    "superficie": null,
+    "population": 17086,
+    "nomDepartement": "Sanaga-Maritime"
+  },
+  {
+    "nom": "Edéa",
+    "sousPrefecture": "Edéa",
+    "superficie": null,
+    "population": 88481,
+    "nomDepartement": "Sanaga-Maritime"
+  },
+  {
+    "nom": "Mouanko",
+    "sousPrefecture": "Mouanko",
+    "superficie": null,
+    "population": 9162,
+    "nomDepartement": "Sanaga-Maritime"
+  },
+  {
+    "nom": "Ndom",
+    "sousPrefecture": "Ndom",
+    "superficie": null,
+    "population": 10340,
+    "nomDepartement": "Sanaga-Maritime"
+  },
+  {
+    "nom": "Nyanon",
+    "sousPrefecture": "Nyanon",
+    "superficie": null,
+    "population": 12517,
+    "nomDepartement": "Sanaga-Maritime"
+  },
+  {
+    "nom": "Ngambé",
+    "sousPrefecture": "Ngambé",
+    "superficie": null,
+    "population": 6210,
+    "nomDepartement": "Sanaga-Maritime"
+  },
+  {
+    "nom": "Massock-Songloulou",
+    "sousPrefecture": "Massock-Songloulou",
+    "superficie": null,
+    "population": 5044,
+    "nomDepartement": "Sanaga-Maritime"
+  },
+  {
+    "nom": "Pouma",
+    "sousPrefecture": "Pouma",
+    "superficie": null,
+    "population": 13475,
+    "nomDepartement": "Sanaga-Maritime"
+  },
+  {
+    "nom": "Douala I",
+    "sousPrefecture": "Douala I",
+    "superficie": null,
+    "population": 223214,
+    "nomDepartement": "Wouri"
+  },
+  {
+    "nom": "Douala II",
+    "sousPrefecture": "Douala II",
+    "superficie": null,
+    "population": 261407,
+    "nomDepartement": "Wouri"
+  },
+  {
+    "nom": "Douala III",
+    "sousPrefecture": "Douala III",
+    "superficie": null,
+    "population": 646347,
+    "nomDepartement": "Wouri"
+  },
+  {
+    "nom": "Douala IV",
+    "sousPrefecture": "Douala IV",
+    "superficie": null,
+    "population": 250626,
+    "nomDepartement": "Wouri"
+  },
+  {
+    "nom": "Douala V",
+    "sousPrefecture": "Douala V",
+    "superficie": null,
+    "population": 544919,
+    "nomDepartement": "Wouri"
+  },
+  {
+    "nom": "Manoka",
+    "sousPrefecture": "Manoka",
+    "superficie": null,
+    "population": 5464,
+    "nomDepartement": "Wouri"
+  },
+  {
+    "nom": "Bibémi",
+    "sousPrefecture": "Bibémi",
+    "superficie": null,
+    "population": 133191,
+    "nomDepartement": "Bénoué"
+  },
+  {
+    "nom": "Dembo",
+    "sousPrefecture": "Dembo",
+    "superficie": null,
+    "population": 15816,
+    "nomDepartement": "Bénoué"
+  },
+  {
+    "nom": "Lagdo",
+    "sousPrefecture": "Lagdo",
+    "superficie": null,
+    "population": 142129,
+    "nomDepartement": "Bénoué"
+  },
+  {
+    "nom": "Garoua",
+    "sousPrefecture": "Garoua",
+    "superficie": null,
+    "population": 265583,
+    "nomDepartement": "Bénoué"
+  },
+  {
+    "nom": "Baschéo",
+    "sousPrefecture": "Baschéo",
+    "superficie": null,
+    "population": 26743,
+    "nomDepartement": "Bénoué"
+  },
+  {
+    "nom": "Demsa",
+    "sousPrefecture": "Demsa",
+    "superficie": null,
+    "population": 38366,
+    "nomDepartement": "Bénoué"
+  },
+  {
+    "nom": "Touroua",
+    "sousPrefecture": "Touroua",
+    "superficie": null,
+    "population": 40674,
+    "nomDepartement": "Bénoué"
+  },
+  {
+    "nom": "Pitoa",
+    "sousPrefecture": "Pitoa",
+    "superficie": null,
+    "population": 76715,
+    "nomDepartement": "Bénoué"
+  },
+  {
+    "nom": "Tchéboa",
+    "sousPrefecture": "Tchéboa",
+    "superficie": null,
+    "population": 112738,
+    "nomDepartement": "Bénoué"
+  },
+  {
+    "nom": "Béka",
+    "sousPrefecture": "Béka",
+    "superficie": null,
+    "population": 31595,
+    "nomDepartement": "Faro"
+  },
+  {
+    "nom": "Poli",
+    "sousPrefecture": "Poli",
+    "superficie": null,
+    "population": 37882,
+    "nomDepartement": "Faro"
+  },
+  {
+    "nom": "Figuil",
+    "sousPrefecture": "Figuil",
+    "superficie": null,
+    "population": 67997,
+    "nomDepartement": "Mayo-Louti"
+  },
+  {
+    "nom": "Guider",
+    "sousPrefecture": "Guider",
+    "superficie": null,
+    "population": 223503,
+    "nomDepartement": "Mayo-Louti"
+  },
+  {
+    "nom": "Mayo-Oulo",
+    "sousPrefecture": "Mayo-Oulo",
+    "superficie": null,
+    "population": 99826,
+    "nomDepartement": "Mayo-Louti"
+  },
+  {
+    "nom": "Rey-Bouba",
+    "sousPrefecture": "Rey-Bouba",
+    "superficie": null,
+    "population": 116192,
+    "nomDepartement": "Mayo-Rey"
+  },
+  {
+    "nom": "Tcholliré",
+    "sousPrefecture": "Tcholliré",
+    "superficie": null,
+    "population": 47296,
+    "nomDepartement": "Mayo-Rey"
+  },
+  {
+    "nom": "Madingring",
+    "sousPrefecture": "Madingring",
+    "superficie": null,
+    "population": 57347,
+    "nomDepartement": "Mayo-Rey"
+  },
+  {
+    "nom": "Touboro",
+    "sousPrefecture": "Touboro",
+    "superficie": null,
+    "population": 154366,
+    "nomDepartement": "Mayo-Rey"
+  },
+  {
+    "nom": "Belo",
+    "sousPrefecture": "Belo",
+    "superficie": null,
+    "population": 40757,
+    "nomDepartement": "Boyo"
+  },
+  {
+    "nom": "Bum",
+    "sousPrefecture": "Bum",
+    "superficie": null,
+    "population": 17838,
+    "nomDepartement": "Boyo"
+  },
+  {
+    "nom": "Fundong",
+    "sousPrefecture": "Fundong",
+    "superficie": null,
+    "population": 45831,
+    "nomDepartement": "Boyo"
+  },
+  {
+    "nom": "Njinikom",
+    "sousPrefecture": "Njinikom",
+    "superficie": null,
+    "population": 20461,
+    "nomDepartement": "Boyo"
+  },
+  {
+    "nom": "Jakiri",
+    "sousPrefecture": "Jakiri",
+    "superficie": null,
+    "population": 47022,
+    "nomDepartement": "Bui"
+  },
+  {
+    "nom": "Kumbo",
+    "sousPrefecture": "Kumbo",
+    "superficie": null,
+    "population": 127538,
+    "nomDepartement": "Bui"
+  },
+  {
+    "nom": "Mbven",
+    "sousPrefecture": "Mbven",
+    "superficie": null,
+    "population": 20289,
+    "nomDepartement": "Bui"
+  },
+  {
+    "nom": "Noni",
+    "sousPrefecture": "Noni",
+    "superficie": null,
+    "population": 39400,
+    "nomDepartement": "Bui"
+  },
+  {
+    "nom": "Oku",
+    "sousPrefecture": "Oku",
+    "superficie": null,
+    "population": 87720,
+    "nomDepartement": "Bui"
+  },
+  {
+    "nom": "Ako",
+    "sousPrefecture": "Ako",
+    "superficie": null,
+    "population": 40349,
+    "nomDepartement": "Donga-Mantung"
+  },
+  {
+    "nom": "Misaje",
+    "sousPrefecture": "Misaje",
+    "superficie": null,
+    "population": 22641,
+    "nomDepartement": "Donga-Mantung"
+  },
+  {
+    "nom": "Ndu",
+    "sousPrefecture": "Ndu",
+    "superficie": null,
+    "population": 73955,
+    "nomDepartement": "Donga-Mantung"
+  },
+  {
+    "nom": "Nkambé",
+    "sousPrefecture": "Nkambé",
+    "superficie": null,
+    "population": 63032,
+    "nomDepartement": "Donga-Mantung"
+  },
+  {
+    "nom": "Nwa",
+    "sousPrefecture": "Nwa",
+    "superficie": null,
+    "population": 69954,
+    "nomDepartement": "Donga-Mantung"
+  },
+  {
+    "nom": "Fungom",
+    "sousPrefecture": "Fungom",
+    "superficie": null,
+    "population": 58666,
+    "nomDepartement": "Menchum"
+  },
+  {
+    "nom": "Furu-Awa",
+    "sousPrefecture": "Furu-Awa",
+    "superficie": null,
+    "population": 13997,
+    "nomDepartement": "Menchum"
+  },
+  {
+    "nom": "Menchum Valley",
+    "sousPrefecture": "Menchum Valley",
+    "superficie": null,
+    "population": 50235,
+    "nomDepartement": "Menchum"
+  },
+  {
+    "nom": "Wum",
+    "sousPrefecture": "Wum",
+    "superficie": null,
+    "population": 39100,
+    "nomDepartement": "Menchum"
+  },
+  {
+    "nom": "Bafut",
+    "sousPrefecture": "Bafut",
+    "superficie": null,
+    "population": 57930,
+    "nomDepartement": "Mezam"
+  },
+  {
+    "nom": "Bali",
+    "sousPrefecture": "Bali",
+    "superficie": null,
+    "population": 30375,
+    "nomDepartement": "Mezam"
+  },
+  {
+    "nom": "Bamenda",
+    "sousPrefecture": "Bamenda",
+    "superficie": null,
+    "population": 322889,
+    "nomDepartement": "Mezam"
+  },
+  {
+    "nom": "Santa",
+    "sousPrefecture": "Santa",
+    "superficie": null,
+    "population": 64391,
+    "nomDepartement": "Mezam"
+  },
+  {
+    "nom": "Tubah",
+    "sousPrefecture": "Tubah",
+    "superficie": null,
+    "population": 48542,
+    "nomDepartement": "Mezam"
+  },
+  {
+    "nom": "Batibo",
+    "sousPrefecture": "Batibo",
+    "superficie": null,
+    "population": 44619,
+    "nomDepartement": "Momo"
+  },
+  {
+    "nom": "Mbengwi",
+    "sousPrefecture": "Mbengwi",
+    "superficie": null,
+    "population": 31591,
+    "nomDepartement": "Momo"
+  },
+  {
+    "nom": "Ngie",
+    "sousPrefecture": "Ngie",
+    "superficie": null,
+    "population": 17697,
+    "nomDepartement": "Momo"
+  },
+  {
+    "nom": "Njikwa",
+    "sousPrefecture": "Njikwa",
+    "superficie": null,
+    "population": 16634,
+    "nomDepartement": "Momo"
+  },
+  {
+    "nom": "Widikum-Menka",
+    "sousPrefecture": "Widikum",
+    "superficie": null,
+    "population": 28152,
+    "nomDepartement": "Momo"
+  },
+  {
+    "nom": "Babessi",
+    "sousPrefecture": "Babessi",
+    "superficie": null,
+    "population": 49208,
+    "nomDepartement": "Ngo-Ketunjia"
+  },
+  {
+    "nom": "Balikumbat",
+    "sousPrefecture": "Balikumbat",
+    "superficie": null,
+    "population": 68537,
+    "nomDepartement": "Ngo-Ketunjia"
+  },
+  {
+    "nom": "Ndop",
+    "sousPrefecture": "Ndop",
+    "superficie": null,
+    "population": 69603,
+    "nomDepartement": "Ngo-Ketunjia"
+  },
+  {
+    "nom": "Babadjou",
+    "sousPrefecture": "Babadjou",
+    "superficie": null,
+    "population": 36929,
+    "nomDepartement": "Bamboutos"
+  },
+  {
+    "nom": "Batcham",
+    "sousPrefecture": "Batcham",
+    "superficie": null,
+    "population": 83817,
+    "nomDepartement": "Bamboutos"
+  },
+  {
+    "nom": "Galim",
+    "sousPrefecture": "Galim",
+    "superficie": null,
+    "population": 51014,
+    "nomDepartement": "Bamboutos"
+  },
+  {
+    "nom": "Mbouda",
+    "sousPrefecture": "Mbouda",
+    "superficie": null,
+    "population": 120650,
+    "nomDepartement": "Bamboutos"
+  },
+  {
+    "nom": "Bafang",
+    "sousPrefecture": "Bafang",
+    "superficie": null,
+    "population": 55111,
+    "nomDepartement": "Haut-Nkam"
+  },
+  {
+    "nom": "Bakou",
+    "sousPrefecture": "Bakou",
+    "superficie": null,
+    "population": 5255,
+    "nomDepartement": "Haut-Nkam"
+  },
+  {
+    "nom": "Bana",
+    "sousPrefecture": "Bana",
+    "superficie": null,
+    "population": 10254,
+    "nomDepartement": "Haut-Nkam"
+  },
+  {
+    "nom": "Bandja",
+    "sousPrefecture": "Bandja",
+    "superficie": null,
+    "population": 30931,
+    "nomDepartement": "Haut-Nkam"
+  },
+  {
+    "nom": "Kekem",
+    "sousPrefecture": "Kekem",
+    "superficie": null,
+    "population": 31542,
+    "nomDepartement": "Haut-Nkam"
+  },
+  {
+    "nom": "Banwa",
+    "sousPrefecture": "Banwa",
+    "superficie": null,
+    "population": 11693,
+    "nomDepartement": "Haut-Nkam"
+  },
+  {
+    "nom": "Baham",
+    "sousPrefecture": "Baham",
+    "superficie": null,
+    "population": 19680,
+    "nomDepartement": "Hauts-Plateaux"
+  },
+  {
+    "nom": "Bamendjou",
+    "sousPrefecture": "Bamendjou",
+    "superficie": null,
+    "population": 34269,
+    "nomDepartement": "Hauts-Plateaux"
+  },
+  {
+    "nom": "Batié",
+    "sousPrefecture": "Batié",
+    "superficie": null,
+    "population": 10942,
+    "nomDepartement": "Hauts-Plateaux"
+  },
+  {
+    "nom": "Bangou",
+    "sousPrefecture": "Bangou",
+    "superficie": null,
+    "population": 15787,
+    "nomDepartement": "Hauts-Plateaux"
+  },
+  {
+    "nom": "Bayangam",
+    "sousPrefecture": "Bayangam",
+    "superficie": null,
+    "population": 13397,
+    "nomDepartement": "Koung-Khi"
+  },
+  {
+    "nom": "Poumougne",
+    "sousPrefecture": "Poumougne",
+    "superficie": null,
+    "population": 40637,
+    "nomDepartement": "Koung-Khi"
+  },
+  {
+    "nom": "Djebem",
+    "sousPrefecture": "Djebem",
+    "superficie": null,
+    "population": 10987,
+    "nomDepartement": "Koung-Khi"
+  },
+  {
+    "nom": "Dschang",
+    "sousPrefecture": "Dschang",
+    "superficie": null,
+    "population": 120207,
+    "nomDepartement":"Menoua"
+  },
+  {
+    "nom": "Fokoué",
+    "sousPrefecture": "Fokoué",
+    "superficie": null,
+    "population": 9576,
+    "nomDepartement": "Menoua"
+  },
+  {
+    "nom": "Nkong-Ni",
+    "sousPrefecture": "Nkong-Ni",
+    "superficie": null,
+    "population": 53367,
+    "nomDepartement": "Menoua"
+  },
+  {
+    "nom": "Penka-Michel",
+    "sousPrefecture": "Penka-Michel",
+    "superficie": null,
+    "population": 65135,
+    "nomDepartement": "Menoua"
+  },
+  {
+    "nom": "Santchou",
+    "sousPrefecture": "Santchou",
+    "superficie": null,
+    "population": 37479,
+    "nomDepartement": "Menoua"
+  },
+  {
+    "nom": "Bafoussam",
+    "sousPrefecture": "Bafoussam",
+    "superficie": null,
+    "population": 98339,
+    "nomDepartement": "Mifi"
+  },
+  {
+    "nom": "Baleng",
+    "sousPrefecture": "Baleng",
+    "superficie": null,
+    "population": 121282,
+    "nomDepartement": "Mifi"
+  },
+  {
+    "nom": "Bamougoum",
+    "sousPrefecture": "Bamougoum",
+    "superficie": null,
+    "population": 81835,
+    "nomDepartement": "Mifi"
+  },
+  {
+    "nom": "Bangangté",
+    "sousPrefecture": "Bangangté",
+    "superficie": null,
+    "population": 63595,
+    "nomDepartement": "Ndé"
+  },
+  {
+    "nom": "Bassamba",
+    "sousPrefecture": "Bassamba",
+    "superficie": null,
+    "population": 2814,
+    "nomDepartement": "Ndé"
+  },
+  {
+    "nom": "Bazou",
+    "sousPrefecture": "Bazou",
+    "superficie": null,
+    "population": 14912,
+    "nomDepartement": "Ndé"
+  },
+  {
+    "nom": "Tonga",
+    "sousPrefecture": "Tonga",
+    "superficie": null,
+    "population": 13528,
+    "nomDepartement": "Ndé"
+  },
+  {
+    "nom": "Bangourain",
+    "sousPrefecture": "Bangourain",
+    "superficie": null,
+    "population": 30877,
+    "nomDepartement": "Noun"
+  },
+  {
+    "nom": "Foumban",
+    "sousPrefecture": "Foumban",
+    "superficie": null,
+    "population": 130292,
+    "nomDepartement": "Noun"
+  },
+  {
+    "nom": "Foumbot",
+    "sousPrefecture": "Foumbot",
+    "superficie": null,
+    "population": 76486,
+    "nomDepartement": "Noun"
+  },
+  {
+    "nom": "Kouoptamo",
+    "sousPrefecture": "Kouoptamo",
+    "superficie": null,
+    "population": 48772,
+    "nomDepartement": "Noun"
+  },
+  {
+    "nom": "Koutaba",
+    "sousPrefecture": "Koutaba",
+    "superficie": null,
+    "population": 49171,
+    "nomDepartement": "Noun"
+  },
+  {
+    "nom": "Magba",
+    "sousPrefecture": "Magba",
+    "superficie": null,
+    "population": 35628,
+    "nomDepartement": "Noun"
+  },
+  {
+    "nom": "Malantouen",
+    "sousPrefecture": "Malantouen",
+    "superficie": null,
+    "population": 45121,
+    "nomDepartement": "Noun"
+  },
+  {
+    "nom": "Massangam",
+    "sousPrefecture": "Massangam",
+    "superficie": null,
+    "population": 38736,
+    "nomDepartement": "Noun"
+  },
+  {
+    "nom": "Bengbis",
+    "sousPrefecture": "Bengbis",
+    "superficie": null,
+    "population": 13075,
+    "nomDepartement": "Dja-et-Lobo"
+  },
+  {
+    "nom": "Djoum",
+    "sousPrefecture": "Djoum",
+    "superficie": null,
+    "population": 18050,
+    "nomDepartement": "Dja-et-Lobo"
+  },
+  {
+    "nom": "Meyomessala",
+    "sousPrefecture": "Meyomessala",
+    "superficie": null,
+    "population": 31366,
+    "nomDepartement": "Dja-et-Lobo"
+  },
+  {
+    "nom": "Mintom",
+    "sousPrefecture": "Mintom",
+    "superficie": null,
+    "population": 6130,
+    "nomDepartement": "Dja-et-Lobo"
+  },
+  {
+    "nom": "Oveng",
+    "sousPrefecture": "Oveng",
+    "superficie": null,
+    "population": 6007,
+    "nomDepartement": "Dja-et-Lobo"
+  },
+  {
+    "nom": "Sangmélima",
+    "sousPrefecture": "Sangmélima",
+    "superficie": null,
+    "population": 91740,
+    "nomDepartement": "Dja-et-Lobo"
+  },
+  {
+    "nom": "Zoétélé",
+    "sousPrefecture": "Zoétélé",
+    "superficie": null,
+    "population": 30583,
+    "nomDepartement": "Dja-et-Lobo"
+  },
+  {
+    "nom": "Biwong-Bané",
+    "sousPrefecture": "Biwong-Bané",
+    "superficie": null,
+    "population": 13151,
+    "nomDepartement": "Mvila"
+  },
+  {
+    "nom": "Ebolowa",
+    "sousPrefecture": "Ebolowa",
+    "superficie": null,
+    "population": 118267,
+    "nomDepartement": "Mvila"
+  },
+  {
+    "nom": "Mengong",
+    "sousPrefecture": "Mengong",
+    "superficie": null,
+    "population": 17222,
+    "nomDepartement": "Mvila"
+  },
+  {
+    "nom": "Mvangan",
+    "sousPrefecture": "Mvangan",
+    "superficie": null,
+    "population": 16114,
+    "nomDepartement": "Mvila"
+  },
+  {
+    "nom": "Ngoulemakong",
+    "sousPrefecture": "Ngoulemakong",
+    "superficie": null,
+    "population": 14675,
+    "nomDepartement": "Mvila"
+  },
+  {
+    "nom": "Akom II",
+    "sousPrefecture": "Akom II",
+    "superficie": null,
+    "population": 8802,
+    "nomDepartement": "Océan"
+  },
+  {
+    "nom": "Niété",
+    "sousPrefecture": "Niété",
+    "superficie": null,
+    "population": 23921,
+    "nomDepartement": "Océan"
+  },
+  {
+    "nom": "Bipindi",
+    "sousPrefecture": "Bipindi",
+    "superficie": null,
+    "population": 14118,
+    "nomDepartement": "Océan"
+  },
+  {
+    "nom": "Campo",
+    "sousPrefecture": "Campo",
+    "superficie": null,
+    "population": 6923,
+    "nomDepartement": "Océan"
+  },
+  {
+    "nom": "Kribi",
+    "sousPrefecture": "Kribi",
+    "superficie": null,
+    "population": 93246,
+    "nomDepartement": "Océan"
+  },
+  {
+    "nom": "Lolodorf",
+    "sousPrefecture": "Lolodorf",
+    "superficie": null,
+    "population": 14326,
+    "nomDepartement": "Océan"
+  },
+  {
+    "nom": "Mvengué",
+    "sousPrefecture": "Mvengué",
+    "superficie": null,
+    "population": 17757,
+    "nomDepartement": "Océan"
+  },
+  {
+    "nom": "Ambam",
+    "sousPrefecture": "Ambam",
+    "superficie": null,
+    "population": 41089,
+    "nomDepartement": "Vallée-du-Ntem"
+  },
+  {
+    "nom": "Ma'an",
+    "sousPrefecture": "Ma'an",
+    "superficie": null,
+    "population": 12448,
+    "nomDepartement": "Vallée-du-Ntem"
+  },
+  {
+    "nom": "Olamze",
+    "sousPrefecture": "Olamze",
+    "superficie": null,
+    "population": 25645,
+    "nomDepartement": "Vallée-du-Ntem"
+  },
+  {
+    "nom": "Buea",
+    "sousPrefecture": "Buea",
+    "superficie": null,
+    "population": 131325,
+    "nomDepartement": "Fako"
+  },
+  {
+    "nom": "West Coast",
+    "sousPrefecture": "West Coast",
+    "superficie": null,
+    "population": 12725,
+    "nomDepartement": "Fako"
+  },
+  {
+    "nom": "Limbé",
+    "sousPrefecture": "Limbé",
+    "superficie": null,
+    "population": 118210,
+    "nomDepartement": "Fako"
+  },
+  {
+    "nom": "Muyuka",
+    "sousPrefecture": "Muyuka",
+    "superficie": null,
+    "population": 86268,
+    "nomDepartement": "Fako"
+  },
+  {
+    "nom": "Tiko",
+    "sousPrefecture": "Tiko",
+    "superficie": null,
+    "population": 117884,
+    "nomDepartement": "Fako"
+  },
+  {
+    "nom": "Bangem",
+    "sousPrefecture": "Bangem",
+    "superficie": null,
+    "population": 21411,
+    "nomDepartement": "Koupé-Manengouba"
+  },
+  {
+    "nom": "Nguti",
+    "sousPrefecture": "Nguti",
+    "superficie": null,
+    "population": 27151,
+    "nomDepartement": "Koupé-Manengouba"
+  },
+  {
+    "nom": "Tombel",
+    "sousPrefecture": "Tombel",
+    "superficie": null,
+    "population": 57017,
+    "nomDepartement": "Koupé-Manengouba"
+  },
+  {
+    "nom": "Alou",
+    "sousPrefecture": "Alou",
+    "superficie": null,
+    "population": 35855,
+    "nomDepartement": "Lebialem"
+  },
+  {
+    "nom": "Fontem",
+    "sousPrefecture": "Fontem",
+    "superficie": null,
+    "population": 39706,
+    "nomDepartement": "Lebialem"
+  },
+  {
+    "nom": "Wabane",
+    "sousPrefecture": "Wabane",
+    "superficie": null,
+    "population": 38175,
+    "nomDepartement": "Lebialem"
+  },
+  {
+    "nom": "Akwaya",
+    "sousPrefecture": "Akwaya",
+    "superficie": null,
+    "population": 85914,
+    "nomDepartement": "Manyu"
+  },
+  {
+    "nom": "Eyumodjock",
+    "sousPrefecture": "Eyumodjock",
+    "superficie": null,
+    "population": 35999,
+    "nomDepartement": "Manyu"
+  },
+  {
+    "nom": "Mamfe",
+    "sousPrefecture": "Mamfe",
+    "superficie": null,
+    "population": 31641,
+    "nomDepartement": "Manyu"
+  },
+  {
+    "nom": "Upper Banyang",
+    "sousPrefecture": "Upper Banyang",
+    "superficie": null,
+    "population": 27485,
+    "nomDepartement": "Manyu"
+  },
+  {
+    "nom": "Kumba",
+    "sousPrefecture": "Kumba",
+    "superficie": null,
+    "population": 166331,
+    "nomDepartement": "Meme"
+  },
+  {
+    "nom": "Konye",
+    "sousPrefecture": "Konye",
+    "superficie": null,
+    "population": 44711,
+    "nomDepartement": "Meme"
+  },
+  {
+    "nom": "Mbonge",
+    "sousPrefecture": "Mbonge",
+    "superficie": null,
+    "population": 115692,
+    "nomDepartement": "Meme"
+  },
+  {
+    "nom": "Bamusso",
+    "sousPrefecture": "Bamusso",
+    "superficie": null,
+    "population": 19230,
+    "nomDepartement": "Ndian"
+  },
+  {
+    "nom": "Ekondo-Titi",
+    "sousPrefecture": "Ekondo-Titi",
+    "superficie": null,
+    "population": 56503,
+    "nomDepartement": "Ndian"
+  },
+  {
+    "nom": "Dikome-Balue",
+    "sousPrefecture": "Dikome-Balue",
+    "superficie": null,
+    "population": 13364,
+    "nomDepartement": "Ndian"
+  },
+  {
+    "nom": "Idabato",
+    "sousPrefecture": "Idabato",
+    "superficie": null,
+    "population": 3482,
+    "nomDepartement": "Ndian"
+  },
+  {
+    "nom": "Isangele",
+    "sousPrefecture": "Isangele",
+    "superficie": null,
+    "population": 3476,
+    "nomDepartement": "Ndian"
+  },
+  {
+    "nom": "Kombo-Abedimo",
+    "sousPrefecture": "Kombo-Abedimo",
+    "superficie": null,
+    "population": 2146,
+    "nomDepartement": "Ndian"
+  },
+  {
+    "nom": "Kombo-Itindi",
+    "sousPrefecture": "Kombo-Itindi",
+    "superficie": null,
+    "population": 2958,
+    "nomDepartement": "Ndian"
+  },
+  {
+    "nom": "Mundemba",
+    "sousPrefecture": "Mundemba",
+    "superficie": null,
+    "population": 14385,
+    "nomDepartement": "Ndian"
+  },
+  {
+    "nom": "Toko",
+    "sousPrefecture": "Toko",
+    "superficie": null,
+    "population": 7035,
+    "nomDepartement": "Ndian"
+  }
+]

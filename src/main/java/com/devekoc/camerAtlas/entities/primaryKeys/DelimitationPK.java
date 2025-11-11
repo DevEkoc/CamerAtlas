@@ -1,8 +1,5 @@
 package com.devekoc.camerAtlas.entities.primaryKeys;
 
-import com.devekoc.camerAtlas.entities.Circonscription;
-import com.devekoc.camerAtlas.entities.Frontiere;
-
 import java.io.Serializable;
 import java.util.Objects;
 

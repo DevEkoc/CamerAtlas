@@ -41,5 +41,5 @@ Merci de répondre aux questions suivantes. Vos réponses me permettront de gén
     *   `NomDeLaClasseIT.java` pour les tests d'intégration.
 *   Avez-vous un objectif de couverture de code (code coverage) à atteindre ? R/ Exactement
 
-*   Egalement, je veux que pour les tests qui nécessitent des données préexistantes, (par exemple pour créer une affectation, il faut qu'il y ait une autorité et une circonscription), tu crées ces données préexistantes
+*   Egalement, je veux que pour les tests qui nécessitent des données préexistantes, (par exemple pour créer une appointment, il faut qu'il y ait une autorité et une circonscription), tu crées ces données préexistantes
 Une fois que vous m'aurez fourni ces informations, je pourrai commencer à écrire les tests de manière efficace.

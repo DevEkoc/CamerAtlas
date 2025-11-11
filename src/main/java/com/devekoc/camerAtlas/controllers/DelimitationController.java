@@ -1,7 +1,7 @@
 package com.devekoc.camerAtlas.controllers;
 
 import com.devekoc.camerAtlas.dto.delimitation.DelimitationCreateDTO;
-import com.devekoc.camerAtlas.dto.delimitation.DelimitationListerDTO;
+import com.devekoc.camerAtlas.dto.delimitation.DelimitationListDTO;
 import com.devekoc.camerAtlas.services.DelimitationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -23,20 +23,28 @@ public class DelimitationController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public DelimitationListerDTO creer (@RequestBody @Valid DelimitationCreateDTO delimitation) {
-        return delimitationService.creer(delimitation);
+    public ResponseEntity<DelimitationListDTO> create(@RequestBody @Valid DelimitationCreateDTO dto) {
+        DelimitationListDTO created = delimitationService.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    @PostMapping(path = "cascade", consumes = APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<List<DelimitationListDTO>> createSeveral(@RequestBody @Valid List<DelimitationCreateDTO> dtos) {
+        List<DelimitationListDTO> delimitations = delimitationService.createSeveral(dtos);
+        return ResponseEntity.status(HttpStatus.CREATED).body(delimitations);
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public List<DelimitationListerDTO> lister () {
-        return delimitationService.lister();
+    public ResponseEntity<List<DelimitationListDTO>> listAll() {
+        List<DelimitationListDTO> delimitations = delimitationService.listAll();
+        return ResponseEntity.ok(delimitations);
     }
 
     @DeleteMapping(path = "{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Void> supprimer(
-            @PathVariable int id) {
-        delimitationService.supprimer(id);
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        delimitationService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

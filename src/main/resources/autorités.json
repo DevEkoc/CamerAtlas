@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "nom": "Kildadi Taguiéké",
+    "prenom": "Boukar",
+    "dateNaissance": "01-01-1960"
+  },
+  {
+    "id": 2,
+    "nom": "Nasari Bea",
+    "prenom": "Paul",
+    "dateNaissance": "14-02-1971"
+  },
+  {
+    "id": 3,
+    "nom": "Mvongo",
+    "prenom": "Grégoire",
+    "dateNaissance": "16-10-1961"
+  },
+  {
+    "id": 4,
+    "nom": "Midjiyawa",
+    "prenom": "Bakari",
+    "dateNaissance": "01-01-1961"
+  },
+  {
+    "id": 5,
+    "nom": "Ivaha Diboua",
+    "prenom": "Samuel Dieudonné",
+    "dateNaissance": "23-05-1962"
+  },
+  {
+    "id": 6,
+    "nom": "Abate Edi'i",
+    "prenom": "Jean",
+    "dateNaissance": "01-01-1964"
+  },
+  {
+    "id": 7,
+    "nom": "Beben Tchoffo",
+    "prenom": "Lele Lafrique Adolphe",
+    "dateNaissance": "06-12-1961"
+  },
+  {
+    "id": 8,
+    "nom": "Awa Fonka",
+    "prenom": "Augustine",
+    "dateNaissance": "11-04-1959"
+  },
+  {
+    "id": 9,
+    "nom": "Nguele Nguele",
+    "prenom": "Félix",
+    "dateNaissance": "14-06-1962"
+  },
+  {
+    "id": 10,
+    "nom": "Okalia Bilaï",
+    "prenom": "Bernard",
+    "dateNaissance": "20-12-1957"
+  }
+]

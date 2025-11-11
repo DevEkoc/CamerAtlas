@@ -1,0 +1,72 @@
+[
+  {
+    "idAutorite": 1,
+    "idCirconscription": 1,
+    "fonction": "GOUVERNEUR",
+    "dateDebut": "23-10-2015",
+    "dateFin": null
+  },
+  {
+    "idAutorite": 2,
+    "idCirconscription": 2,
+    "fonction": "GOUVERNEUR",
+    "dateDebut": "13-03-2017",
+    "dateFin": null
+  },
+  {
+    "idAutorite": 3,
+    "idCirconscription": 3,
+    "fonction": "GOUVERNEUR",
+    "dateDebut": "05-11-2015",
+    "dateFin": null
+  },
+  {
+    "idAutorite": 4,
+    "idCirconscription": 4,
+    "fonction": "GOUVERNEUR",
+    "dateDebut": "04-06-2014",
+    "dateFin": null
+  },
+  {
+    "idAutorite": 5,
+    "idCirconscription": 5,
+    "fonction": "GOUVERNEUR",
+    "dateDebut": "01-10-2015",
+    "dateFin": null
+  },
+  {
+    "idAutorite": 6,
+    "idCirconscription": 6,
+    "fonction": "GOUVERNEUR",
+    "dateDebut": "01-10-2014",
+    "dateFin": null
+  },
+  {
+    "idAutorite": 7,
+    "idCirconscription": 7,
+    "fonction": "GOUVERNEUR",
+    "dateDebut": "01-03-2012",
+    "dateFin": null
+  },
+  {
+    "idAutorite": 8,
+    "idCirconscription": 8,
+    "fonction": "GOUVERNEUR",
+    "dateDebut": "01-10-2014",
+    "dateFin": null
+  },
+  {
+    "idAutorite": 9,
+    "idCirconscription": 9,
+    "fonction": "GOUVERNEUR",
+    "dateDebut": "01-10-2015",
+    "dateFin": null
+  },
+  {
+    "idAutorite": 10,
+    "idCirconscription": 10,
+    "fonction": "GOUVERNEUR",
+    "dateDebut": "01-03-2012",
+    "dateFin": null
+  }
+]

@@ -1,5 +1,6 @@
 package com.devekoc.camerAtlas.entities;
 
+import com.devekoc.camerAtlas.enumerations.BorderType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,20 +21,12 @@ public class Delimitation {
     @JoinColumn(name = "codeCirconscription")
     private Circonscription circonscription;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idFrontiere")
-    private Frontiere frontiere;
+    @Column(name = "typeFrontiere")
+    @Enumerated(EnumType.STRING)
+    private BorderType borderType;
 
+    @Column(name = "frontiere")
+    private String borderName;
 
-    /**
-     * Constructeur de convenance pour créer une délimitation à partir des entités associées.
-     * L'ID composite est créé automatiquement par JPA grâce à @MapsId.
-     * @param frontiere L'entité Frontiere managée.
-     * @param circonscription L'entité Circonscription managée.
-     */
-    public Delimitation(Frontiere frontiere, Circonscription circonscription) {
-        this.frontiere = frontiere;
-        this.circonscription = circonscription;
-    }
 
 }

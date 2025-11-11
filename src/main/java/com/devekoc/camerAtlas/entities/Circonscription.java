@@ -22,21 +22,24 @@ public abstract class Circonscription {
     protected Integer id;
 
     @Column(name = "nomCirconscription", unique = true)
-    @NotBlank(message = "Le nom ne doit pas être vide !")
-    @Size(min = 1, max = 50, message = "Le nom doit contenir entre 1 et 50 caractères")
-    protected String nom;
+    @NotBlank(message = "Le name ne doit pas être vide !")
+    @Size(min = 1, max = 50, message = "Le name doit contenir entre 1 et 50 caractères")
+    protected String name;
 
-    @Column
-    @NotNull(message = "La superficie ne doit pas être vide !")
-    @Positive(message = "La superficie doit être positive")
-    protected Integer superficie;
+    @Column(name = "superficie")
+    @NotNull(message = "La surface ne doit pas être vide !")
+    @Positive(message = "La surface doit être positive")
+    protected Integer surface;
 
-    @Column
+    @Column(name = "population")
     @NotNull(message = "La population ne doit pas être vide !")
     @Positive(message = "La population doit être positive")
     protected Integer population;
 
     @Column(name = "coordonneesGPS")
-    protected String coordonnees;
+    protected String gpsCoordinates;
+
+    @Column(name = "image")
+    protected String image;
 
 }

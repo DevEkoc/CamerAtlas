@@ -1,167 +1,102 @@
-# CamerAtlas
+# CamerAtlas API
 
-CamerAtlas est une application Spring Boot qui fournit une API REST pour gérer les divisions administratives du Cameroun, y compris les régions, les départements, les arrondissements, ainsi que les autorités qui les gouvernent.
+![Spring](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+![JPA](https://img.shields.io/badge/JPA-a571a5?style=for-the-badge&logo=hibernate&logoColor=white)
 
-## Table des matières
-- [Concepts Clés](#concepts-clés)
-- [Technologies Utilisées](#technologies-utilisées)
-- [Prérequis](#prérequis)
-- [Configuration](#configuration)
-- [Lancement de l'application](#lancement-de-lapplication)
-- [Structure du Projet](#structure-du-projet)
-- [Endpoints de l'API](#endpoints-de-lapi)
+Ce dépôt contient le code source de **CamerAtlas**, une API RESTful robuste développée avec **Spring Boot**. Le projet vise à modéliser, stocker et servir des données complètes sur les divisions administratives du Cameroun, de la région jusqu'au neighborhood.
 
-## Concepts Clés
+## 🎯 Fonctionnalités Clés
 
-Le modèle de données s'articule autour de plusieurs entités principales :
+- **API RESTful Complète :** Endpoints CRUD (Create, Read, Update, Delete) pour toutes les entités administratives (Régions, Départements, Arrondissements, Quartiers, etc.).
+- **Modélisation Hiérarchique :** Utilisation de l'héritage JPA (`@Inheritance`) pour une représentation claire et maintenable de la hiérarchie des circonscriptions.
+- **Gestion des Médias :** Système d'upload permettant d'associer des images aux entités (régions, départements, etc.), avec un service dédié pour une logique centralisée.
+- **Validation des Données :** Utilisation de `jakarta.validation` et de contraintes personnalisées pour garantir l'intégrité des données entrantes.
+- **Gestion d'Erreurs Centralisée :** Un `ControllerAdvice` global intercepte les exceptions pour fournir des réponses d'erreur JSON claires et standardisées.
+- **Architecture Propre :** Conçu selon une architecture 3-tiers (Controller, Service, Repository) et utilisant des DTOs (Data Transfer Objects) pour découpler l'API du modèle de données.
 
-- **Circonscription** : Représente une unité administrative générique (Région, Département, Arrondissement). C'est une classe mère dont héritent les autres types de circonscriptions.
-- **Autorite** : Désigne un fonctionnaire de l'administration (par exemple, un Gouverneur, un Préfet).
-- **Affectation** : Matérialise l'assignation d'une `Autorite` à une `Circonscription` pour une période donnée, avec une fonction spécifique (`GOUVERNEUR`, `PREFET`, `SOUS-PREFET`).
-- **Frontiere** : Définit une limite géographique (pays, région, etc.).
-- **Delimitation** : Table de jointure qui associe une `Circonscription` à ses `Frontiere`.
+## 🛠️ Stack Technique
 
-## Technologies Utilisées
+- **Framework :** [Spring Boot](https://spring.io/projects/spring-boot) (v3.x)
+- **Langage :** [Java](https://www.java.com/) (v17+)
+- **Accès aux données :** [Spring Data JPA](https://spring.io/projects/spring-data-jpa), [Hibernate](https://hibernate.org/)
+- **Base de données :** [MySQL](https://www.mysql.com/)
+- **Gestion de dépendances :** [Apache Maven](https://maven.apache.org/)
+- **Validation :** Jakarta Bean Validation
+- **Logging :** SLF4J & Logback
 
-- **Backend**:
-  - Java 21
-  - Spring Boot 3.5.6
-  - Spring Web (pour l'API REST)
-  - Spring Data JPA / Hibernate (pour la persistance des données)
-- **Base de données**:
-  - MySQL
-- **Gestion de projet**:
-  - Apache Maven
+## 🚀 Installation et Lancement
 
-## Prérequis
+Suivez ces instructions pour lancer le projet en local sur votre machine.
 
-- JDK 21 ou supérieur
-- Apache Maven
-- Une instance de base de données MySQL en cours d'exécution
+### Prérequis
 
-## Configuration
+- [JDK (Java Development Kit)](https://www.oracle.com/java/technologies/downloads/) (version 17 ou supérieure)
+- [Apache Maven](https://maven.apache.org/download.cgi) (version 3.8 ou supérieure)
+- Un serveur de base de données [MySQL](https://dev.mysql.com/downloads/mysql/) fonctionnel.
 
-1.  **Base de données** :
-    Exécutez le script SQL situé dans `src/main/resources/camerAtlas.sql` pour créer la base de données `cameratlas` et ses tables.
+### Configuration
 
-2.  **Variables d'environnement** :
-    Créez un fichier `.env` à la racine du projet (`camerAtlas/.env`) et configurez vos identifiants de base de données. Vous pouvez vous baser sur l'exemple suivant :
-
-    ```env
-    DATABASE_URL=jdbc:mysql://localhost:3306/cameratlas
-    DATABASE_USER=votre_utilisateur_db
-    DATABASE_PASSWORD=votre_mot_de_passe_db
-    DATABASE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+1.  **Clonez le dépôt :**
+    ```bash
+    git clone https://github.com/votre-utilisateur/camerAtlas.git
+    cd camerAtlas
     ```
 
-## Lancement de l'application
+2.  **Configurez la base de données :**
+    - Assurez-vous que votre serveur MySQL est en cours d'exécution.
+    - Créez une base de données pour le projet. Exemple :
+      ```sql
+      CREATE DATABASE cameratlas_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+      ```
 
-Une fois la configuration terminée, vous pouvez démarrer l'application en utilisant le wrapper Maven fourni :
+3.  **Configurez les variables d'environnement :**
+    - À la racine du projet, créez un fichier nommé `.env`.
+    - Remplissez ce fichier avec les informations de connexion à votre base de données. Voici un exemple :
+      ```properties
+      # URL de connexion JDBC pour MySQL
+      DATABASE_URL=jdbc:mysql://localhost:3306/cameratlas_db
 
-```bash
-./mvnw spring-boot:run
-```
+      # Utilisateur de la base de données
+      DATABASE_USER=root
 
-L'application sera accessible à l'adresse `http://localhost:8080/api`.
+      # Mot de passe de l'utilisateur
+      DATABASE_PASSWORD=votre_mot_de_passe
 
-## Structure du Projet
+      # Classe du driver JDBC
+      DATABASE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+      ```
 
-Le code source est organisé dans les packages suivants :
+4.  **Lancez l'application :**
+    - Utilisez Maven pour compiler le projet et lancer le serveur de développement.
+    ```bash
+    mvn spring-boot:run
+    ```
 
-- `com.devekoc.camerAtlas`:
-  - `config`: Configuration de l'application (ex: chargement du fichier `.env`).
-  - `controllers`: Contient les contrôleurs REST qui exposent les endpoints de l'API.
-  - `dto`: Data Transfer Objects, utilisés pour structurer les données des requêtes et des réponses.
-  - `entities`: Classes JPA qui modélisent les tables de la base de données.
-  - `enumerations`: Énumérations utilisées dans le modèle (ex: `Fonction`, `TypeFrontiere`).
-  - `exceptions`: Exceptions personnalisées pour la gestion des erreurs métier.
-  - `repositories`: Interfaces Spring Data JPA pour l'accès aux données.
-  - `services`: Contient la logique métier de l'application.
+L'API devrait maintenant être accessible à l'adresse `http://localhost:8080/api`.
 
-## Endpoints de l'API
+## 🌐 Endpoints Principaux de l'API
 
-Le préfixe de base pour tous les endpoints est `/api`.
+L'API expose plusieurs ressources pour interagir avec les données géographiques et administratives :
 
-### Affectation (`/api/affectation`)
-| Méthode | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Crée une nouvelle affectation. |
-| `GET` | `/` | Liste toutes les affectations. |
-| `PUT` | `/{id}` | Met à jour une affectation existante. |
-| `DELETE` | `/{id}` | Supprime une affectation par son ID. |
+- `GET /api/regions` : Liste toutes les régions.
+- `GET /api/regions/{id}` : Récupère une région spécifique.
+- `GET /api/departements` : Liste tous les départements.
+- `GET /api/arrondissements` : Liste tous les arrondissements.
+- `GET /api/quartiers` : Liste tous les quartiers.
+- `GET /api/autorites` : Liste les autorités.
+- `GET /api/media/regions/{filename}` : Accède à l'image d'une région.
 
-### Arrondissement (`/api/arrondissement`)
-| Méthode | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Crée un nouvel arrondissement. |
-| `GET` | `/` | Liste tous les arrondissements. |
-| `GET` | `/id/{id}` | Recherche un arrondissement par son ID. |
-| `GET` | `/nom/{nom}` | Recherche un arrondissement par son nom. |
-| `PUT` | `/{id}` | Met à jour un arrondissement existant. |
-| `DELETE` | `/id/{id}` | Supprime un arrondissement par son ID. |
-| `DELETE` | `/nom/{nom}` | Supprime un arrondissement par son nom. |
+Des endpoints `POST`, `PUT`, `DELETE` sont également disponibles pour la gestion des données (potentiellement sécurisés).
 
-### Autorité (`/api/autorite`)
-| Méthode | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Crée une nouvelle autorité. |
-| `GET` | `/` | Liste toutes les autorités. |
-| `GET` | `/{id}` | Recherche une autorité par son ID. |
-| `PUT` | `/{id}` | Met à jour une autorité existante. |
-| `DELETE` | `/{id}` | Supprime une autorité par son ID. |
+## Auteur
 
-### Circonscription (`/api/circonscription`)
-| Méthode | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Crée une nouvelle circonscription (non utilisable directement car la classe est abstraite). |
-| `GET` | `/` | Liste toutes les circonscriptions (Régions, Départements, Arrondissements). |
-| `GET` | `/{id}` | Recherche une circonscription par son ID. |
-| `PUT` | `/{id}` | Met à jour une circonscription (non utilisable directement). |
-| `DELETE` | `/{id}` | Supprime une circonscription par son ID. |
+- **Christophe Cédric EKOBENA OMGBA**
 
-### Délimitation (`/api/delimitation`)
-| Méthode | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Crée une nouvelle délimitation entre une circonscription et une frontière. |
-| `GET` | `/` | Liste toutes les délimitations. |
-| `DELETE` | `/{id}` | Supprime une délimitation par son ID. |
+## Licence
 
-### Département (`/api/departement`)
-| Méthode | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Crée un nouveau département. |
-| `GET` | `/` | Liste tous les départements. |
-| `GET` | `/id/{id}` | Recherche un département par son ID. |
-| `GET` | `/nom/{nom}` | Recherche un département par son nom. |
-| `PUT` | `/{id}` | Met à jour un département existant. |
-| `DELETE` | `/id/{id}` | Supprime un département par son ID. |
-| `DELETE` | `/nom/{nom}` | Supprime un département par son nom. |
+Copyright © 2024 Christophe Cédric EKOBENA OMGBA. Tous droits réservés.
 
-### Frontière (`/api/frontiere`)
-| Méthode | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Crée une nouvelle frontière. |
-| `GET` | `/` | Liste toutes les frontières. |
-| `GET` | `?type={type}` | Recherche les frontières par type (ex: `PAYS`, `REGION`). |
-
-### Quartier (`/api/quartier`)
-| Méthode | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Crée un nouveau quartier. |
-| `GET` | `/` | Liste tous les quartiers. |
-| `GET` | `/id/{id}` | Recherche un quartier par son ID. |
-| `GET` | `/nom/{nom}` | Recherche un quartier par son nom. |
-| `PUT` | `/{id}` | Met à jour un quartier existant. |
-| `DELETE` | `/id/{id}` | Supprime un quartier par son ID. |
-| `DELETE` | `/nom/{nom}` | Supprime un quartier par son nom. |
-
-### Région (`/api/region`)
-| Méthode | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Crée une nouvelle région. |
-| `GET` | `/` | Liste toutes les régions. |
-| `GET` | `/id/{id}` | Recherche une région par son ID. |
-| `GET` | `/nom/{nom}` | Recherche une région par son nom. |
-| `PUT` | `/{id}` | Met à jour une région existante. |
-| `DELETE` | `/id/{id}` | Supprime une région par son ID. |
-| `DELETE` | `/nom/{nom}` | Supprime une région par son nom. |
+Ce projet est présenté à des fins de démonstration et de consultation. La permission de voir le code source est accordée, mais toute utilisation, copie, modification, distribution ou vente du logiciel et de sa documentation est strictement interdite sans l'autorisation écrite préalable de l'auteur.
