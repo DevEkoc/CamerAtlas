@@ -1,5 +1,16 @@
 ## Journal de bord - CamerAtlas
 
+### Session du mardi 9 décembre 2025
+
+**Avancées & Décisions :**
+*   **Documentation Complète de l'API (Swagger/OpenAPI) :**
+    *   **Analyse du Modèle :** La structure de documentation existante dans `SubDivisionController.java` a été analysée pour servir de modèle.
+    *   **Généralisation :** La documentation Swagger (`@Tag`, `@Operation`, `@ApiResponses`) a été appliquée à l'intégralité des contrôleurs de l'application (`Region`, `Division`, `SubDivision`, `Neighborhood`, `Authority`, `Appointment`, `Delimitation`, `Suggestion`, `User`, `Media`).
+    *   **Précision des Réponses :** Pour chaque endpoint, le service métier correspondant a été analysé afin de garantir que tous les codes de réponse HTTP possibles (succès, erreurs de validation, conflits métier, erreurs serveur) soient documentés de manière précise et exhaustive.
+*   **Mise à jour de la Roadmap :** L'avancement de la documentation de l'API a été répercuté dans le fichier `ROADMAP.MD`.
+
+## Journal de bord - CamerAtlas
+
 ### Session du mercredi 26 novembre 2025
 
 **Avancées & Décisions :**

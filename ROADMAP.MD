@@ -32,9 +32,9 @@ L'analyse du code a révélé que de nombreuses fonctionnalités des phases 1, 2
     -   [x] **Structure de test créée.** Le répertoire `src/test/java` est en place.
     -   [~] **Écrire des tests unitaires pour les `Services`.** Une base de tests solide et de bonne qualité a été écrite pour la majorité des services. La couverture doit être finalisée (ex: `SuggestionService`).
     -   [ ] Écrire des tests d'intégration pour les `Controllers` avec `MockMvc` pour valider les contrats d'API (endpoints, DTOs, codes de statut HTTP).
-- [ ] **Documenter l'API :**
-    -   [ ] Intégrer **SpringDoc (OpenAPI 3)** en ajoutant la dépendance au `pom.xml`.
-    -   [ ] Configurer SpringDoc et annoter les contrôleurs pour générer une documentation Swagger UI interactive.
+- [x] **Documenter l'API :**
+    -   [x] Intégrer **SpringDoc (OpenAPI 3)** en ajoutant la dépendance au `pom.xml`.
+    -   [x] Configurer SpringDoc et annoter les contrôleurs pour générer une documentation Swagger UI interactive.
 
 ---
 

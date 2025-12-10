@@ -1,5 +1,9 @@
 package com.devekoc.camerAtlas.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -18,6 +22,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+@Tag(name = "Médias", description = "Gestion et consultation des fichiers médias (images) associés aux entités")
 @RestController
 @RequestMapping("media")
 public class MediaController {
@@ -28,6 +33,17 @@ public class MediaController {
     // Liste blanche des sous-répertoires autorisés
     private static final List<String> ALLOWED_SUBSEQUENT_DIRECTORIES = Arrays.asList("regions", "divisions", "subDivisions");
 
+    @Operation(
+            summary = "Récupère un fichier média",
+            description = "Permet d'accéder aux fichiers images stockés sur le serveur, en spécifiant un sous-répertoire et un nom de fichier. Seuls les sous-répertoires autorisés sont accessibles."
+    )
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Fichier média récupéré avec succès"),
+                    @ApiResponse(responseCode = "400", description = "Requête invalide (par exemple, tentative de path traversal ou URL mal formée)"),
+                    @ApiResponse(responseCode = "404", description = "Sous-répertoire non autorisé ou fichier non trouvé")
+            }
+    )
     @GetMapping("/{subDirectory}/{fileName:.+}")
     public ResponseEntity<Resource> getImage(
             @PathVariable String subDirectory,

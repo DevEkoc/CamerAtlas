@@ -1,11 +1,15 @@
 HELP.md
+.env
+.mvn
 target/
+uploads/
+.gitattributes
+
+
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-.env
-.mvn
-target
+
 ### STS ###
 .apt_generated
 .classpath
