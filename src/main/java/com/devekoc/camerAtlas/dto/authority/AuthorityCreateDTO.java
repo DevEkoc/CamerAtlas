@@ -7,8 +7,8 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
 public record AuthorityCreateDTO(
-        @NotBlank(message = "Le nom ne peut pas être vide !")
-        @Size(max = 50, message = "Le nom doit faire maximum 50 caractères")
+        @NotBlank(message = "Le name ne peut pas être vide !")
+        @Size(max = 50, message = "Le name doit faire maximum 50 caractères")
         String name,
 
         @Size(max = 50, message = "Le prénom doit faire maximum 50 caractères")

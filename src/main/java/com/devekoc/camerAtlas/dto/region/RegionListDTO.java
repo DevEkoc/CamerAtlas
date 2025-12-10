@@ -16,6 +16,5 @@ public record RegionListDTO(
         String imgUrl,
         AuthorityDetailsDTO governor,
         List<DelimitationDetailsDTO> boundaries
-//        List<DivisionWithSubDivisionsDTO> departements
 ) {
 }

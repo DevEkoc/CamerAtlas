@@ -74,7 +74,7 @@ public final class RegionMapper {
                         a.getAuthority().getName(),
                         a.getAuthority().getSurname(),
                         a.getAuthority().getDateOfBirth(),
-                        a.getFonction().toString(),
+                        a.getFunction().toString(),
                         a.getStartDate(),
                         a.getEndDate()
                 ))

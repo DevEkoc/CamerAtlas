@@ -4,6 +4,7 @@ import com.devekoc.camerAtlas.dto.delimitation.DelimitationCreateDTO;
 import com.devekoc.camerAtlas.dto.delimitation.DelimitationListDTO;
 import com.devekoc.camerAtlas.services.DelimitationService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,10 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value = "delimitation")
+@AllArgsConstructor
+@RequestMapping(value = "delimitations")
 public class DelimitationController {
     private final DelimitationService delimitationService;
-
-    public DelimitationController(DelimitationService delimitationService) {
-        this.delimitationService = delimitationService;
-    }
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
@@ -41,7 +39,7 @@ public class DelimitationController {
         return ResponseEntity.ok(delimitations);
     }
 
-    @DeleteMapping(path = "{id}")
+    @DeleteMapping(path = "id/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> delete(@PathVariable int id) {
         delimitationService.delete(id);

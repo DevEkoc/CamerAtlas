@@ -1,11 +1,35 @@
 ## Journal de bord - CamerAtlas
 
+### Session du mercredi 26 novembre 2025
+
+**Avancées & Décisions :**
+*   **Analyse de la Sécurité :**
+    *   Confirmation d'une implémentation d'authentification robuste (JWT, Refresh Tokens, Verification Tokens).
+    *   Le système dispose d'un mécanisme de rôles via l'entité `User` et l'énumération `Role`, mais l'autorisation fine grainée au niveau des endpoints et méthodes (`@PreAuthorize`) n'était pas activée/utilisée.
+    *   Identification de la nécessité d'activer `@EnableMethodSecurity` et d'appliquer les annotations de sécurité.
+*   **Développement et Refactoring du Système de Suggestions :**
+    *   **Implémentation Initiale :** Un système de suggestions complet a été développé pour diverses entités (Région, Division, Arrondissement, Quartier, Délimitation, Autorité, Affectation). Il permet la création, la modification et la suppression d'entités via des suggestions en attente d'approbation.
+    *   **Architecture Initiale :** La première implémentation de l'application des suggestions utilisait des accès directs aux repositories et des méthodes `patch...` pour mettre à jour les entités.
+    *   **Refactoring Architectural Majeur :** Suite à une discussion, il a été décidé de refactoriser le `SuggestionService` pour qu'il utilise les services métiers existants de chaque entité (ex: `RegionService`) plutôt que d'accéder directement aux repositories et de réimplémenter la logique de patch. Cette approche respecte le principe DRY et centralise la logique métier.
+    *   **Mise en œuvre du Refactoring (Cas `REGION`) :**
+        *   La méthode `applyRegionSuggestion` a été refactorisée pour désérialiser le `payload` JSON directement en `RegionCreateDTO` via `ObjectMapper.readValue()`.
+        *   Les opérations `CREATE`, `UPDATE`, `DELETE` sur les régions délèguent désormais leurs traitements au `RegionService` correspondant.
+        *   Les méthodes `toRegionCreateDTO` et `patchRegion` sont devenues obsolètes et ont été supprimées.
+    *   **Nettoyage du Code :** Les injections de repositories et les méthodes `patch...` inutilisées pour les autres types d'entités ont été supprimées du `SuggestionService`.
+*   **Tâches en Attente :**
+    *   **Finalisation du Refactoring :** Étendre le refactoring du `SuggestionService` pour utiliser les services métier de toutes les autres entités (`DivisionService`, `SubDivisionService`, `NeighborhoodService`, `DelimitationService`, `AuthorityService`, `AppointmentService`).
+    *   **Correction `Delimitation` :** Implémenter le cas `UPDATE` dans `applyDelimitationSuggestion`, actuellement commenté.
+    *   **Sécurité des Endpoints de Suggestion :** Restreindre l'accès aux endpoints `/approve` et `/reject` du `SuggestionController` aux rôles appropriés (ex: `ADMIN`).
+    *   **Robustesse et UX :** Améliorer la gestion des erreurs et ajouter la possibilité d'indiquer une raison lors du rejet d'une suggestion.
+
+## Journal de bord - CamerAtlas
+
 ### Session du mercredi 5 novembre 2025
 
 **Avancées & Décisions :**
 *   **Analyse d'Architecture :** Une revue de l'implémentation de l'endpoint `/api/regions/id/{id}/divisions` a été effectuée.
 *   **Identification d'un Anti-Pattern :** L'injection de `Repositories` dans les classes `Mapper` a été identifiée comme une mauvaise pratique.
-    *   **Conséquences :** Cette approche viole le principe de responsabilité unique, engendre un grave problème de performance de type "N+1 requêtes" (plus de 20 requêtes pour un seul appel API), et complexifie les tests unitaires.
+    *   **Conséquences :** Cette approche violera le principe de responsabilité unique, engendrera un grave problème de performance de type "N+1 requêtes" (plus de 20 requêtes pour un seul appel API), et complexifiera les tests unitaires.
 *   **Plan de Refactoring :** Il a été décidé de refactoriser cette partie du code. Le plan consiste à centraliser toute la logique de récupération de données dans la couche `Service`, à rendre les `Mappers` statiques et sans état, et à optimiser les requêtes à la base de données. Le refactoring est mis en pause pour discuter d'abord de la factorisation du code via l'héritage.
 
 ### Session du mardi 4 novembre 2025

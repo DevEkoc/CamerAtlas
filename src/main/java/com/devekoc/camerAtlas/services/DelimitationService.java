@@ -9,20 +9,17 @@ import com.devekoc.camerAtlas.repositories.CirconscriptionRepository;
 import com.devekoc.camerAtlas.repositories.DelimitationRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class DelimitationService {
     private final DelimitationRepository delimitationRepository;
     private final CirconscriptionRepository circonscriptionRepository;
-
-    public DelimitationService(DelimitationRepository delimitationRepository, CirconscriptionRepository circonscriptionRepository) {
-        this.delimitationRepository = delimitationRepository;
-        this.circonscriptionRepository = circonscriptionRepository;
-    }
 
     public DelimitationListDTO create(DelimitationCreateDTO dto) {
         Circonscription circonscription = circonscriptionRepository.findById(dto.circonscriptionId())

@@ -11,7 +11,7 @@ public class AppointmentMapper {
     public static Appointment fromCreateDTO (AppointmentCreateDTO dto, Appointment appointment, Authority authority, Circonscription circonscription) {
         appointment.setAuthority(authority);
         appointment.setCirconscription(circonscription);
-        appointment.setFonction(dto.fonction());
+        appointment.setFunction(dto.function());
         appointment.setStartDate(dto.startDate());
         appointment.setEndDate(dto.endDate());
         return appointment;
@@ -22,7 +22,7 @@ public class AppointmentMapper {
                 appointment.getId(),
                 appointment.getAuthority().getId(),
                 appointment.getCirconscription().getId(),
-                appointment.getFonction(),
+                appointment.getFunction(),
                 appointment.getStartDate(),
                 appointment.getEndDate()
         );

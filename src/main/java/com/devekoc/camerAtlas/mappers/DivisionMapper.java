@@ -15,7 +15,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public final class DivisionMapper {
 
@@ -52,12 +51,7 @@ public final class DivisionMapper {
         );
     }
 
-    public static DivisionWithSubDivisionsDTO toDivisionWithSubDivisions (
-            Division division,
-            Optional<Appointment> seniorDivisionalOfficer,
-            List<Delimitation> regionBoundaries,
-            Map<Integer, Optional<Appointment>> subDivisionAppointments,
-            Map<Integer, List<Delimitation>> subDivisionDelimitations) {
+    public static DivisionWithSubDivisionsDTO toDivisionWithSubDivisions (Division division, Optional<Appointment> seniorDivisionalOfficer, List<Delimitation> regionBoundaries, Map<Integer, Optional<Appointment>> subDivisionAppointments, Map<Integer, List<Delimitation>> subDivisionDelimitations) {
         List<SubDivisionListDTO> subDivisions = division.getSubDivisionsList().stream()
                 .map(s -> SubDivisionMapper.toListDTO(s, subDivisionAppointments, subDivisionDelimitations))
                 .toList();
@@ -93,7 +87,7 @@ public final class DivisionMapper {
                 appointment.getAuthority().getName(),
                 appointment.getAuthority().getSurname(),
                 appointment.getAuthority().getDateOfBirth(),
-                appointment.getFonction().toString(),
+                appointment.getFunction().toString(),
                 appointment.getStartDate(),
                 appointment.getEndDate()
         );

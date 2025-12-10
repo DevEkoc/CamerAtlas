@@ -3,13 +3,12 @@ package com.devekoc.camerAtlas.services;
 import com.devekoc.camerAtlas.dto.division.DivisionCreateDTO;
 import com.devekoc.camerAtlas.dto.division.DivisionListDTO;
 import com.devekoc.camerAtlas.dto.division.DivisionWithSubDivisionsDTO;
-import com.devekoc.camerAtlas.dto.region.RegionListDTO;
 import com.devekoc.camerAtlas.entities.*;
 import com.devekoc.camerAtlas.mappers.DivisionMapper;
-import com.devekoc.camerAtlas.mappers.RegionMapper;
 import com.devekoc.camerAtlas.repositories.*;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -20,6 +19,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
+@AllArgsConstructor
 @Service
 public class DivisionService {
 
@@ -30,14 +30,6 @@ public class DivisionService {
     private final MediaService mediaService;
     private final AppointmentRepository appointmentRepository;
     private final DelimitationRepository delimitationRepository;
-
-    public DivisionService(DivisionRepository divisionRepository, RegionRepository regionRepository, MediaService mediaService, AppointmentRepository appointmentRepository, DelimitationRepository delimitationRepository) {
-        this.divisionRepository = divisionRepository;
-        this.regionRepository = regionRepository;
-        this.mediaService = mediaService;
-        this.appointmentRepository = appointmentRepository;
-        this.delimitationRepository = delimitationRepository;
-    }
 
     /* ===================== CRÉATION ===================== */
 
@@ -143,7 +135,7 @@ public class DivisionService {
     @Transactional
     public void delete(String name) {
         Division division = divisionRepository.findByName(name)
-                .orElseThrow(() -> new EntityNotFoundException("Aucun département trouvé avec le nom " + name));
+                .orElseThrow(() -> new EntityNotFoundException("Aucun département trouvé avec le name " + name));
         deleteDivision(division);
     }
 
@@ -181,12 +173,12 @@ public class DivisionService {
                 .orElseThrow(() -> new EntityNotFoundException("Aucune région trouvée avec l'ID : " + id));
     }
 
-    // Permet d’obtenir une seule division enrichie de ses relations (évite la duplication dans find(id) et find(name))
+    // Permet d’obtenir un seul département enrichi de ses relations (évite la duplication dans find(id) et find(name))
     private DivisionListDTO mapSingleDivision(Division division) {
         int id = division.getId();
-        Map<Integer, Optional<Appointment>> apps = getActiveAppointments(List.of(id));
-        Map<Integer, List<Delimitation>> delims = getDelimitations(List.of(id));
-        return DivisionMapper.toListDTO(division, apps, delims);
+        Map<Integer, Optional<Appointment>> appointments = getActiveAppointments(List.of(id));
+        Map<Integer, List<Delimitation>> delimitations = getDelimitations(List.of(id));
+        return DivisionMapper.toListDTO(division, appointments, delimitations);
     }
 
     private void validateUniqueName (String name) {

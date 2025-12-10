@@ -11,6 +11,7 @@ import com.devekoc.camerAtlas.repositories.AppointmentRepository;
 import com.devekoc.camerAtlas.repositories.AuthorityRepository;
 import com.devekoc.camerAtlas.repositories.CirconscriptionRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,17 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 @Transactional
 public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final CirconscriptionRepository circonscriptionRepository;
     private final AuthorityRepository autoriteRepository;
-
-    public AppointmentService(AppointmentRepository appointmentRepository, CirconscriptionRepository circonscriptionRepository, AuthorityRepository autoriteRepository) {
-        this.appointmentRepository = appointmentRepository;
-        this.circonscriptionRepository = circonscriptionRepository;
-        this.autoriteRepository = autoriteRepository;
-    }
 
     public AppointmentListDTO create(AppointmentCreateDTO dto) {
         Circonscription circonscription = circonscriptionRepository.findById(dto.circonscriptionId()).orElseThrow(

@@ -14,7 +14,7 @@ package com.devekoc.camerAtlas.dto.api;
 
 public record AutoriteSimpleDTO(
     String nom,
-    String fonction
+    String function
 ) {}
 ```
 
@@ -73,14 +73,18 @@ public record RegionDetailDTO(
 Pour trouver facilement le gouverneur, le préfet ou les frontières, nous devons ajouter des méthodes spécifiques à nos repositories JPA.
 
 **1. Dans `AffectationRepository.java`**
-Ajoute cette méthode pour trouver une affectation active (sans date de fin) pour une circonscription et une fonction données.
+Ajoute cette méthode pour trouver une affectation active (sans date de fin) pour une circonscription et une function données.
+
 ```java
 import java.util.Optional;
+
 import com.devekoc.camerAtlas.entities.Circonscription;
-import com.devekoc.camerAtlas.enumerations.Fonction;
+import com.devekoc.camerAtlas.enumerations.Function;
+import com.devekoc.camerAtlas.enumerations.Function;
 
 // ... dans l'interface AffectationRepository
-Optional<Affectation> findByCirconscriptionAndFonctionAndEndDateIsNull(Circonscription circonscription, Fonction fonction);
+
+Optional<Affectation> findByCirconscriptionAndFonctionAndEndDateIsNull(Circonscription circonscription, Function function);
 ```
 
 **2. Dans `DelimitationRepository.java`**
@@ -102,16 +106,13 @@ La logique de transformation est complexe. Il est préférable de créer une nou
 ```java
 package com.devekoc.camerAtlas.mappers;
 
-import com.devekoc.camerAtlas.dto.api.*;
 import com.devekoc.camerAtlas.entities.*;
-import com.devekoc.camerAtlas.enumerations.Fonction;
+import com.devekoc.camerAtlas.enumerations.Function;
 import com.devekoc.camerAtlas.repositories.AffectationRepository;
 import com.devekoc.camerAtlas.repositories.DelimitationRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -127,7 +128,7 @@ public class ApiMapper {
 
     public RegionDetailDTO toRegionDetailDTO(Region region) {
         // 1. Trouver le gouverneur
-        AutoriteSimpleDTO gouverneur = affectationRepository.findByCirconscriptionAndFonctionAndEndDateIsNull(region, Fonction.GOUVERNEUR)
+        AutoriteSimpleDTO gouverneur = affectationRepository.findByCirconscriptionAndFonctionAndEndDateIsNull(region, Function.GOUVERNEUR)
                 .map(affectation -> new AutoriteSimpleDTO(
                         affectation.getAuthority().getName() + " " + affectation.getAuthority().getSurname(),
                         affectation.getFonction().name()
@@ -157,7 +158,7 @@ public class ApiMapper {
 
     private DivisionDetailDTO toDivisionDetailDTO(Division division) {
         // 1. Trouver le préfet
-        AutoriteSimpleDTO prefet = affectationRepository.findByCirconscriptionAndFonctionAndEndDateIsNull(division, Fonction.PREFET)
+        AutoriteSimpleDTO prefet = affectationRepository.findByCirconscriptionAndFonctionAndEndDateIsNull(division, Function.PREFET)
                 .map(affectation -> new AutoriteSimpleDTO(
                         affectation.getAuthority().getName() + " " + affectation.getAuthority().getSurname(),
                         affectation.getFonction().name()

@@ -6,100 +6,87 @@
 
 ---
 
-## ✅ Bilan de l'État Actuel (Ce qui est déjà fait)
-
-Le projet dispose déjà d'une base technique très solide et fonctionnelle. La plupart des fonctionnalités fondamentales sont implémentées.
+## ✅ Bilan de l'État Actuel (Mis à jour le 02/12/2025)
 
 | Module | Statut | Détails Techniques |
 |:---|:---:|:---|
-| **Hiérarchie Administrative** | ✅ **Terminé** | CRUD complet pour `Region`, `Departement`, `Arrondissement`, `Quartier`. |
-| **Entités Secondaires** | ✅ **Terminé** | CRUD complet pour `Autorite`, `Affectation`, `Delimitation`. |
-| **Structure de l'API** | ✅ **Terminé** | Endpoints RESTful pour chaque entité avec validation des entrées (`@Valid`). |
-| **DTOs & Mapping** | ✅ **Terminé** | Utilisation systématique de DTOs (records) pour les créations et listages. Le mapping est fait dans les services ou via des classes dédiées (`RegionMapper`). |
-| **Gestion des Médias** | ✅ **Partiel** | **Upload d'images fonctionnel** pour les `Region`. Les images sont stockées dans `uploads/regions`. |
-| **Service des Médias** | ✅ **Terminé**| Un `MediaController` existe et **sert déjà les images** via l'endpoint `GET /api/media/regions/{filename}`. |
+| **Hiérarchie Administrative** | ✅ **Terminé** | CRUD complet pour `Region`, `Division`, `SubDivision`, `Neighborhood`. |
+| **Entités Secondaires** | ✅ **Terminé** | CRUD complet pour `Authority`, `Appointment`, `Delimitation`. |
+| **Sécurité de l'API** | ✅ **Terminé** | Authentification **JWT**. Rôles `ADMIN` et `CONTRIBUTOR`. Endpoints sécurisés. |
+| **Système de Suggestions** | ✅ **Terminé** | Endpoints et logique pour la création, validation et le rejet des suggestions. |
+| **DTOs & Mapping** | ✅ **Terminé** | DTOs (records) pour toutes les opérations. Le mapping est réalisé via des classes Mapper dédiées (`RegionMapper`, `DivisionMapper`, etc.). |
+| **Gestion des Médias** | ✅ **Terminé** | Upload, service et **suppression des anciennes images** fonctionnels pour les entités. |
 | **Gestion des Erreurs** | ✅ **Terminé** | Centralisée et robuste via `ApplicationControllerAdvice`. |
-| **Relations Hiérarchiques** | ✅ **Terminé** | Les DTOs de listing (ex: `RegionListerDTO`) incluent déjà les enfants directs (ex: liste des départements). |
-| **Validation Métier** | ✅ **Terminé** | Des règles complexes sont en place (ex: une autorité ne peut avoir qu'un poste actif, géré dans `AffectationService`). |
+| **Opérations en masse** | ✅ **Terminé** | Endpoint `createSeveral` pour la création en cascade (ex: une région et ses divisions). |
 
 ---
 
 ## 🗺️ Feuille de Route d'Évolution
 
-Basé sur les fondations existantes, voici une proposition de roadmap stratégique.
+L'analyse du code a révélé que de nombreuses fonctionnalités des phases 1, 2 et 4 étaient déjà implémentées. La roadmap est réorganisée pour refléter les vraies priorités.
 
-### 🏁 Phase 1 — Robustesse et Fiabilité
-**Objectif :** Sécuriser l'application, garantir sa stabilité et améliorer l'expérience développeur.
+### 🏁 **Phase 1 (Priorité Haute) — Qualité et Fiabilisation**
+**Objectif :** Garantir la non-régression, la stabilité et documenter l'API pour les futurs développements. C'est le chantier le plus important.
 
-- [ ] **Intégrer Spring Security :**
-    -   [ ] Mettre en place une authentification par **JWT (JSON Web Tokens)**.
-    -   [ ] Créer les endpoints `/auth/login` et `/auth/register`.
-    -   [ ] Sécuriser les routes `POST`, `PUT`, `DELETE` pour qu'elles nécessitent un rôle `ADMIN`.
-- [ ] **Compléter la couverture de tests :**
-    -   [ ] Écrire des tests unitaires pour les `Services` (logique métier, cas limites).
-    -   [ ] Écrire des tests d'intégration pour les `Controllers` avec `MockMvc` pour valider les endpoints, les DTOs et les réponses HTTP.
+- [~] **Compléter la couverture de tests :**
+    -   [x] **Structure de test créée.** Le répertoire `src/test/java` est en place.
+    -   [~] **Écrire des tests unitaires pour les `Services`.** Une base de tests solide et de bonne qualité a été écrite pour la majorité des services. La couverture doit être finalisée (ex: `SuggestionService`).
+    -   [ ] Écrire des tests d'intégration pour les `Controllers` avec `MockMvc` pour valider les contrats d'API (endpoints, DTOs, codes de statut HTTP).
 - [ ] **Documenter l'API :**
-    -   [ ] Intégrer **SpringDoc (OpenAPI 3)** pour générer une documentation Swagger UI interactive.
-- [ ] **Mettre à jour les images :**
-    -   [ ] Dans `RegionService`, ajouter la logique pour **supprimer l'ancienne image** du disque lors de la mise à jour d'une région avec une nouvelle image.
+    -   [ ] Intégrer **SpringDoc (OpenAPI 3)** en ajoutant la dépendance au `pom.xml`.
+    -   [ ] Configurer SpringDoc et annoter les contrôleurs pour générer une documentation Swagger UI interactive.
 
 ---
 
-### 🧱 Phase 2 — Complétude Fonctionnelle
-**Objectif :** Étendre les fonctionnalités existantes pour une API plus riche et performante.
+### 🧱 **Phase 2 (Priorité Moyenne) — Montée en Charge et Performance**
+**Objectif :** Assurer que l'API peut gérer un grand volume de données sans dégradation des performances.
 
-- [ ] **Pagination et Filtrage :**
-    -   [ ] Implémenter la pagination sur tous les endpoints `GET` qui retournent des listes (`Region`, `Departement`, etc.) en utilisant `Pageable`.
-    -   [ ] Ajouter des paramètres de filtrage (ex: `GET /api/division?regionId=1`).
+- [ ] **Implémenter la Pagination et le Filtrage :**
+    -   [ ] **Aucun endpoint n'est paginé.** Modifier tous les endpoints `GET` retournant des listes pour qu'ils acceptent un paramètre `Pageable`.
+    -   [ ] Ajouter des paramètres de filtrage de base (ex: `GET /api/divisions?regionId=1`).
+- [ ] **Recherche Avancée :**
+    - [ ] Implémenter une recherche textuelle sur plusieurs champs avec Spring Data JPA Specifications.
+- [ ] **Mettre en place un Cache :**
+    - [ ] Intégrer un cache (ex: avec `Caffeine` ou `Redis`) sur les données peu volatiles pour améliorer les temps de réponse.
+
+---
+
+### 🏛️ **Phase 3 (Priorité Basse) — Complétude Fonctionnelle**
+**Objectif :** Finaliser les fonctionnalités restantes.
+
 - [ ] **Généraliser la gestion des médias :**
-    -   [ ] Permettre l'upload d'images pour les `Departement` et `Arrondissement`.
-    -   [ ] Créer les dossiers `uploads/departements` et `uploads/arrondissements`.
+    -   [x] L'upload est déjà fonctionnel pour `Region`, `Division`, `Subdivision`.
+    -   [ ] Permettre l'upload d'images pour les `Neighborhood`.
+    -   [ ] Créer le dossier `uploads/neighborhoods`.
     -   [ ] Étendre le `MediaController` pour servir ces nouvelles images.
-- [ ] **Activer les opérations en cascade :**
-    -   [ ] Décommenter et finaliser la méthode `creerEnCascade` dans `RegionController`.
-    -   [ ] L'implémenter pour les autres entités où c'est pertinent.
-- [ ] **Refactoring - Centraliser les Mappers :**
-    -   [ ] Créer des classes `DepartementMapper`, `ArrondissementMapper`, etc., sur le modèle de `RegionMapper` pour externaliser la logique de conversion des services.
+- [ ] **Audit :**
+    - [ ] Ajouter des champs `dateCreation`, `dateModification` aux entités principales pour tracer les changements.
 
 ---
 
-### 🚀 Phase 3 – Industrialisation et Déploiement
-**Objectif :** Préparer le projet pour la production.
+### 🚀 **Phase 4 – Industrialisation et Déploiement**
+**Objectif :** Préparer le projet pour la production et automatiser le déploiement.
 
 - [ ] **Conteneurisation :**
     -   [ ] Créer un `Dockerfile` pour l'application Spring Boot.
-    -   [ ] Créer un fichier `docker-compose.yml` pour lancer l'application et sa base de données MySQL facilement.
+    -   [ ] Créer un fichier `docker-compose.yml` pour lancer l'application et une base de données facilement.
 - [ ] **Mettre en place une CI/CD (Intégration Continue / Déploiement Continu) :**
     -   [ ] Créer un workflow **GitHub Actions** qui, à chaque `push` sur la branche `main` :
         1.  Compile le code.
-        2.  Lance les tests.
+        2.  Lance les tests (sera utile une fois la Phase 1 terminée).
         3.  Construit l'image Docker.
         4.  (Optionnel) Pousse l'image sur un registre (Docker Hub, GHCR).
 - [ ] **Mettre à jour le `README.md` principal :**
     -   [ ] Ajouter les instructions de lancement via Docker.
-    -   [ ] Inclure le lien vers la documentation Swagger.
+    -   [ ] Inclure le lien vers la documentation Swagger une fois la Phase 1 terminée.
 
 ---
 
-### 🏛️ Phase 4 – API Collaborative
-**Objectif :** Permettre à des utilisateurs authentifiés de contribuer à l'enrichissement des données via un système de suggestions.
+## ✓ Fonctionnalités Terminées (Archives)
 
-- [ ] **Mettre en place le rôle `CONTRIBUTEUR` :**
-    -   [ ] Étendre Spring Security pour gérer un rôle `CONTRIBUTEUR` en plus du rôle `ADMIN`.
-    -   [ ] Mettre à jour l'endpoint `/auth/register` pour qu'il assigne le rôle `CONTRIBUTEUR` par défaut.
-- [ ] **Développer le système de suggestions :**
-    -   [ ] Créer les entités JPA (ex: `Suggestion`) pour stocker les propositions de changement (type, entité concernée, contenu suggéré).
-    -   [ ] Développer les services pour créer et gérer le cycle de vie des suggestions (en attente, approuvée, rejetée).
-- [ ] **Créer les endpoints pour les contributeurs :**
-    -   [ ] Implémenter les routes `POST`, `PUT`, `DELETE` sur `/api/suggestions/{entity}` pour permettre aux contributeurs de soumettre leurs propositions.
-- [ ] **Créer les endpoints pour les administrateurs :**
-    -   [ ] Implémenter les routes pour lister (`GET /api/admin/suggestions`), approuver (`POST /api/admin/suggestions/{id}/approve`) et rejeter (`POST /api/admin/suggestions/{id}/reject`) les suggestions.
-
----
-
-### 💡 Phase 5 – Évolutions Futures (Optionnel)
-
-- [ ] **Recherche Avancée :** Implémenter une recherche textuelle sur plusieurs champs avec Spring Data JPA Specifications.
-- [ ] **Audit :** Ajouter des champs `dateCreation`, `dateModification` aux entités pour tracer les changements.
-- [ ] **Cache :** Mettre en place un cache (ex: avec `Caffeine` ou `Redis`) sur les données peu volatiles pour améliorer les performances.
-- [ ] **Frontend :** Développer une interface utilisateur (React, Vue.js, Angular) pour consommer l'API.
+- [x] **Intégrer Spring Security** (Phase 1 initiale)
+- [x] **Mettre à jour la logique de suppression des images** (Phase 1 initiale)
+- [x] **Refactoring des Mappers** (Phase 2 initiale)
+- [x] **Activer les opérations en cascade** (Phase 2 initiale)
+- [x] **Mettre en place le rôle `CONTRIBUTEUR`** (Phase 4 initiale)
+- [x] **Développer le système de suggestions** (Phase 4 initiale)

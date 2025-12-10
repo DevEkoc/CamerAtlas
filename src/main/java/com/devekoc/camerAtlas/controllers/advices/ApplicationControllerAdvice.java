@@ -2,10 +2,12 @@ package com.devekoc.camerAtlas.controllers.advices;
 
 import com.devekoc.camerAtlas.dto.ErrorEntity;
 import com.devekoc.camerAtlas.exceptions.PositionAlreadyFilledException;
+import com.devekoc.camerAtlas.exceptions.TokenExpiredException;
 import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -56,6 +58,18 @@ public class ApplicationControllerAdvice {
         String message = errors.isEmpty() ? "Requête invalide" : String.join(", ", errors);
 
         return new ErrorEntity("400", message);
+    }
+
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public @ResponseBody ErrorEntity handleUsernameNotFoundException(UsernameNotFoundException ex) {
+        return new ErrorEntity("401", ex.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.REQUEST_TIMEOUT)
+    @ExceptionHandler(TokenExpiredException.class)
+    public @ResponseBody ErrorEntity handleTokenExpiredException(TokenExpiredException ex) {
+        return new ErrorEntity("408", "Requête expirée : " + ex.getMessage());
     }
 
     @ResponseStatus(HttpStatus.CONFLICT)

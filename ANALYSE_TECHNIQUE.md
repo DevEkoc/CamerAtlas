@@ -15,7 +15,7 @@ Votre projet `CamerAtlas` est une application web backend robuste et bien struct
 *   Le cœur du métier est très bien modélisé avec les entités JPA dans `com.devekoc.camerAtlas.entities`.
 *   **Héritage :** Vous utilisez une stratégie d'héritage `InheritanceType.JOINED` avec `Circonscription` comme classe de base. C'est une approche élégante pour factoriser les champs communs (nom, superficie, population) entre `Region`, `Departement` et `Arrondissement`.
 *   **Relations :** Les relations entre les entités sont correctement définies (`@ManyToOne`, `@OneToMany`) pour représenter la hiérarchie administrative : `Region` -> `Departement` -> `Arrondissement` -> `Quartier`.
-*   **Entités spécifiques :** `Autorite`, `Affectation` (pour lier une autorité à une circonscription avec une fonction et une période) et `Delimitation` (pour gérer les frontières) complètent le modèle.
+*   **Entités spécifiques :** `Autorite`, `Affectation` (pour lier une autorité à une circonscription avec une function et une période) et `Delimitation` (pour gérer les frontières) complètent le modèle.
 
 **3. API REST (Controllers) :**
 *   Vous avez exposé des endpoints REST pour la quasi-totalité de vos entités, permettant des opérations **CRUD** (Create, Read, Update, Delete).

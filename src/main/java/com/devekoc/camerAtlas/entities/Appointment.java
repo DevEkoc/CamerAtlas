@@ -1,14 +1,10 @@
 package com.devekoc.camerAtlas.entities;
 
-import com.devekoc.camerAtlas.enumerations.Fonction;
+import com.devekoc.camerAtlas.enumerations.Function;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -16,6 +12,7 @@ import java.time.LocalDate;
 @Table(name = "affectation")
 @Setter @Getter
 @AllArgsConstructor @NoArgsConstructor
+//@RequiredArgsConstructor
 public class Appointment {
     @Id
     @Column(name = "idAffectation")
@@ -34,8 +31,8 @@ public class Appointment {
 
     @Column(name = "fonction", nullable = false)
     @Enumerated(EnumType.STRING)
-    @NotNull(message = "La fonction est obligatoire")
-    private Fonction fonction;
+    @NotNull(message = "La function est obligatoire")
+    private Function function;
 
     @Column(name = "dateDebut", nullable = false)
     @NotNull(message = "La date de début est obligatoire !")

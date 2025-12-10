@@ -1,0 +1,58 @@
+package com.devekoc.camerAtlas.security;
+
+public enum Permissions {
+    // Régions
+    REGION_READ,
+    REGION_CREATE,
+    REGION_UPDATE,
+    REGION_DELETE,
+
+    // Départements
+    DIVISION_READ,
+    DIVISION_CREATE,
+    DIVISION_UPDATE,
+    DIVISION_DELETE,
+
+    // Arrondissements
+    SUBDIVISION_READ,
+    SUBDIVISION_CREATE,
+    SUBDIVISION_UPDATE,
+    SUBDIVISION_DELETE,
+
+    // Quartiers
+    NEIGHBORHOOD_READ,
+    NEIGHBORHOOD_CREATE,
+    NEIGHBORHOOD_UPDATE,
+    NEIGHBORHOOD_DELETE,
+
+    // Autorités administratives
+    AUTHORITY_READ,
+    AUTHORITY_CREATE,
+    AUTHORITY_UPDATE,
+    AUTHORITY_DELETE,
+
+    // Affectations
+    APPOINTMENT_READ,
+    APPOINTMENT_CREATE,
+    APPOINTMENT_UPDATE,
+    APPOINTMENT_DELETE,
+
+    // Frontières
+    DELIMITATION_READ,
+    DELIMITATION_CREATE,
+    DELIMITATION_UPDATE,
+    DELIMITATION_DELETE,
+
+    // Suggestions
+    SUGGESTION_CREATE,
+    SUGGESTION_APPROVE,
+    SUGGESTION_REJECT,
+    SUGGESTION_READ,
+//    SUGGESTION_DELETE,
+
+    // Utilisateurs
+    USER_READ,
+    USER_CREATE,
+    USER_UPDATE,
+    USER_DELETE,
+}

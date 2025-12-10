@@ -4,6 +4,7 @@ import com.devekoc.camerAtlas.dto.neighborhood.NeighborhoodCreateDTO;
 import com.devekoc.camerAtlas.dto.neighborhood.NeighborhoodListDTO;
 import com.devekoc.camerAtlas.services.NeighborhoodService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,10 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value = "neighborhood")
+@AllArgsConstructor
+@RequestMapping(value = "neighborhoods")
 public class NeighborhoodController {
     private final NeighborhoodService neighborhoodService;
-
-    public NeighborhoodController(NeighborhoodService neighborhoodService) {
-        this.neighborhoodService = neighborhoodService;
-    }
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
@@ -59,7 +57,7 @@ public class NeighborhoodController {
         ;
     }
 
-    @PutMapping(path = "{id}")
+    @PutMapping(path = "id/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity <NeighborhoodListDTO> update(@PathVariable int id, @RequestBody @Valid NeighborhoodCreateDTO dto) {
         NeighborhoodListDTO updated = neighborhoodService.update(id, dto);

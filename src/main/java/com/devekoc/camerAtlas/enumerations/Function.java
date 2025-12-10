@@ -1,6 +1,6 @@
 package com.devekoc.camerAtlas.enumerations;
 
-public enum Fonction {
+public enum Function {
     GOUVERNEUR,
     PREFET,
     SOUS_PREFET

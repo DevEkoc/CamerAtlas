@@ -5,6 +5,7 @@ import com.devekoc.camerAtlas.dto.division.DivisionListDTO;
 import com.devekoc.camerAtlas.dto.division.DivisionWithSubDivisionsDTO;
 import com.devekoc.camerAtlas.services.DivisionService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +17,10 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 
 @RestController
-@RequestMapping(value = "division")
+@AllArgsConstructor
+@RequestMapping(value = "divisions")
 public class DivisionController {
     private final DivisionService divisionService;
-
-    public DivisionController(DivisionService divisionService) {
-        this.divisionService = divisionService;
-    }
 
     @PostMapping(consumes = MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
@@ -62,7 +60,7 @@ public class DivisionController {
         ;
     }
 
-    @GetMapping(path = "id/{id}/subDivisions")
+    @GetMapping(path = "{id}/subDivisions")
     public ResponseEntity<DivisionWithSubDivisionsDTO> findWithSubDivisions (@PathVariable int id) {
         DivisionWithSubDivisionsDTO division = divisionService.findWithSubDivisions(id);
         return division != null
@@ -71,7 +69,7 @@ public class DivisionController {
         ;
     }
 
-    @PutMapping(path = "{id}", consumes = MULTIPART_FORM_DATA_VALUE)
+    @PutMapping(path = "id/{id}", consumes = MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity <DivisionListDTO> update(@PathVariable int id, @RequestBody @Valid @ModelAttribute DivisionCreateDTO dto) throws IOException {
         DivisionListDTO updated = divisionService.update(id, dto);

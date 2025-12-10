@@ -210,12 +210,12 @@ Pour chaque frontière du Cameroun, identifie les circonscriptions (régions ou 
 ### Prompt 7: Déduire les Affectations (Relations Autorité-Circonscription)
 
 **Tâche :**
-Identifie le poste actuel des autorités administratives (Gouverneurs, Préfets, Sous-Préfets). Associe chaque autorité à sa circonscription et à sa fonction.
+Identifie le poste actuel des autorités administratives (Gouverneurs, Préfets, Sous-Préfets). Associe chaque autorité à sa circonscription et à sa function.
 
 **Champs à extraire :**
 - `nomCompletAutorite`: Le nom complet de l'autorité (ex: "Paul Naseri Bea").
 - `nomCirconscription`: Le nom de la région, du département ou de l'subDivision où l'autorité est en poste.
-- `fonction`: Le titre de l'autorité (valeurs possibles : `GOUVERNEUR`, `PREFET`, `SOUS_PREFET`).
+- `function`: Le titre de l'autorité (valeurs possibles : `GOUVERNEUR`, `PREFET`, `SOUS_PREFET`).
 
 **Format de sortie attendu (exemple) :**
 ```json
@@ -223,12 +223,12 @@ Identifie le poste actuel des autorités administratives (Gouverneurs, Préfets,
   {
     "nomCompletAutorite": "Paul Naseri Bea",
     "nomCirconscription": "Centre",
-    "fonction": "GOUVERNEUR"
+    "function": "GOUVERNEUR"
   },
   {
     "nomCompletAutorite": "Benjamin Mboutou",
     "nomCirconscription": "Wouri",
-    "fonction": "PREFET"
+    "function": "PREFET"
   }
 ]
 ```

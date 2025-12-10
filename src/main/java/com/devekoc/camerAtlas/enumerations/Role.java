@@ -1,0 +1,33 @@
+package com.devekoc.camerAtlas.enumerations;
+
+import com.devekoc.camerAtlas.security.Permissions;
+import lombok.Getter;
+
+import java.util.Set;
+
+import static com.devekoc.camerAtlas.security.Permissions.*;
+
+@Getter
+public enum Role {
+    ADMIN(Set.of(
+            REGION_READ, REGION_CREATE, REGION_UPDATE, REGION_DELETE,
+            DIVISION_READ, DIVISION_CREATE, DIVISION_UPDATE, DIVISION_DELETE,
+            SUBDIVISION_READ, SUBDIVISION_CREATE, SUBDIVISION_UPDATE, SUBDIVISION_DELETE,
+            NEIGHBORHOOD_READ, NEIGHBORHOOD_CREATE, NEIGHBORHOOD_UPDATE, NEIGHBORHOOD_DELETE,
+            AUTHORITY_READ, AUTHORITY_CREATE, AUTHORITY_UPDATE, AUTHORITY_DELETE,
+            APPOINTMENT_READ, APPOINTMENT_CREATE, APPOINTMENT_UPDATE, APPOINTMENT_DELETE,
+            DELIMITATION_READ, DELIMITATION_CREATE, DELIMITATION_UPDATE, DELIMITATION_DELETE,
+            SUGGESTION_CREATE, SUGGESTION_READ, SUGGESTION_APPROVE, SUGGESTION_REJECT,
+            USER_READ, USER_CREATE, USER_UPDATE, USER_DELETE
+    )),
+    CONTRIBUTOR(Set.of(
+            SUGGESTION_CREATE, REGION_READ, DIVISION_READ, SUBDIVISION_READ, NEIGHBORHOOD_READ, AUTHORITY_READ, APPOINTMENT_READ, DELIMITATION_READ
+    ));
+
+    private final Set<Permissions> permissions;
+
+    Role(Set<Permissions> permissions) {
+        this.permissions = permissions;
+    }
+
+}

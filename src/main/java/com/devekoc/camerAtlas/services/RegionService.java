@@ -8,6 +8,7 @@ import com.devekoc.camerAtlas.mappers.RegionMapper;
 import com.devekoc.camerAtlas.repositories.*;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
+@AllArgsConstructor
 @Service
 public class RegionService {
 
@@ -26,16 +28,6 @@ public class RegionService {
     private final AppointmentRepository appointmentRepository;
     private final DelimitationRepository delimitationRepository;
     private static final String IMAGE_SUBDIRECTORY = "regions";
-
-    public RegionService(RegionRepository regionRepository,
-                         MediaService mediaService,
-                         AppointmentRepository appointmentRepository,
-                         DelimitationRepository delimitationRepository) {
-        this.regionRepository = regionRepository;
-        this.mediaService = mediaService;
-        this.appointmentRepository = appointmentRepository;
-        this.delimitationRepository = delimitationRepository;
-    }
 
     /*--------------------------------------------*
      *                 CREATE
@@ -98,7 +90,7 @@ public class RegionService {
 
     public RegionListDTO find(String name) {
         Region region = regionRepository.findByName(name)
-                .orElseThrow(() -> new EntityNotFoundException("Aucune région trouvée avec le nom : " + name));
+                .orElseThrow(() -> new EntityNotFoundException("Aucune région trouvée avec le name : " + name));
         return mapRegionWithRelations(region);
     }
 
@@ -162,7 +154,7 @@ public class RegionService {
     @Transactional
     public void delete(String name) {
         Region existing = regionRepository.findByName(name)
-                .orElseThrow(() -> new EntityNotFoundException("Aucune région trouvée avec le nom : " + name));
+                .orElseThrow(() -> new EntityNotFoundException("Aucune région trouvée avec le name : " + name));
         deleteRegion(existing);
     }
 
@@ -179,10 +171,10 @@ public class RegionService {
      *         MÉTHODES UTILITAIRES PRIVÉES
      *--------------------------------------------*/
 
-    /** Vérifie qu’un nom de région est unique en base */
+    /** Vérifie qu’un name de région est unique en base */
     private void validateUniqueName(String name) {
         if (regionRepository.existsByName(name)) {
-            throw new DataIntegrityViolationException("Une région avec le nom '" + name + "' existe déjà !");
+            throw new DataIntegrityViolationException("Une région avec le name '" + name + "' existe déjà !");
         }
     }
 

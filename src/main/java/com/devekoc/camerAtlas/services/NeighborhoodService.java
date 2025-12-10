@@ -9,6 +9,7 @@ import com.devekoc.camerAtlas.repositories.NeighborhoodRepository;
 import com.devekoc.camerAtlas.repositories.SubDivisionRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -17,29 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@AllArgsConstructor
 @Service
 public class NeighborhoodService {
     private final NeighborhoodRepository neighborhoodRepository;
     private final SubDivisionRepository subDivisionRepository;
 
-    public NeighborhoodService(NeighborhoodRepository neighborhoodRepository, SubDivisionRepository subDivisionRepository) {
-        this.neighborhoodRepository = neighborhoodRepository;
-        this.subDivisionRepository = subDivisionRepository;
-    }
-
     public NeighborhoodListDTO create(NeighborhoodCreateDTO dto) {
-        if (neighborhoodRepository.existsByName(dto.name())) {
-            throw new DataIntegrityViolationException(
-                    "Un quartier avec le name '" + dto.name() + "' existe déjà"
-            );
-        }
-
-        SubDivision subDivision = subDivisionRepository.findById(dto.subDivisionalOfficeId()).orElseThrow(
-                ()-> new EntityNotFoundException("Aucun arrondissement trouvé avec l'ID : " + dto.subDivisionalOfficeId())
-        );
-
+        validateUniqueName(dto.name());
+        SubDivision subDivision = getSubDivisionOrThrow(dto.subDivisionalOfficeId());
         Neighborhood neighborhood = NeighborhoodMapper.fromCreateDTO(dto, new Neighborhood(), subDivision);
         Neighborhood saved = neighborhoodRepository.save(neighborhood);
+
         log.info("Quartier '{}' (ID : {}) créé avec succès. ", saved.getName(), saved.getId());
         return NeighborhoodMapper.toListDTO(saved);
     }
@@ -49,7 +39,6 @@ public class NeighborhoodService {
         for (NeighborhoodCreateDTO dto : dtos) {
             neighborhoods.add(create(dto));
         }
-
         return neighborhoods;
     }
 
@@ -60,33 +49,23 @@ public class NeighborhoodService {
     }
 
     public NeighborhoodListDTO find(int id) {
-        Neighborhood neighborhood = neighborhoodRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("Le quartier n'existe pas")
-        );
+        Neighborhood neighborhood = findByNeighborhoodId(id);
         return NeighborhoodMapper.toListDTO(neighborhood);
     }
 
     public NeighborhoodListDTO find(String name) {
         Neighborhood neighborhood = neighborhoodRepository.findByName(name).orElseThrow(
-                () -> new EntityNotFoundException("Le quartier n'existe pas")
+                () -> new EntityNotFoundException("Aucun quartier trouvé avec le name " + name)
         );
         return NeighborhoodMapper.toListDTO(neighborhood);
     }
 
     public NeighborhoodListDTO update(int id, NeighborhoodCreateDTO dto) {
-        Neighborhood existing = neighborhoodRepository.findById(id).orElseThrow(
-                ()-> new EntityNotFoundException("Aucun quartier trouvé avec l'ID : " + id)
-        );
-
-        if (neighborhoodRepository.existsByNameAndIdNot(dto.name(), id)) {
-            throw new DataIntegrityViolationException(
-                    "Un quartier avec le name '" + dto.name() + "' existe déjà"
-            );
+        Neighborhood existing = findByNeighborhoodId(id);
+        if (!existing.getName().equals(dto.name())) {
+            validateUniqueName(dto.name());
         }
-
-        SubDivision subDivision = subDivisionRepository.findById(dto.subDivisionalOfficeId()).orElseThrow(
-                ()-> new EntityNotFoundException("Aucun arrondissement " + dto.subDivisionalOfficeId())
-        );
+        SubDivision subDivision = getSubDivisionOrThrow(dto.subDivisionalOfficeId());
 
         NeighborhoodMapper.fromCreateDTO(dto, existing, subDivision);
         Neighborhood updated = neighborhoodRepository.save(existing);
@@ -94,17 +73,36 @@ public class NeighborhoodService {
         return NeighborhoodMapper.toListDTO(updated);
     }
 
+    @Transactional
     public void delete(int id) {
-        if (!neighborhoodRepository.existsById(id)) {
-            throw new EntityNotFoundException("Le quartier n'existe pas");        }
-        neighborhoodRepository.deleteById(id);
+        deleteNeighborhood(findByNeighborhoodId(id));
     }
 
     @Transactional
     public void delete(String name) {
-        if (!neighborhoodRepository.existsByName(name)) {
-            throw new EntityNotFoundException("Le quartier n'existe pas");
+        Neighborhood neighborhood = neighborhoodRepository.findByName(name).orElseThrow(
+                ()-> new EntityNotFoundException("Aucun quartier trouvé avec le name " + name)
+        );
+        deleteNeighborhood(neighborhood);
+    }
+    private void validateUniqueName (String name) {
+        if (neighborhoodRepository.existsByName(name)) {
+            throw new DataIntegrityViolationException("Un quartier nommé '" + name + "' existe déjà");
         }
-        neighborhoodRepository.deleteByName(name);
+    }
+
+    private SubDivision getSubDivisionOrThrow(int id) {
+        return subDivisionRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Aucun arrondissement trouvé avec l'ID : " + id));
+    }
+
+    private Neighborhood findByNeighborhoodId(int id) {
+        return neighborhoodRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Aucun quartier trouvé avec l'ID : " + id));
+    }
+
+    private void deleteNeighborhood (Neighborhood neighborhood) {
+        neighborhoodRepository.delete(neighborhood);
+        log.info("Quartier '{}' (ID : {}) supprimé avec succès. ", neighborhood.getName(), neighborhood.getId());
     }
 }

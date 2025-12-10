@@ -4,6 +4,7 @@ import com.devekoc.camerAtlas.dto.authority.AuthorityCreateDTO;
 import com.devekoc.camerAtlas.dto.authority.AuthorityListDTO;
 import com.devekoc.camerAtlas.services.AuthorityService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,10 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value = "authority")
+@AllArgsConstructor
+@RequestMapping(value = "authorities")
 public class AuthorityController {
     private final AuthorityService authorityService;
-
-    public AuthorityController(AuthorityService authorityService) {
-        this.authorityService = authorityService;
-    }
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
@@ -41,7 +39,7 @@ public class AuthorityController {
         return ResponseEntity.ok(autorites);
     }
 
-    @GetMapping(path = "{id}", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(path = "id/{id}", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<AuthorityListDTO> find(@PathVariable int id) {
         AuthorityListDTO autorite = authorityService.find(id);
         return (autorite != null)
@@ -49,17 +47,17 @@ public class AuthorityController {
                 : ResponseEntity.notFound().build();
     }
 
-    @PutMapping(path = "{id}", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(path = "id/{id}", consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<AuthorityListDTO> update(@PathVariable int id, @RequestBody @Valid AuthorityCreateDTO dto) {
         AuthorityListDTO updated = authorityService.update(id, dto);
         return ResponseEntity.ok(updated);
     }
 
-    @DeleteMapping(path = "{id}")
+    @DeleteMapping(path = "id/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Void> supprimer(@PathVariable int id) {
-        authorityService.supprimer(id);
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        authorityService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

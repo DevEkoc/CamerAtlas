@@ -12,7 +12,7 @@ USE camerAtlas;
 -- ============================================================================
 -- CREATION DES TABLES
 -- ============================================================================
-CREATE TABLE authority (
+CREATE TABLE autorite (
     idAutorite INT AUTO_INCREMENT PRIMARY KEY,
     nomAutorite VARCHAR(50) NOT NULL,
     prenomAutorite VARCHAR(50) DEFAULT NULL,
@@ -32,12 +32,12 @@ CREATE TABLE appointment (
     idAffectation INT AUTO_INCREMENT PRIMARY KEY,
     idAutorite INT NOT NULL,
     codeCirconscription INT NOT NULL,
-    fonction ENUM('GOUVERNEUR', 'PREFET', 'SOUS-PREFET') NOT NULL,
+    function ENUM('GOUVERNEUR', 'PREFET', 'SOUS-PREFET') NOT NULL,
     dateDebut DATE NOT NULL,
     dateFin DATE DEFAULT NULL,
     UNIQUE (idAutorite, codeCirconscription),
     CHECK ( dateFin IS NULL OR dateFin > dateDebut ),
-    FOREIGN KEY (idAutorite) REFERENCES authority(idAutorite) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (idAutorite) REFERENCES autorite(idAutorite) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (codeCirconscription) REFERENCES circonscription(codeCirconscription) ON UPDATE CASCADE ON DELETE CASCADE
 );
 

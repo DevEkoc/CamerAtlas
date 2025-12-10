@@ -1,6 +1,6 @@
 package com.devekoc.camerAtlas.dto.appointment;
 
-import com.devekoc.camerAtlas.enumerations.Fonction;
+import com.devekoc.camerAtlas.enumerations.Function;
 import com.devekoc.camerAtlas.validation.ValidDateRange;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -17,8 +17,8 @@ public record AppointmentCreateDTO(
         Integer circonscriptionId,
 
         @Enumerated(EnumType.STRING)
-        @NotNull(message = "La fonction est obligatoire")
-        Fonction fonction,
+        @NotNull(message = "La function est obligatoire")
+        Function function,
 
         @NotNull(message = "La date de début est obligatoire !")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")

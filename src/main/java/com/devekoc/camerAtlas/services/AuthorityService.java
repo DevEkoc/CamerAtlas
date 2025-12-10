@@ -6,6 +6,7 @@ import com.devekoc.camerAtlas.entities.Authority;
 import com.devekoc.camerAtlas.mappers.AuthorityMapper;
 import com.devekoc.camerAtlas.repositories.AuthorityRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,13 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 @Transactional
 public class AuthorityService {
     private final AuthorityRepository authorityRepository;
-
-    public AuthorityService(AuthorityRepository authorityRepository) {
-        this.authorityRepository = authorityRepository;
-    }
 
     public AuthorityListDTO create(AuthorityCreateDTO dto) {
         Authority authority = AuthorityMapper.fromCreateDTO(dto, new Authority());
@@ -58,7 +56,7 @@ public class AuthorityService {
         return AuthorityMapper.toListDTO(saved);
     }
 
-    public void supprimer(int id) {
+    public void delete(int id) {
         Authority found =  authorityRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Aucune Autorité trouvée avec l'ID : " + id)
         );
