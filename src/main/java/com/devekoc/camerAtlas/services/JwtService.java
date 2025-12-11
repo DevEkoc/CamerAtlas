@@ -49,6 +49,7 @@ public class JwtService {
         User user = (User) userService.loadUserByUsername(username);
         String accessToken = generateAccessToken(user);
         String refreshToken = refreshTokenService.createRefreshToken(user).getToken();
+        userService.setLastConnection(user, Instant.now());
         return Map.of(
                 ACCESS_TOKEN, accessToken,
                 REFRESH_TOKEN, refreshToken

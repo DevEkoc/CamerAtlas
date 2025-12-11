@@ -8,9 +8,11 @@ import com.devekoc.camerAtlas.exceptions.TokenExpiredException;
 import com.devekoc.camerAtlas.mappers.UserMapper;
 import com.devekoc.camerAtlas.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,6 +31,7 @@ public class UserService implements UserDetailsService {
 
     public UserListDTO register(UserCreateDTO dto) {
         validateUniqueName(dto.name());
+        validateUniquePseudo(dto.pseudo());
         if (!dto.email().matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$"))
             throw new IllegalArgumentException("Adresse mail invalide");
         validateUniqueEmail(dto.email());
@@ -84,6 +87,12 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    private void validateUniquePseudo(String pseudo) {
+        if (userRepository.existsByPseudo(pseudo)) {
+            throw new DataIntegrityViolationException("Un utilisateur avec le pseudo '" + pseudo + "' existe déjà !");
+        }
+    }
+
     private void validateUniqueEmail(String email) {
         if (userRepository.existsByEmail(email)) {
             throw new DataIntegrityViolationException("Un utilisateur avec l'email '" + email + "' existe déjà !");
@@ -91,4 +100,13 @@ public class UserService implements UserDetailsService {
     }
 
 
+    public UserListDTO mapToProfile(Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+        return UserMapper.toListDTO(user);
+    }
+
+    public void setLastConnection(User user, Instant now) {
+        user.setLastConnection(now);
+        userRepository.save(user);
+    }
 }

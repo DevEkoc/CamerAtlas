@@ -10,16 +10,20 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Duration;
 import java.util.Map;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -86,11 +90,18 @@ public class UserController {
     )
     @ResponseStatus(HttpStatus.OK)
     @PostMapping(path = "login", consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Map<String, String>> logIn (@RequestBody @Valid UserConnectionDTO dto){
+    public ResponseEntity<Map<String, String>> logIn (@RequestBody @Valid UserConnectionDTO dto, HttpServletResponse response){
         final Authentication authenticate = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(dto.username(), dto.password())
         );
-        if (authenticate.isAuthenticated()) return ResponseEntity.ok(jwtService.generate(dto.username()));
+        if (authenticate.isAuthenticated()) { // Test redondant, mais utile pour la clarté
+            Map<String, String> tokens = jwtService.generate(dto.username());
+
+            String refreshToken = tokens.get("refresh_token");
+            response.addHeader(HttpHeaders.SET_COOKIE, buildCookie(refreshToken).toString());
+
+            return ResponseEntity.ok(Map.of("access_token", tokens.get("access_token")));
+        }
         return null; // Should not be reached as AuthenticationManager throws exceptions
     }
 
@@ -105,16 +116,23 @@ public class UserController {
                     @ApiResponse(responseCode = "401", description = "Jeton de rafraîchissement invalide ou non authentifié")
             }
     )
-    @ResponseStatus(HttpStatus.OK)
-    @PostMapping(path = "logout", consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> logout (@RequestBody Map<String, String> request){
-        String refreshTokenValue = request.get(JwtService.REFRESH_TOKEN);
-        // Add check for null or empty refresh token
-        if (refreshTokenValue == null || refreshTokenValue.isEmpty()) {
-            return ResponseEntity.badRequest().build();
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PostMapping(path = "logout")
+    public ResponseEntity<Void> logout (@CookieValue(value = "refresh_token", required = false) String cookieToken, HttpServletResponse response){
+        // Invalidation de l'ancien jeton en BD. La valeur est récupérée depuis le cookie.
+        if (cookieToken != null && !cookieToken.isEmpty()) {
+            refreshTokenService.revokeToken(cookieToken);
         }
-        refreshTokenService.revokeToken(refreshTokenValue);
-        return ResponseEntity.ok().build();
+        // Suppression côté client (par écrasement)
+        ResponseCookie responseCookie = ResponseCookie.from("refresh_token", "")
+                .httpOnly(true)
+                .secure(false)
+                .path("/")
+                .maxAge(0)
+                .build();
+        response.setHeader(HttpHeaders.SET_COOKIE, responseCookie.toString());
+
+        return ResponseEntity.noContent().build();
     }
 
     @Operation(
@@ -130,26 +148,24 @@ public class UserController {
     )
     @ResponseStatus(HttpStatus.OK)
     @PostMapping(path = "refresh", consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Map<String, String>> refresh(@RequestBody Map<String, String> request) {
-        String oldRefreshToken = request.get(JwtService.REFRESH_TOKEN);
-        // Add check for null or empty refresh token
-        if (oldRefreshToken == null || oldRefreshToken.isEmpty()) {
-            return ResponseEntity.badRequest().build();
+    public ResponseEntity<Map<String, String>> refresh(@CookieValue(value = "refresh_token", required = false) String cookieToken, HttpServletResponse response) {
+        if (cookieToken == null || cookieToken.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        RefreshToken validatedToken = refreshTokenService.verifyExpiration(oldRefreshToken);
+        RefreshToken validatedToken = refreshTokenService.verifyExpiration(cookieToken);
 
         User user = validatedToken.getUser();
         // Par souci de sécurité, on révoque l'ancien token
-        refreshTokenService.revokeToken(oldRefreshToken);
+        refreshTokenService.revokeToken(cookieToken);
 
         // 4. Génération d'un NOUVEAU Access Token et d'un NOUVEAU Refresh Token
         String newAccessToken = jwtService.generateAccessToken(user);
         String newRefreshToken = refreshTokenService.createRefreshToken(user).getToken();
 
-        return ResponseEntity.ok(Map.of(
-                JwtService.ACCESS_TOKEN, newAccessToken,
-                JwtService.REFRESH_TOKEN, newRefreshToken
-        ));
+        // 5. Écriture du nouveau Refresh Token dans le cookie
+        response.addHeader(HttpHeaders.SET_COOKIE, buildCookie(newRefreshToken).toString());
+
+        return ResponseEntity.ok(Map.of(JwtService.ACCESS_TOKEN, newAccessToken));
     }
 
     @Operation(
@@ -186,5 +202,21 @@ public class UserController {
     public ResponseEntity<Void> resetPassword(@RequestBody @Valid PasswordResetDTO dto){
         userService.resetPassword(dto);
         return ResponseEntity.ok().build();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(path = "me")
+    public ResponseEntity<UserListDTO> me(Authentication authentication){
+        return ResponseEntity.ok(userService.mapToProfile(authentication));
+    }
+
+    private ResponseCookie buildCookie (String refreshToken) {
+        return ResponseCookie.from("refresh_token", refreshToken)
+                .httpOnly(true)
+                .secure(false) // doit être true en production
+                .path("/")
+                .maxAge(Duration.ofDays(7))
+                .sameSite("Lax") // doit être Strict pour la prod
+                .build();
     }
 }

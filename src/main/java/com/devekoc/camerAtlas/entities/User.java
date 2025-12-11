@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.Instant;
 import java.util.Collection;
 import java.util.stream.Stream;
 
@@ -21,9 +22,17 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "nomUtilisateur", unique = true)
-    @NotNull(message = "Le nom de l'utilisateur ne doit pas être vide")
+    @Column(name = "nom", unique = true)
+    @NotNull(message = "Le nom ne doit pas être vide")
     private String name;
+
+    @Column(name = "prenom")
+    @NotNull(message = "Le prénom ne doit pas être vide")
+    private String surname;
+
+    @Column(name = "pseudo", unique = true)
+    @NotNull(message = "Le pseudo ne doit pas être vide")
+    private String pseudo;
 
     @Column(name = "motDePasse")
     @NotNull(message = "Le mot de passe ne doit pas être vide")
@@ -44,6 +53,12 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Le rôle de l'utilisateur est obligatoire")
     private Role role;
+
+    @Column(name = "dateCreation")
+    private Instant createdAt;
+
+    @Column(name = "derniereConnexion")
+    private Instant lastConnection;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -43,18 +43,22 @@ class UserServiceTest {
     @Test
     void register_shouldCreateUserAndSendActivationToken() {
         UserCreateDTO dto = new UserCreateDTO(
+                "Doe",
                 "John",
-                "pass123",
+                "JohnnyDoe",
                 "john@gmail.com",
+                "pass123",
                 Role.ADMIN
         );
 
-        when(userRepository.existsByName("John")).thenReturn(false);
+        when(userRepository.existsByName("Doe")).thenReturn(false);
         when(userRepository.existsByEmail("john@gmail.com")).thenReturn(false);
 
         User saved = new User();
         saved.setId(1);
-        saved.setName("John");
+        saved.setName("Doe");
+        saved.setSurname("John");
+        saved.setPseudo("JohnnyDoe");
         saved.setEmail("john@gmail.com");
         saved.setRole(Role.ADMIN);
 
@@ -64,7 +68,7 @@ class UserServiceTest {
         UserListDTO result = userService.register(dto);
 
         assertThat(result.id()).isEqualTo(1);
-        assertThat(result.name()).isEqualTo("John");
+        assertThat(result.name()).isEqualTo("Doe");
 
         verify(verifTokenService).generateToken(saved, TokenType.ACTIVATION);
     }
@@ -72,7 +76,12 @@ class UserServiceTest {
     @Test
     void register_shouldThrowWhenEmailInvalid() {
         UserCreateDTO dto = new UserCreateDTO(
-                "John", "pass", "badEmail", Role.CONTRIBUTOR
+                "Doe",
+                "John",
+                "JohnnyDoe",
+                "badEmail",
+                "pass123",
+                Role.CONTRIBUTOR
         );
 
         assertThatThrownBy(() -> userService.register(dto))
@@ -83,7 +92,7 @@ class UserServiceTest {
     @Test
     void register_shouldThrowWhenNameExists() {
         UserCreateDTO dto = new UserCreateDTO(
-                "John", "pass", "john@mail.fr", Role.CONTRIBUTOR
+                "John", "pass", "Johnny", "john@mail.fr", "pass", Role.CONTRIBUTOR
         );
 
         when(userRepository.existsByName("John")).thenReturn(true);
@@ -95,7 +104,7 @@ class UserServiceTest {
     @Test
     void register_shouldThrowWhenEmailExists() {
         UserCreateDTO dto = new UserCreateDTO(
-                "John", "pass", "john@mail.fr", Role.CONTRIBUTOR
+                "John", "pass", "Johnny", "john@mail.fr", "pass", Role.CONTRIBUTOR
         );
 
         when(userRepository.existsByName("John")).thenReturn(false);
