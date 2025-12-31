@@ -40,6 +40,7 @@ public class RefreshTokenService {
         RefreshToken refreshToken = RefreshToken.builder()
                 .token(tokenValue)
                 .user(user)
+                .deliveryDate(Instant.now())
                 .expiryDate(Instant.now().plusMillis(REFRESH_TOKEN_EXPIRATION))
                 .revoked(false)
                 .build();

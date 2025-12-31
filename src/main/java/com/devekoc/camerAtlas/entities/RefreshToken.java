@@ -20,6 +20,9 @@ public class RefreshToken {
     @Column(unique = true, nullable = false)
     private String token;
 
+    @Column
+    private Instant deliveryDate;
+
     @Column(nullable = false)
     private Instant expiryDate;
 

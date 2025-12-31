@@ -147,7 +147,7 @@ public class UserController {
             }
     )
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping(path = "refresh", consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(path = "refresh")
     public ResponseEntity<Map<String, String>> refresh(@CookieValue(value = "refresh_token", required = false) String cookieToken, HttpServletResponse response) {
         if (cookieToken == null || cookieToken.isEmpty()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
